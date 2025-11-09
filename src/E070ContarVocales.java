@@ -10,19 +10,18 @@ void contarVocales () {
         return;
     }
 
-    int caracteres = palabra.length();
-
-    for (int i = 0; i < caracteres; i++) {
-        if (palabra.charAt(i) == 'a' | palabra.charAt(i) == 'á') {
-            IO.println(String.format("\nSe ha encontrado la vocal 'a' en la posición %d", i + 1));
-        } else if (palabra.charAt(i) == 'e' | palabra.charAt(i) == 'é') {
-            IO.println(String.format("\nSe ha encontrado la vocal 'e' en la posición %d", i + 1));
-        } else if (palabra.charAt(i) == 'i' | palabra.charAt(i) == 'í') {
-            IO.println(String.format("\nSe ha encontrado la vocal 'i' en la posición %d", i + 1));
-        } else if (palabra.charAt(i) == 'o' | palabra.charAt(i) == 'ó') {
-            IO.println(String.format("\nSe ha encontrado la vocal 'o' en la posición %d", i + 1));
-        } else if (palabra.charAt(i) == 'u' | palabra.charAt(i) == 'ú' | palabra.charAt(i) == 'ü') {
-            IO.println(String.format("\nSe ha encontrado la vocal 'u' en la posición %d", i + 1));
+    for (int i = 0; i < palabra.length(); i++) {
+        char caracter = palabra.charAt(i);
+        if (caracter == 'a' | caracter == 'á') {
+            IO.println(String.format("La palabra %S tiene la vocal a en la posición %d",palabra, i + 1 ));
+        } else if (caracter == 'e' | caracter == 'é') {
+            IO.println(String.format("La palabra %S tiene la vocal e en la posición %d",palabra, i + 1 ));
+        } else if (caracter == 'i' | caracter == 'í') {
+            IO.println(String.format("La palabra %S tiene la vocal i en la posición %d",palabra, i + 1 ));
+        } else if (caracter == 'o' | caracter == 'ó') {
+            IO.println(String.format("La palabra %S tiene la vocal o en la posición %d",palabra, i + 1 ));
+        } else if (caracter == 'u' | caracter == 'ú' | caracter == 'ü') {
+            IO.println(String.format("La palabra %S tiene la vocal u en la posición %d",palabra, i + 1 ));
         }
     }
 }
