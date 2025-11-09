@@ -5,6 +5,11 @@ void main () {
 void contarVocales () {
     String palabra = IO.readln("\nIntrodcuce una palabra y el programa contará las vocales que tiene: ").replaceAll("\\s" , "").toLowerCase();
 
+    if (palabra.isEmpty()) {
+        IO.println("\nNo has introducido ninguna palabra.");
+        return;
+    }
+
     int caracteres = palabra.length();
 
     for (int i = 0; i < caracteres; i++) {
@@ -20,6 +25,4 @@ void contarVocales () {
             IO.println(String.format("\nSe ha encontrado la vocal 'u' en la posición %d", i + 1));
         }
     }
-
-
 }
