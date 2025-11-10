@@ -12,7 +12,7 @@ void calcualrPotencia (double base, int exponente) {
 }
 
 void main () {
-    double base = 0; 
+    double base = 0;
     int exponente = 0;
     boolean valido;
 

@@ -91,7 +91,8 @@ boolean esPrimo(int numero) {
         return false;
     }
 
-    for (int i = 3; i <= Math.sqrt(numero); i = i + 2) {
+    int limite = (int) Math.sqrt(numero);
+    for (int i = 3; i <= limite; i = i + 2) {
         if (esDivisible(numero, i)) {
             return false;
         }
