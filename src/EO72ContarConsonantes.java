@@ -1,13 +1,7 @@
 void main() {
-    String texto = IO.readln("\nIntroduce una palabra o frase: ")
-                    .toLowerCase()
-                    .trim();
+    String texto = IO.readln("\nIntroduce una palabra o frase: ").toLowerCase().trim();
 
-    IO.println(String.format(
-        "\nLa palabra/frase \"%s\" tiene %d consonantes.",
-        texto,
-        contarConsonantes(texto)
-    ));
+    IO.println(String.format("\nLa palabra/frase \"%s\" tiene %d consonantes.", texto, contarConsonantes(texto)));
 }
 
 int contarConsonantes(String texto) {
