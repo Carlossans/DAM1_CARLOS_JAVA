@@ -73,16 +73,11 @@ void numeroValido() {
 }
 
 boolean esDivisible(int dividendo, int divisor) {
-
-    if (dividendo % divisor == 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return (dividendo % divisor == 0) ? true : false;
 }
 
 boolean esPrimo(int numero) {
-
+    
     if (numero < 2) {
         return false;
     } else if (numero == 2) {
