@@ -13,8 +13,8 @@ int contarConsonantes(String texto) {
         if (c != ' ') {
             posicion++;
         }
-
-        if ((c >= 'b' & c <= 'z' & c != 'e' & c != 'i' & c != 'o' & c != 'u') | c == 'ñ') {
+        
+        if ((c >= 'b' && c <= 'z' && c != 'e' && c != 'i' && c != 'o' && c != 'u') || c == 'ñ') {
             IO.println(String.format("\nConsonante '%s' en la posición %d", c, posicion));
             totalConsonantes++;
         }
