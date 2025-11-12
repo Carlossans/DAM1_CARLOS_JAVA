@@ -12,5 +12,5 @@ void main() {
 
     String texto = IO.readln("\nIntroduce una palabra: ").trim();
 
-    darVueltaFrase(texto);
+    IO.println(String.format(" La frase/texto \"%s\" al revés, se vería de esta manera: %s", texto, darVueltaFrase(texto)));
 }
