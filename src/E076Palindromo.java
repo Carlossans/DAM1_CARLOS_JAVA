@@ -1,5 +1,5 @@
 void main() {
-    String texto = IO.readln("\nIntroduce una palabra y comprobaré si es un palíndromo: ");
+    String texto = IO.readln("\nIntroduce una palabra y comprobaré si es un palíndromo: ").toLowerCase();
 
     if (esPalindromo(texto)) {
         IO.println("\nEs un palíndromo");
@@ -9,8 +9,14 @@ void main() {
 
 }
 boolean esPalindromo(String texto) {
-    String invertida = new StringBuilder(texto).reverse().toString();
+    int inicio = 0, fin = texto.length() - 1;
 
-
-    return (invertida == texto);
+    while (texto.charAt(inicio) < texto.charAt(fin)) {
+        if (inicio != fin) {
+            return false;
+        }
+        inicio++;
+        fin--;
+    }
+    return true;
 }
