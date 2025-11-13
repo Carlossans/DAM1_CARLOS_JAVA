@@ -1,21 +1,11 @@
 boolean esVocal(char caracter) {
     caracter = Character.toLowerCase(caracter);
 
-    switch (caracter) {
-        case 'a':
-        case 'e':
-        case 'i':
-        case 'o':
-        case 'u':
-        case 'á':
-        case 'é':
-        case 'í':
-        case 'ó':
-        case 'ú':
-            return true;
-        default:
-            return false;
-    }
+    return switch (caracter) {
+        case 'a', 'e', 'i', 'o', 'u', 'á', 'é', 'í', 'ó', 'ú', 'ü' -> true;
+        default ->
+        false;
+    };
 }
 
 private int contarVocales(String texto) {
