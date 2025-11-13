@@ -11,12 +11,12 @@ void main() {
 boolean esPalindromo(String texto) {
     int inicio = 0, fin = texto.length() - 1;
 
-    while (texto.charAt(inicio) < texto.charAt(fin)) {
-        if (inicio != fin) {
+    do {
+        if (texto.charAt(inicio) != texto.charAt(fin)) {
             return false;
         }
-        inicio++;
+        inicio ++;
         fin--;
-    }
+    } while (inicio < fin);
     return true;
 }
