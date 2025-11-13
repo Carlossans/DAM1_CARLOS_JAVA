@@ -1,6 +1,7 @@
 String diasEnUnMes(int mes) {
-    
+
     return switch (mes) {
+        case 0 -> "";
         case 1 -> "31";
         case 2 -> "28";
         case 3 -> "31";
@@ -21,16 +22,20 @@ String diasEnUnMes(int mes) {
 void validarNumero(int mes ) {
 
     if (mes >= 1 && mes <= 12) {
-        String result = diasEnUnMes(mes);
-        IO.println(String.format("\nEl mes %d tiene %s días", mes, result));
+        IO.println(String.format("\nEl mes %d tiene %s días", mes, diasEnUnMes(mes)));
+    } else if (mes == 0) {
+        IO.println("\nADIOSSSS");
     } else {
         IO.println("\n FORMATO NO VÁLIDO DEBES DE INTRODUCIR UN NÚMERO");
     }
 }
 
 void main() {
+    int mes = 0;
 
-    int mes = Integer.parseInt(IO.readln("\nIntroduce el número de un mes (0-12): "));
-    validarNumero(mes);
+    do {
+        mes = Integer.parseInt(IO.readln("\nIntroduce el número de un mes (1-12) \"0 para salir\" : "));
+        validarNumero(mes);
+    } while (mes != 0);
 
 }
