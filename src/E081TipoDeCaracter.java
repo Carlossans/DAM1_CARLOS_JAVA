@@ -1,22 +1,23 @@
-String darTipoDeCaracter(char c) {
+String darTipoDecarácter(char c) {
 
     if (c >= 'a' && c <= 'z') {
         return " Es una letra minúscula";
     } else if (c >= 'A' && c <= 'Z') {
         return  " Una letra mayúscula";
+    } else if (c >= '0' && c <= '9') {
+        return " Un Dígito";
     }
 
     return switch (c) {
-        case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' -> " Un Dígito";
         case ',', '.', '-', '(', ')', '¡', '!', '¿', '?' -> " Un Símbolo";
-        default -> " No se que es eso";
+        default -> " No se que tipo de carácter es";
     };
 }
 void main() {
     char c;
 
     do {
-        c = IO.readln("\nIntroduce un caracter y si quieres salir introduce \">\": ").replaceAll("\\s" , "").charAt(0);
-        IO.println(String.format("El caracter %c es un: %S", c, darTipoDeCaracter(c)));
+        c = IO.readln("\nIntroduce un carácter y si quieres salir introduce \">\": ").replaceAll("\\s" , "").charAt(0);
+        IO.println(String.format("El carácter %c es un: %S", c, darTipoDecarácter(c)));
     } while (c != '>');
 }
