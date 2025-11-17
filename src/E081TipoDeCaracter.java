@@ -15,7 +15,7 @@ String darTipoDecarácter(char c) {
 }
 void main() {
     char c;
-
+    
     do {
         c = IO.readln("\nIntroduce un carácter y si quieres salir introduce \">\": ").replaceAll("\\s" , "").charAt(0);
         IO.println(String.format("El carácter %c es un: %S", c, darTipoDecarácter(c)));
