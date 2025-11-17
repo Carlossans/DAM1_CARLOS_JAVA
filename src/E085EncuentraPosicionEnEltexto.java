@@ -6,7 +6,7 @@ int encuentraPosicionEnElTexto(String textoBuscado, String textoPrincipal) {
     for (int i = 0; i <= longitudPrincipal - longitudBuscado; i++) {
         boolean encontrado = true;
 
-        for (int j = 0; j < longitudPrincipal; j++) {
+        for (int j = 0; j < longitudBuscado; j++) {
             if (textoPrincipal.charAt(i + j) != textoBuscado.charAt(j)) {
                 encontrado = false;
                 break;
