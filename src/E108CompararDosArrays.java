@@ -55,11 +55,10 @@ void main() {
             }
         }
 
-    } else {
-        int[] lista11 = new int [n1 + diferencia];
+    } else if (lista2.length > lista1.length) {
 
         IO.print("\n----COMIENZA LA LISTA 1 DE NÚMEROS ENTEROS----\n");
-        for (int i = 0; i < lista11.length - diferencia; i++) {
+        for (int i = 0; i < lista1.length; i++) {
             IO.print(String.format("Actualmente te encuentras en la casilla %d de la lista de números enteros 1.", i + 1));
             lista1[i] = Integer.parseInt(IO.readln(" Introduce el número que quieras: "));
         }
@@ -75,7 +74,7 @@ void main() {
         for (int i = 0; i < lista2.length; i++) {
             try {
                 IO.print(String.format(
-                        (lista1[i] == lista2[i]) ? "\nLos valores de ambas casillas en la posición %d son IGUALES" : (lista1[i] > lista2[i]) ? "\nEl valor %d de la lista 1 es MAYOR que el valor %d de la lista 2" : "\nEl valor %d de la lista 1 es MENOR que el valor %d de la lista 2"
+                        (lista1[i] == lista2[i]) ? "\nLos valores de ambas casillas en la posición %d son IGUALES" : (lista1[i] > lista2[i]) ? "\nEn la posición %d el valor %d de la lista 1 es MAYOR que el valor %d de la lista 2" : "\nEn la posición %d el valor %d de la lista 1 es MENOR que el valor %d de la lista 2"
                         , i + 1, lista1[i], lista2[i]));
             } catch (ArrayIndexOutOfBoundsException e) {
                 IO.print("\nNO HAY VALOR EN ALGUNA DE LAS CASILLAS DE LA LISTA");
