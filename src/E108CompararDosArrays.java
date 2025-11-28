@@ -49,7 +49,7 @@ void main() {
             try {
                 IO.print(String.format(
                         (lista1[i] == lista21[i]) ? "\nLos valores de ambas casillas en la posición %d son IGUALES" : (lista1[i] > lista21[i]) ? "\nEl valor %d de la lista 1 es MAYOR que el valor %d de la lista 2" : "\nEl valor %d de la lista 1 es MENOR que el valor %d de la lista 2"
-                        , i + 1, lista1[i], lista21[i]));
+                        , (i + 1), lista1[i], lista21[i]));
             } catch (ArrayIndexOutOfBoundsException e) {
                 IO.print("\nNO HAY VALOR EN ALGUNA DE LAS CASILLAS DE LA LISTA");
             }
