@@ -3,8 +3,7 @@ void main() {
     double[] numDecimales = new double [(int) numeros + 1];
 
     for (int i = 0; i < numDecimales.length -1; i++) {
-        IO.print("\nAcutalmente te encuentras en la posición " + (i + 1));
-        numDecimales[i] = Double.parseDouble(IO.readln(". Introduce el número con decimales que tu quieras: "));
+        numDecimales[i] = Double.parseDouble(IO.readln("\nAcutalmente te encuentras en la posición " + (i + 1) + ". Introduce el número con decimales que tu quieras: "));
     }
 
     for (double numero : numDecimales) {
