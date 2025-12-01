@@ -55,7 +55,7 @@ void main() {
                         try {
                             IO.print(String.format((lista1[i] == lista2[i]) ? "\nEn la posición %d, el valor \"%d\" de la lista 1 es IGUAL que el valor \"%d\" de la lista 2." : (lista1[i] > lista2[i]) ? "\nEn la posición %d, el valor \"%d\" de la lista 1 es MAYOR que el valor \"%d\" de la lista 2" : "\nEn la posición %d, el valor \"%d\" de la lista 1 es MENOR que el valor \"%d\" de la lista 2", (i + 1), lista1[i], lista2[i]));
                         } catch (ArrayIndexOutOfBoundsException e) {
-                            IO.print("\nNO EXISTEN MÁS CASILLAS EN LA LISTA 2 CON LAS QUE PODER COMPARAR VALORES");
+                            IO.print(String.format("\nEN LA POSICIÓN %d, DE LA LISTA 1, EL VALOR ES \"%d\".", (i + 1), lista1[i]));
                         }
                     }
 
@@ -78,7 +78,7 @@ void main() {
                         try {
                             IO.print(String.format((lista1[i] == lista2[i]) ? "\nEn la posición %d, el valor \"%d\" de la lista 1 es IGUAL que el valor \"%d\" de la lista 2." : (lista1[i] > lista2[i]) ? "\nEn la posición %d, el valor \"%d\" de la lista 1 es MAYOR que el valor \"%d\" de la lista 2" : "\nEn la posición %d, el valor \"%d\" de la lista 1 es MENOR que el valor \"%d\" de la lista 2", i + 1, lista1[i], lista2[i]));
                         } catch (ArrayIndexOutOfBoundsException e) {
-                            IO.print("\nNO EXISTEN MÁS CASILLAS EN LA LISTA 1 CON LAS QUE PODER COMPARAR VALORES");
+                            IO.print(String.format("\nEN LA POSICIÓN %d, DE LA LISTA 2, EL VALOR ES \"%d\".", (i + 1), lista2[i]));
                         }
                     }
                 }
@@ -125,7 +125,7 @@ void main() {
                         try {
                             IO.print(String.format((lista1decimales[i] == lista2decimales[i]) ? "\nEn la posición %d, el valor \"%.2f\" de la lista 1 es IGUAL que el valor \"%.2f\" de la lista 2." : (lista1decimales[i] > lista2decimales[i]) ? "\nEn la posición %d, el valor \"%.2f\" de la lista 1 es MAYOR que el valor \"%.2f\" de la lista 2" : "\nEn la posición %d, el valor \"%.2f\" de la lista 1 es MENOR que el valor \"%.2f\" de la lista 2", i + 1, lista1decimales[i], lista2decimales[i]));
                         } catch (ArrayIndexOutOfBoundsException e) {
-                            IO.print("\nNO EXISTEN MÁS CASILLAS EN LA LISTA 2 CON LAS QUE PODER COMPARAR VALORES");
+                            IO.print(String.format("\nEN LA POSICIÓN %d, DE LA LISTA 1, EL VALOR ES \"%.2f\".", (i + 1), lista1decimales[i]));
                         }
                     }
                 } else {
@@ -146,7 +146,7 @@ void main() {
                         try {
                             IO.print(String.format((lista1decimales[i] == lista2decimales[i]) ? "\nEn la posición %d, el valor \"%.2f\" de la lista 1 es IGUAL que el valor \"%.2f\" de la lista 2." : (lista1decimales[i] > lista2decimales[i]) ? "\nEn la posición %d, el valor \"%.2f\" de la lista 1 es MAYOR que el valor \"%.2f\" de la lista 2" : "\nEn la posición %d, el valor \"%.2f\" de la lista 1 es MENOR que el valor \"%.2f\" de la lista 2", i + 1, lista1decimales[i], lista2decimales[i]));
                         } catch (ArrayIndexOutOfBoundsException e) {
-                            IO.print("\nNO EXISTEN MÁS CASILLAS EN LA LISTA 1 CON LAS QUE PODER COMPARAR VALORES");
+                            IO.print(String.format("\nEN LA POSICIÓN %d, DE LA LISTA 2, EL VALOR ES \"%.2f\".", (i + 1), lista2decimales[i]));
                         }
                     }
                 }
@@ -195,7 +195,7 @@ void main() {
                         try {
                             IO.print(String.format((verdaderoFalso1[i] == verdaderoFalso2[i]) ? "\nEn la posición %d, el valor \"%b\" de la lista 1 es IGUAL que el valor \"%b\" de la lista 2." : "\nEn la posición %d, el valor \"%b\" de la lista 1 es DIFERENTE al valor \"%b\" de la lista 2.", i + 1, verdaderoFalso1[i], verdaderoFalso2[i]));
                         } catch (ArrayIndexOutOfBoundsException e) {
-                            IO.print("\nNO EXISTEN MÁS CASILLAS EN LA LISTA 2 CON LAS QUE PODER COMPARAR VALORES");
+                            IO.print(String.format("\nEN LA POSICIÓN %d, DE LA LISTA 1, EL VALOR ES \"%b\".", (i + 1), verdaderoFalso1[i]));
                         }
                     }
                 } else {
@@ -216,7 +216,7 @@ void main() {
                         try {
                             IO.print(String.format((verdaderoFalso1[i] == verdaderoFalso2[i]) ? "\nEn la posición %d, el valor \"%b\" de la lista 1 es IGUAL que el valor \"%b\" de la lista 2." : "\nEn la posición %d, el valor \"%b\" de la lista 1 es DIFERENTE al valor \"%b\" de la lista 2.", i + 1, verdaderoFalso1[i], verdaderoFalso2[i]));
                         } catch (ArrayIndexOutOfBoundsException e) {
-                            IO.print("\nNO EXISTEN MÁS CASILLAS EN LA LISTA 1 CON LAS QUE PODER COMPARAR VALORES");
+                            IO.print(String.format("\nEN LA POSICIÓN %d, DE LA LISTA 2, EL VALOR ES \"%b\".", (i + 1), verdaderoFalso2[i]));
                         }
                     }
                 }
