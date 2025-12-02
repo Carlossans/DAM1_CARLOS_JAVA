@@ -9,6 +9,7 @@ void main() {
         IO.println("\u001B[35m" + "3. Comparación de 2 arrays de valores (TRUE/FALSE)." + "\u001B[0m");
         IO.println("0. Salir del programa.");
         opcion = Integer.parseInt(IO.readln("\nElige la opción que quieras: "));
+
         switch (opcion) {
             case 1 -> {
                 IO.println("\n" + "\u001B[34m" + "----------LISTA DE NÚMEROS ENTEROS----------" + "\u001B[0m");
@@ -33,7 +34,7 @@ void main() {
                     }
 
                     IO.print("\n" + "\u001B[34m" + "----COMIENZA LA COMPARACIÓN ENTRE LOS VALORES DE CADA CASILLA DE AMBAS LISTAS----\n" + "\u001B[0m");
-                    for (int i = 0; i < lista1.length; i++) { //En este caso eligo lista1.length como podría usar el lista2.length o una variable con la longitud, como en los demás tipos de array (decimal y booleano).
+                    for (int i = 0; i < lista1.length; i++) { //En este caso elijo lista1.length como podría usar el lista2.length o una variable con la longitud, como en los demás tipos de array (decimal y booleano).
                         IO.print(String.format((lista1[i] == lista2[i]) ? "\nEn la posición %d, el valor \"%d\" de la lista 1 es IGUAL que el valor \"%d\" de la lista 2." : (lista1[i] > lista2[i]) ? "\nEn la posición %d, el valor \"%d\" de la lista 1 es MAYOR que el valor \"%d\" de la lista 2" : "\nEn la posición %d, el valor \"%d\" de la lista 1 es MENOR que el valor \"%d\" de la lista 2", i + 1, lista1[i], lista2[i]));
                     }
                 } else if (lista1.length > lista2.length) {
