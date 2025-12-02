@@ -1,8 +1,6 @@
 void main() {
-    boolean valido;
-    int n, min, max;
+    int n, min, max, posicionMenor = 1, posicionMayor = 1;
     double sumaTotal = 0;
-    String respuestaMayor = "", respuestaMenor = "";
 
     do {
         n = Integer.parseInt(IO.readln("\nPor favor, introduzca la cantidad de números deseada: "));
@@ -21,19 +19,19 @@ void main() {
 
     IO.println("\u001B[34m" + "\nEl promedio es " + (sumaTotal / numEnteros.length) + ".");
 
-    for (int i = 0; i < numEnteros.length; i++) {
-        min = numEnteros[i];
-        max = numEnteros[i];
+    min = numEnteros[0];
+    max = numEnteros[0];
 
+    for (int i = 0; i < numEnteros.length; i++) {
         if (numEnteros[i] < min) {
             min = numEnteros[i];
-            respuestaMayor = String.format("El mayor era %d (posición %d) ", numEnteros[i], i + 1);
-        } else if (numEnteros[i] > max){
+            posicionMenor = (i + 1);
+        } else if (numEnteros[i] > max) {
             max = numEnteros[i];
-            respuestaMenor = String.format("y el menor era %d (posición %d)", numEnteros[i], i + 1);
+            posicionMayor = (i + 1);
         }
     }
 
-    IO.println(respuestaMayor + respuestaMenor);
+    IO.println(String.format("El mayor era %d (posición %d) y el menor era %d (posición %d).", max, posicionMayor, min, posicionMenor));
 
 }
