@@ -1,44 +1,69 @@
-//EXTRA: PEDIRLE AL USUARIO UNA PALABRA, DESPUÉS DENTRO DE LA DECLARACIÓN DEL TAMAÑO DEL ARRAY DE CHARS, USAR EL "PALABRA.LENGTH" PARA QUE EL ARRAY CREE UN ARRAY DEL MISMO TAMAÑO QUE LA PALABRA.  HACER UN METODO QUE RECIBA EL STRING Y QUE NO DEVUELVA NADA (VOID)
 final String morado = "\u001B[35m";
-final String resetearColor = "\u001B[0m";
+final String rojo = "\u001B[31m";
+final String reseteaColor = "\u001B[0m";
 
 void turnoJugador2() {
     for (int i = 0; i < 30; i++) {
         IO.println();
     }
 
-    IO.println(morado + "----TURNO DEL JUGADOR 2----" + resetearColor);
+    IO.println(morado + "----TURNO DEL JUGADOR 2----" + reseteaColor);
+}
+
+char[] crearYRellenarArrayDePalabra(String palabra) {
+
+    char[] array = new char [palabra.length()];
+
+    for (int i = 0; i < array.length; i++) {
+        array[i] = palabra.charAt(i);
+    }
+
+    return array;
+}
+
+boolean comprobarCoincidencia(char intento, char caracter) {
+    return (intento == caracter);
 }
 
 void main() {
-    IO.println(morado + "\n----TURNO JUAGDOR 1----" + resetearColor);
-    int nCaracteres = Integer.parseInt(IO.readln("\n¿Cuantos caracteres quieres introducir?\n")), contadorAciertos = 0;
-    char[] caracteres = new char[nCaracteres];
-    char intento;
-    boolean[] aciertosJugador2 = new boolean[nCaracteres];
 
-    for (int i = 0; i < caracteres.length; i++) {
-        caracteres[i] = IO.readln(String.format("\nActualmente te encuentras en la casilla %d. Introduce la letra que quieras: ", i + 1)).replaceAll("\\s" , "").charAt(0);
-    }
+    IO.println(morado + "\n----TURNO JUAGDOR 1----" + reseteaColor);
+    String palabra = IO.readln("\nIntroduce la palabra que quieras: ").replaceAll("\\s" , "").toLowerCase();
+
+    char[] arrayPalabra = crearYRellenarArrayDePalabra(palabra);
+    boolean[] intentosJugador2 = new boolean[palabra.length()];
+    char intento;
+    int contadorAciertos = 0, contadorIntentos = 1, intentosMax = palabra.length() * 3;
 
     turnoJugador2();
 
     do {
-        for (int i = 0; i < caracteres.length; i++) {
-            do {
-                intento = IO.readln(String.format("\nIntroduce tu intento para adivinar el caracter de la casilla %d del array de caracteres: ", i + 1)).replaceAll("\\s" , "").toLowerCase().charAt(0);
+        for (int i = 0; i < arrayPalabra.length; i++) {
+            if (contadorIntentos <= intentosMax) {
+                do {
+                    intento = IO.readln(String.format("\nIntroduce tu intento para adivinar el caracter %d de la palabra: ", i + 1)).replaceAll("\\s", "").toLowerCase().charAt(0);
 
-                if (intento == caracteres[i]) {
-                    IO.println("\n✅Felicidades, has averiguado el caracter de la posición: " + (i + 1));
-                    contadorAciertos++;
-                    aciertosJugador2[i] = true;
-                } else {
-                    IO.println("\n❌ No has acertado, intentalo de nuevo.");
-                    aciertosJugador2[i] = false;
-                }
-            } while (!aciertosJugador2[i]);
+                    if (comprobarCoincidencia(intento, arrayPalabra[i])) {
+                        IO.println("\n✅Felicidades, has averiguado el caracter de la posición: " + (i + 1));
+                        contadorIntentos++;
+                        contadorAciertos++;
+                        intentosJugador2[i] = true;
+                    } else {
+                        IO.println("\n❌ No has acertado, intentalo de nuevo.");
+                        contadorIntentos++;
+                        intentosJugador2[i] = false;
+                    }
+                } while (!intentosJugador2[i] && contadorIntentos <= intentosMax);
+            }
         }
-    } while (contadorAciertos != nCaracteres );
+    } while (contadorAciertos != intentosJugador2.length  && contadorIntentos <= intentosMax); // podemos usar tanto: "arrayDePalabra.length", "intentosJugador2.length" como palabra.length(), el resultado será el mismo.
 
-    IO.println("\nAcertaste todos los caracteres");
+    if (contadorIntentos <= intentosMax) {
+        IO.print("\nExactoooo la palabra era ");
+        for (char caracterActual : arrayPalabra) {
+            IO.print(caracterActual);
+        }
+    } else {
+        IO.println(rojo + "\n Has superado el limite de intentos posible: " + (palabra.length() * 3) + reseteaColor);
+    }
 }
