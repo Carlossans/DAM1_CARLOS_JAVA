@@ -1,5 +1,5 @@
 void main() {
-    int n, min, max, posicionMenor = 1, posicionMayor = 1;
+    int n, posicionMenor = 0, posicionMayor = 0;
     double sumaTotal = 0;
 
 
@@ -19,19 +19,15 @@ void main() {
 
     IO.println(String.format("\u001B[34m" + "\nEl promedio es %.2f", (sumaTotal / numEnteros.length) ));
 
-    min = numEnteros[0];
-    max = numEnteros[0];
 
-    for (int i = 0; i < numEnteros.length; i++) {
-        if (numEnteros[i] < min) {
-            min = numEnteros[i];
-            posicionMenor = (i + 1);
-        } else if (numEnteros[i] > max) {
-            max = numEnteros[i];
-            posicionMayor = (i + 1);
+    for (int i = 1; i < numEnteros.length; i++) {
+        if (numEnteros[i] < numEnteros[posicionMenor]) {
+            posicionMenor = i;
+        } else if (numEnteros[i] > numEnteros[posicionMayor]) {
+            posicionMayor = i;
         }
     }
 
-    IO.println(String.format("El mayor era %d (posición %d) y el menor era %d (posición %d).", max, posicionMayor, min, posicionMenor));
+    IO.println(String.format("El mayor era %d (posición %d) y el menor era %d (posición %d).", numEnteros[posicionMayor], posicionMayor + 1, numEnteros[posicionMenor], posicionMenor + 1));
 
 }

@@ -10,7 +10,6 @@ double calcularMedia(double calificacion, double peso) {
     return media;
 }
 
-
 void main() {
     boolean aprueba;
     int contador = 0;
