@@ -2,14 +2,15 @@
 
 final String morado = "\u001B[35m";
 final String rojo = "\u001B[31m";
+final String azul = "\u001B[34m";
 final String reseteaColor = "\u001B[0m";
 
-void turnoJugador2() {
+void turnoJugador2(String palabra) {
     for (int i = 0; i < 30; i++) {
         IO.println();
     }
-
-    IO.println(morado + "----TURNO DEL JUGADOR 2----" + reseteaColor);
+    IO.println("\nLa palabra secreta tiene: " + palabra.length() + " letras.");
+    IO.println(morado + "\n----TURNO DEL JUGADOR 2----" + reseteaColor);
 }
 
 char[] crearYRellenarArrayDePalabra(String palabra) {
@@ -27,6 +28,35 @@ boolean comprobarCoincidencia(char intento, char caracter) {
     return (intento == caracter);
 }
 
+int contarVocales(String palabra) {
+    int contadorVocales = 0;
+
+    for (int i = 0; i < palabra.length(); i++) {
+        if (palabra.charAt(i) == 'a' || palabra.charAt(i) == 'e' || palabra.charAt(i) == 'i' || palabra.charAt(i) == 'o' || palabra.charAt(i) == 'u')
+            contadorVocales++;
+    }
+    return contadorVocales;
+}
+
+int contarConsonantes(String palabra) {
+    int contadorConsonantes = 0;
+
+    for (int i = 0; i < palabra.length(); i++) {
+        if (palabra.charAt(i) != 'a' && palabra.charAt(i) != 'e' && palabra.charAt(i) != 'i' && palabra.charAt(i) != 'o' && palabra.charAt(i) != 'u') contadorConsonantes++;
+    }
+
+    return contadorConsonantes;
+}
+
+void darPista(String respuesta, String palabra) {
+
+    if (respuesta.equals("si")) {
+        IO.println(String.format(azul + "\nLa palabra tiene %d vocales y %d consonantes." + reseteaColor, contarVocales(palabra), contarConsonantes(palabra)));
+    } else {
+        IO.println("\nTu verás...");
+    }
+}
+
 void main() {
 
     IO.println(morado + "\n----TURNO JUAGDOR 1----" + reseteaColor);
@@ -37,19 +67,30 @@ void main() {
     char intento;
     int contadorAciertos = 0, contadorIntentos = 1, intentosMax = palabra.length() * 3; // por poner un limite
 
-    turnoJugador2();
+    turnoJugador2(palabra);
+    String respuesta = IO.readln("\nAntes de empezar ¿Quieres una pista? (SI/NO), si dices que no, no se te volverá a mostrar la opción. \n").replaceAll("\\s" , "").toLowerCase();
+
+    darPista(respuesta, palabra);
 
     do {
         for (int i = 0; i < arrayPalabra.length; i++) {
             if (contadorIntentos <= intentosMax) {
                 do {
-                    intento = IO.readln(String.format("\nIntroduce tu intento para adivinar el caracter %d de la palabra: ", i + 1)).replaceAll("\\s", "").toLowerCase().charAt(0);
+                    intento = IO.readln(String.format("\nIntroduce tu intento para adivinar el caracter %d de la palabra, tienes %d intenos: ", i + 1, (intentosMax - contadorIntentos) + 1)).replaceAll("\\s", "").toLowerCase().charAt(0);
 
                     if (comprobarCoincidencia(intento, arrayPalabra[i])) {
                         IO.println("\n✅Felicidades, has averiguado el caracter de la posición: " + (i + 1));
                         contadorIntentos++;
                         contadorAciertos++;
                         intentosJugador2[i] = true;
+
+                        if (contadorAciertos == palabra.length() / 2) {
+                            String resolucion = IO.readln("\nYa llevas la mitad de aciertos. ¿Te atreves a introducir lo que tu crees que es la palabra secreta? \n").toLowerCase();
+
+                            if (resolucion.equals("si")) {
+
+                            }
+                        }
                     } else {
                         IO.println("\n❌ No has acertado, intentalo de nuevo.");
                         contadorIntentos++;
