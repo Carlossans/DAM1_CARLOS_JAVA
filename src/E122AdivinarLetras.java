@@ -1,5 +1,3 @@
-//Decirle al usuario cuantos caracteres tiene la palabra secreta y darle solamente una vez, la opción de una pista y comunicar cuantos intentos quedan hasta el limite, ruleta de la fortuna a la mitad de aciertos completados
-
 final String morado = "\u001B[35m";
 final String rojo = "\u001B[31m";
 final String azul = "\u001B[34m";
