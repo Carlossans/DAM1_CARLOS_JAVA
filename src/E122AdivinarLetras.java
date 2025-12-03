@@ -1,3 +1,5 @@
+//Decirle al usuario cuantos caracteres tiene la palabra secreta y darle solamente una vez, la opción de una pista y comunicar cuantos intentos quedan hasta el limite
+
 final String morado = "\u001B[35m";
 final String rojo = "\u001B[31m";
 final String reseteaColor = "\u001B[0m";
@@ -33,7 +35,7 @@ void main() {
     char[] arrayPalabra = crearYRellenarArrayDePalabra(palabra);
     boolean[] intentosJugador2 = new boolean[palabra.length()];
     char intento;
-    int contadorAciertos = 0, contadorIntentos = 1, intentosMax = palabra.length() * 3;
+    int contadorAciertos = 0, contadorIntentos = 1, intentosMax = palabra.length() * 3; // por poner un limite
 
     turnoJugador2();
 
