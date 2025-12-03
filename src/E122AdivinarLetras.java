@@ -25,10 +25,6 @@ char[] crearYRellenarArrayDePalabra(String palabra) {
     return array;
 }
 
-boolean comprobarCoincidencia(char intento, char caracter) {
-    return (intento == caracter);
-}
-
 int contarVocales(String palabra) {
     int contadorVocales = 0;
 
@@ -40,13 +36,9 @@ int contarVocales(String palabra) {
 }
 
 int contarConsonantes(String palabra) {
-    int contadorConsonantes = 0;
 
-    for (int i = 0; i < palabra.length(); i++) {
-        if (palabra.charAt(i) != 'a' && palabra.charAt(i) != 'e' && palabra.charAt(i) != 'i' && palabra.charAt(i) != 'o' && palabra.charAt(i) != 'u') contadorConsonantes++;
-    }
-
-    return contadorConsonantes;
+    int numVocales = contarVocales(palabra);
+    return (palabra.length() - numVocales);
 }
 
 void darPista(String respuesta, String palabra) {
@@ -70,6 +62,7 @@ void main() {
     int contadorAciertos = 0, contadorIntentos = 1, intentosMax = palabra.length() * 3; // por poner un limite
 
     turnoJugador2(palabra);
+
     String respuesta = IO.readln("\nAntes de empezar ¿Quieres una pista? (SI/NO), si dices que no, no se te volverá a mostrar la opción. \n").replaceAll("\\s" , "").toLowerCase();
 
     darPista(respuesta, palabra);
@@ -80,7 +73,7 @@ void main() {
                 do {
                     intento = IO.readln(String.format("\nIntroduce tu intento para adivinar el caracter %d de la palabra, tienes %d intenos: ", i + 1, (intentosMax - contadorIntentos) + 1)).replaceAll("\\s", "").toLowerCase().charAt(0);
 
-                    if (comprobarCoincidencia(intento, arrayPalabra[i])) {
+                    if (intento == arrayPalabra[i]) {
                         IO.println("\n✅Felicidades, has averiguado el caracter de la posición: " + (i + 1));
                         contadorIntentos++;
                         contadorAciertos++;
