@@ -17,7 +17,7 @@ void main() {
         sumaTotal = sumaTotal + numActual;
     }
 
-    IO.println("\u001B[34m" + "\nEl promedio es " + (sumaTotal / numEnteros.length) + ".");
+    IO.println(String.format("\u001B[34m" + "\nEl promedio es %.2f", (sumaTotal / numEnteros.length) ));
 
     min = numEnteros[0];
     max = numEnteros[0];
