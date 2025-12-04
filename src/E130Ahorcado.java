@@ -4,29 +4,33 @@ final String rojo = "\u001B[31m";
 final String verde = "\u001B[32m";
 final String reset = "\u001B[0m";
 
-char[] crearYRellenarArray(String palabraSecreta) {
-    char[] lista = new char[palabraSecreta.length()];
+char[] crearYRellenarArrayDePalabraSecreta(String palabraSecreta) {
+    char[] array = new char[palabraSecreta.length()];
 
-    for (int i = 0; i < lista.length; i++) {
-        lista[i] = palabraSecreta.charAt(i);
+    for (int i = 0; i < array.length; i++) {
+        array[i] = palabraSecreta.charAt(i);
     }
-    return lista;
+
+    return array;
+}
+
+char[] crearArrayRayas(String palabraSecreta) {
+    char[] rayas = new char[palabraSecreta.length()];
+
+    Arrays.fill(rayas, '_');
+
+    return rayas;
 }
 
 boolean[] crearArrayBooleans(String palabraSecreta) {
     return new boolean[palabraSecreta.length()];
 }
 
-void turnoJugador2(String palabraSecreta) {
-
-    IO.println(String.format("%s\nLa palabra secreta tiene %d letras.\n%s----TURNO JUGADOR 2----%s\n", "\n".repeat(30), palabraSecreta.length(), morado, reset));
-}
-
 int contarVocales(String palabraSecreta) {
     int contadorVocales = 0;
 
     for (int i = 0; i < palabraSecreta.length(); i++) {
-        if (palabraSecreta.charAt(i) == 'a' || palabraSecreta.charAt(i) == 'e' || palabraSecreta.charAt(i) == 'i' || palabraSecreta.charAt(i) == 'o' || palabraSecreta.charAt(i) == 'u') {
+        if (palabraSecreta.charAt(i) == 'a' || palabraSecreta.charAt(i) == 'á' || palabraSecreta.charAt(i) == 'e' || palabraSecreta.charAt(i) == 'é' || palabraSecreta.charAt(i) == 'o' || palabraSecreta.charAt(i) == 'ó' || palabraSecreta.charAt(i) == 'u' || palabraSecreta.charAt(i) == 'ú' || palabraSecreta.charAt(i) == 'ü') {
             contadorVocales++;
         }
     }
@@ -35,75 +39,58 @@ int contarVocales(String palabraSecreta) {
 }
 
 int contarConsonantes(String palabraSecreta) {
-    int numVocales = contarVocales(palabraSecreta);
-
-    return (palabraSecreta.length() - numVocales);
+    return palabraSecreta.length() - contarVocales(palabraSecreta);
 }
 
 void darPista(String respuesta, String palabraSecreta) {
-    if (respuesta.equals("si")) {
-        IO.println(String.format("\nLa palabra tiene %d vocales y %d consonantes", contarVocales(palabraSecreta), contarConsonantes(palabraSecreta)));
-    } else {
-        IO.println("\nTu verás...");
-    }
+    IO.println(String.format(
+            (respuesta.equals("si")) ? "\n%sLa palabra tiene %d vocales y %d consonantes%s" : "Tú verás..."
+            , azul, contarVocales(palabraSecreta), contarConsonantes(palabraSecreta), reset));
 }
 
-void hacerDibujo(int numeroFallos) {
-    switch (numeroFallos) {
-        case 1 ->
-            IO.println("| O");
-        case 2 -> {
-            IO.println("| O");
+void dibujarahorcado(int numFallos) {
+    switch (numFallos) {
+        case 1, 2, 3 -> IO.println("\n| O");
+        case 4, 5, 6 -> {
+            IO.println("\n| O");
             IO.println("| |");
         }
-        case 3 -> {
-            IO.println("| O");
+        case 7, 8, 9 -> {
+            IO.println("\n| O");
             IO.println("|-|");
         }
-        case 4 -> {
-            IO.println("| O");
+        case 10, 11, 12 -> {
+            IO.println("\n| O");
             IO.println("|-|-");
         }
-        case 5 -> {
-            IO.println("| O");
-            IO.println("|-|-");
-            IO.println("|/");
+        case 13, 14, 15 -> {
+
         }
         default -> {
-            IO.println("| O");
+            IO.println("\n| O");
             IO.println("|-|-");
-            IO.println("|/ \\");
+            IO.println("|/\\");
         }
     }
 }
-
 void main() {
-    int numFallos = 0, aciertosJugador2 = 0;
     char intento;
+    int numFallos = 16;
+    String palabraSecreta = IO.readln(String.format("\n%s----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset));
 
-    String palabraSecreta = IO.readln(String.format("%s\n----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset));
+    char[] arrayDePalabraSecreta = crearYRellenarArrayDePalabraSecreta(palabraSecreta);
+    char[] arrayDeRayas = crearArrayRayas(palabraSecreta);
+    boolean[] aciertos = crearArrayBooleans(palabraSecreta);
 
-    char[] arrayDePalabra = crearYRellenarArray(palabraSecreta);
-    boolean[] intentosJugador2 = crearArrayBooleans(palabraSecreta);
+    String respuesta = IO.readln(String.format("\nLa palabra tiene %d letras.\nAntes de empezar, ¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", palabraSecreta.length())).toLowerCase();
 
-    turnoJugador2(palabraSecreta);
-
-    String respuesta = IO.readln("\nAntes de empezar ¿Quieres una pista? (SI/NO), si dices que no, no se te volverá a mostrar la opción. \n").replaceAll("\\s" , "").toLowerCase();
-
+    IO.println("\n".repeat(30));
     darPista(respuesta, palabraSecreta);
 
-    do {
-        intento = IO.readln("\nIntroduce tu intento: ").replaceAll("\\s" , "").toLowerCase().charAt(0);
+    intento = IO.readln(String.format("%s----TURNO JUGADOR 2----%s\nIntroduce tu intento: ", morado, reset)).toLowerCase().charAt(0);
 
-        for (int i = 0; i < palabraSecreta.length() && aciertosJugador2 != intentosJugador2.length; i++) {
-            if (intento == arrayDePalabra[i]) {
-                IO.println(String.format("\nLa letra %c se encuentra en la posición %d", intento, i + 1));
-                intentosJugador2[i] = true;
-                aciertosJugador2++;
-            }
-        }
-
-    } while ( aciertosJugador2 != intentosJugador2.length && numFallos < palabraSecreta.length());
-
-    IO.println();
+    dibujarahorcado(numFallos);
+//    for (char caracterActual : arrayDePalabraSecreta) {
+//        IO.print(caracterActual);
+//    }
 }

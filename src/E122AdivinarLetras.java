@@ -98,8 +98,8 @@ void main() {
     } while (contadorAciertos != intentosJugador2.length  && contadorIntentos <= intentosMax); // podemos usar tanto: "arrayDePalabra.length", "intentosJugador2.length" como palabra.length(), el resultado será el mismo.
 
     if (contadorIntentos <= intentosMax) {
-        IO.print(azul + "\nExactoooo la palabra era: " + palabra);
+        IO.print(String.format("%s\nExactoooo la palabra era: %S", verde ,palabra));
     } else {
-        IO.println(rojo + "\n Has superado el limite de intentos posible: " + (palabra.length() * 3) + reseteaColor);
+        IO.println(rojo + "\n Has superado el límite de intentos posibles: " + (palabra.length() * 3) + reseteaColor);
     }
 }
