@@ -87,10 +87,8 @@ void main() {
     IO.println("\n".repeat(30));
     darPista(respuesta, palabraSecreta);
 
-    intento = IO.readln(String.format("%s----TURNO JUGADOR 2----%s\nIntroduce tu intento: ", morado, reset)).toLowerCase().charAt(0);
+    IO.print(String.format("%s----TURNO JUGADOR 2----%s", morado, reset));
+    intento = IO.readln("\nIntroduce tu intento: ").toLowerCase().charAt(0);
 
-    dibujarahorcado(numFallos);
-//    for (char caracterActual : arrayDePalabraSecreta) {
-//        IO.print(caracterActual);
-//    }
+
 }
