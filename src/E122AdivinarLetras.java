@@ -51,13 +51,13 @@ void darPista(String respuesta, String palabra) {
 
 void main() {
 
-    IO.println(morado + "\n----TURNO JUAGDOR 1----" + reseteaColor);
+    IO.println(morado + "\n----TURNO JUGADOR 1----" + reseteaColor);
     String palabra = IO.readln("\nIntroduce la palabra que quieras: ").replaceAll("\\s" , "").toLowerCase();
 
     char[] arrayPalabra = crearYRellenarArrayDePalabra(palabra);
     boolean[] intentosJugador2 = new boolean[palabra.length()];
     char intento;
-    int contadorAciertos = 0, contadorIntentos = 1, intentosMax = palabra.length() * 3; // por poner un limite
+    int contadorAciertos = 0, contadorIntentos = 1, intentosMax = palabra.length() * 3; // por poner un límite
 
     turnoJugador2(palabra);
 
@@ -69,10 +69,10 @@ void main() {
         for (int i = 0; i < arrayPalabra.length; i++) {
             if (contadorIntentos <= intentosMax) {
                 do {
-                    intento = IO.readln(String.format("\nIntroduce tu intento para adivinar el caracter %d de la palabra, tienes %d intenos: ", i + 1, (intentosMax - contadorIntentos) + 1)).replaceAll("\\s", "").toLowerCase().charAt(0);
+                    intento = IO.readln(String.format("\nIntroduce tu intento para adivinar la letra %d de la palabra, tienes %d intentos: ", i + 1, (intentosMax - contadorIntentos) + 1)).replaceAll("\\s", "").toLowerCase().charAt(0);
 
                     if (intento == arrayPalabra[i]) {
-                        IO.println("\n✅Felicidades, has averiguado el caracter de la posición: " + (i + 1));
+                        IO.println("\n✅Felicidades, has averiguado la letra %d: " + (i + 1));
                         contadorIntentos++;
                         contadorAciertos++;
                         intentosJugador2[i] = true;
@@ -86,9 +86,9 @@ void main() {
                                 if (intentoPalabraSecreta.equals(palabra)) {
                                     IO.println( verde + "\nESO ESSS, HAS ACERTADO LA PALABRA SECRETAAAA" + reseteaColor);
                                     return;
-                                } else IO.println(rojo + "\nVayaaa, no has acertado, pero te dejo continuar con tus intentos de avidinar cada letra de la palabra secreta." + reseteaColor);
+                                } else IO.println(rojo + "\nVayaaa, no has acertado, pero te dejo continuar con tus intentos de adivinar cada letra de la palabra secreta." + reseteaColor);
 
-                            } else IO.println("\nContinua con tus intentos de avidinar cada letra de la palabra secreta..");
+                            } else IO.println("\nContinua con tus intentos de adivinar cada letra de la palabra secreta..");
                         }
                     } else {
                         IO.println("\n❌ No has acertado, intentalo de nuevo.");
