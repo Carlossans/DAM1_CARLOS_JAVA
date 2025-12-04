@@ -5,9 +5,8 @@ final String verde = "\u001B[32m";
 final String reseteaColor = "\u001B[0m";
 
 void turnoJugador2(String palabra) {
-    for (int i = 0; i < 30; i++) {
-        IO.println();
-    }
+    IO.println("\n".repeat(30));
+
     IO.println("\nLa palabra secreta tiene: " + palabra.length() + " letras.");
     IO.println(morado + "\n----TURNO DEL JUGADOR 2----" + reseteaColor);
 }
@@ -66,8 +65,7 @@ void main() {
     darPista(respuesta, palabra);
 
     do {
-        for (int i = 0; i < arrayPalabra.length; i++) {
-            if (contadorIntentos <= intentosMax) {
+        for (int i = 0; i < arrayPalabra.length && contadorIntentos <= intentosMax; i++) {
                 do {
                     intento = IO.readln(String.format("\nIntroduce tu intento para adivinar la letra %d de la palabra, tienes %d intentos: ", i + 1, (intentosMax - contadorIntentos) + 1)).replaceAll("\\s", "").toLowerCase().charAt(0);
 
@@ -96,7 +94,6 @@ void main() {
                         intentosJugador2[i] = false;
                     }
                 } while (!intentosJugador2[i] && contadorIntentos <= intentosMax);
-            }
         }
     } while (contadorAciertos != intentosJugador2.length  && contadorIntentos <= intentosMax); // podemos usar tanto: "arrayDePalabra.length", "intentosJugador2.length" como palabra.length(), el resultado será el mismo.
 
