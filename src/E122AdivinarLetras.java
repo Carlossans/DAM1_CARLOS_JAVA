@@ -70,7 +70,7 @@ void main() {
                     intento = IO.readln(String.format("\nIntroduce tu intento para adivinar la letra %d de la palabra, tienes %d intentos: ", i + 1, (intentosMax - contadorIntentos) + 1)).replaceAll("\\s", "").toLowerCase().charAt(0);
 
                     if (intento == arrayPalabra[i]) {
-                        IO.println("\n✅Felicidades, has averiguado la letra %d: " + (i + 1));
+                        IO.println("\n✅Felicidades, has averiguado la letra: " + (i + 1));
                         contadorIntentos++;
                         contadorAciertos++;
                         intentosJugador2[i] = true;
