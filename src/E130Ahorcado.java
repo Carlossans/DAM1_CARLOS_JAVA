@@ -1,8 +1,4 @@
-final String morado = "\u001B[35m";
-final String azul = "\u001B[34m";
-final String rojo = "\u001B[31m";
-final String verde = "\u001B[32m";
-final String reset = "\u001B[0m";
+final String morado = "\u001B[35m", azul = "\u001B[34m", rojo = "\u001B[31m", verde = "\u001B[32m", reset = "\u001B[0m", miniEspacio = "\u2009";
 
 char[] crearYRellenarArrayDePalabraSecreta(String palabraSecreta) {
     char[] array = new char[palabraSecreta.length()];
@@ -48,47 +44,114 @@ void darPista(String respuesta, String palabraSecreta) {
             , azul, contarVocales(palabraSecreta), contarConsonantes(palabraSecreta), reset));
 }
 
-void dibujarahorcado(int numFallos) {
-    switch (numFallos) {
-        case 1, 2, 3 -> IO.println("\n| O");
-        case 4, 5, 6 -> {
-            IO.println("\n| O");
-            IO.println("| |");
-        }
-        case 7, 8, 9 -> {
-            IO.println("\n| O");
-            IO.println("|-|");
-        }
-        case 10, 11, 12 -> {
-            IO.println("\n| O");
-            IO.println("|-|-");
-        }
-        case 13, 14, 15 -> {
+boolean comprobarExistencia(char intento, char[] arrayDePalabra, char[] arrayDeRayas, int contadorAciertos, boolean[] aciertos) {
 
+    for (int i = 0; i < arrayDePalabra.length; i++) {
+        if (intento == arrayDePalabra[i]) {
+            arrayDeRayas[i] = intento;
+            aciertos[i] = true;
+            contadorAciertos++;
         }
-        default -> {
-            IO.println("\n| O");
-            IO.println("|-|-");
-            IO.println("|/\\");
+    }
+    return (contadorAciertos >= 1);
+}
+
+void dibujarAhorcado(int numFallos) {
+    switch (numFallos) {
+        case 1 -> IO.println("\n| (");
+        case 2 -> IO.println("\n| ()");
+        case 3 -> {
+            IO.println("\n| ()");
+            IO.println(String.format("| %s|", miniEspacio));
+        }
+        case 4 -> {
+            IO.println("\n| ()");
+            IO.println(String.format("| %s|", miniEspacio));
+            IO.println(String.format("| %s|", miniEspacio));
+        }
+        case 5 -> {
+            IO.println("\n| ()");
+            IO.println(String.format("|%s-|", miniEspacio));
+            IO.println(String.format("| %s|", miniEspacio));
+        }
+        case 6 -> {
+            IO.println("\n| ()");
+            IO.println(String.format("|%s-|-", miniEspacio));
+            IO.println(String.format("|%s |", miniEspacio));
+        }
+        case 7 -> {
+            IO.println("\n| ()");
+            IO.println(String.format("|%s-|-", miniEspacio));
+            IO.println(String.format("|%s |", miniEspacio));
+            IO.println("| /");
+        }
+        case 8 -> {
+            IO.println("\n| ()");
+            IO.println(String.format("|%s-|-", miniEspacio));
+            IO.println(String.format("|%s |", miniEspacio));
+            IO.println("| /\\");
+        }
+        case 9 -> {
+            IO.println("\n| ()");
+            IO.println(String.format("|%s-|-", miniEspacio));
+            IO.println(String.format("|%s |", miniEspacio));
+            IO.println("|_/\\");
+        }
+        case 10 -> {
+            IO.println("\n| ()");
+            IO.println(String.format("|%s-|-", miniEspacio));
+            IO.println(String.format("|%s |", miniEspacio));
+            IO.println("|_/\\_");
         }
     }
 }
+
 void main() {
     char intento;
-    int numFallos = 16;
+    int numFallos = 1, contadorAciertos = 0;
+
     String palabraSecreta = IO.readln(String.format("\n%s----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset));
 
     char[] arrayDePalabraSecreta = crearYRellenarArrayDePalabraSecreta(palabraSecreta);
     char[] arrayDeRayas = crearArrayRayas(palabraSecreta);
     boolean[] aciertos = crearArrayBooleans(palabraSecreta);
 
-    String respuesta = IO.readln(String.format("\nLa palabra tiene %d letras.\nAntes de empezar, ¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", palabraSecreta.length())).toLowerCase();
+    String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\nAntes de empezar, ¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecreta.length(), reset)).toLowerCase();
 
     IO.println("\n".repeat(30));
     darPista(respuesta, palabraSecreta);
 
-    IO.print(String.format("%s----TURNO JUGADOR 2----%s", morado, reset));
-    intento = IO.readln("\nIntroduce tu intento: ").toLowerCase().charAt(0);
+    IO.print(String.format("\n%s----TURNO JUGADOR 2----%s\n", morado, reset));
 
+    for (char caracterActual : arrayDeRayas) {
+        IO.print(caracterActual);
+        IO.print(" ");
+    }
+
+    do {
+        intento = IO.readln("\nIntroduce tu intento: ").toLowerCase().charAt(0);
+
+        //ahora quiero comprobar si el caracter está en la palabra/array 1 o varias veces.
+
+        if (comprobarExistencia(intento, arrayDePalabraSecreta, arrayDeRayas,contadorAciertos, aciertos)) {
+            for (char actual : arrayDeRayas) {
+                IO.print(actual);
+                IO.print(" ");
+            }
+            IO.println();
+
+            for (boolean intentos : aciertos) {
+                if (intentos) contadorAciertos++;
+            }
+        } else {
+            IO.println(String.format("\nla letra %c no está en la palabra.", intento));
+            numFallos++;
+            dibujarAhorcado(numFallos);
+        }
+    } while (contadorAciertos != palabraSecreta.length() && numFallos <= 9);
+
+    IO.println(String.format(
+            (contadorAciertos == palabraSecreta.length()) ? "GANASTE, LA PALABRA ERA: %s." : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;(, lA PALABRA SECRETA ERA \"%S\"."
+    ,palabraSecreta, rojo, reset));
 
 }
