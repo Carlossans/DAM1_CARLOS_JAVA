@@ -1,5 +1,15 @@
 final String morado = "\u001B[35m", azul = "\u001B[34m", rojo = "\u001B[31m", verde = "\u001B[32m", reset = "\u001B[0m", miniEspacio = "\u2009";
 
+String quitarTildesYDieresis(String palabraSecreta) {
+//   for (int i = 0; i < palabraSecreta.length(); i++) {
+//       if (palabraSecreta.charAt(i) == 'á') palabraSecreta.charAt(i) = 'a';
+//   }
+
+    String palabraSinTildes = palabraSecreta.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u').replace('ü', 'u');
+
+   return palabraSecreta;
+}
+
 char[] crearYRellenarArrayDePalabraSecreta(String palabraSecreta) {
     char[] array = new char[palabraSecreta.length()];
 
@@ -121,42 +131,46 @@ void main() {
 
     String palabraSecreta = IO.readln(String.format("\n%s----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset));
 
-    char[] arrayDePalabraSecreta = crearYRellenarArrayDePalabraSecreta(palabraSecreta);
-    char[] arrayDeRayas = crearArrayRayas(palabraSecreta);
-    boolean[] aciertos = crearArrayBooleans(palabraSecreta);
+    String palabraSecretaSinTildes = quitarTildesYDieresis(palabraSecreta);
 
-    String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\nAntes de empezar, ¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecreta.length(), reset)).toLowerCase();
+    IO.println(palabraSecretaSinTildes);
 
-    IO.println("\n".repeat(30));
-    darPista(respuesta, palabraSecreta);
-
-    IO.print(String.format("\n%s----TURNO JUGADOR 2----%s\n", morado, reset));
-
-    for (char caracterActual : arrayDeRayas) {
-        IO.print(caracterActual);
-        IO.print(" ");
-    }
-
-    do {
-        intento = IO.readln("\nIntroduce tu intento: ").toLowerCase().charAt(0);
-
-        if (comprobarExistencia(intento, arrayDePalabraSecreta, arrayDeRayas, aciertos)) {
-            IO.println();
-            for (char actual : arrayDeRayas) {
-                IO.print(actual);
-                IO.print(" ");
-            }
-            IO.println();
-
-            contadorAciertos = contarCoincidencia(aciertos);
-        } else {
-            IO.println(String.format("\nla letra %c no está en la palabra.", intento));
-            numFallos++;
-            dibujarAhorcado(numFallos);
-        }
-    } while (contadorAciertos != palabraSecreta.length() && numFallos <= 9);
-
-    IO.println(String.format(
-            (contadorAciertos == palabraSecreta.length()) ? verde + "\nGANASTE, LA PALABRA ERA: %S."  : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;( lA PALABRA SECRETA ERA \"%S\"."
-    ,palabraSecreta));
+//    char[] arrayDePalabraSecreta = crearYRellenarArrayDePalabraSecreta(palabraSecreta);
+//    char[] arrayDeRayas = crearArrayRayas(palabraSecreta);
+//    boolean[] aciertos = crearArrayBooleans(palabraSecreta);
+//
+//    String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\nAntes de empezar, ¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecreta.length(), reset)).toLowerCase();
+//
+//    IO.println("\n".repeat(30));
+//    darPista(respuesta, palabraSecreta);
+//
+//    IO.print(String.format("\n%s----TURNO JUGADOR 2----%s\n", morado, reset));
+//
+//    for (char caracterActual : arrayDeRayas) {
+//        IO.print(caracterActual);
+//        IO.print(" ");
+//    }
+//
+//    do {
+//        intento = IO.readln("\nIntroduce tu intento: ").toLowerCase().charAt(0);
+//
+//        if (comprobarExistencia(intento, arrayDePalabraSecreta, arrayDeRayas, aciertos)) {
+//            IO.println();
+//            for (char actual : arrayDeRayas) {
+//                IO.print(actual);
+//                IO.print(" ");
+//            }
+//            IO.println();
+//
+//            contadorAciertos = contarCoincidencia(aciertos);
+//        } else {
+//            IO.println(String.format("\nla letra %c no está en la palabra.", intento));
+//            numFallos++;
+//            dibujarAhorcado(numFallos);
+//        }
+//    } while (contadorAciertos != palabraSecreta.length() && numFallos <= 9);
+//
+//    IO.println(String.format(
+//            (contadorAciertos == palabraSecreta.length()) ? verde + "\nGANASTE, LA PALABRA ERA: %S."  : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;( lA PALABRA SECRETA ERA \"%S\"."
+//    ,palabraSecreta));
 }
