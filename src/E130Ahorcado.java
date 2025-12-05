@@ -171,47 +171,48 @@ void dibujarAhorcado(int numFallos) {
 void main() {
     char intento;
     int numFallos = 1, contadorAciertos = 0;
-     String palabraSecreta = IO.readln(String.format("\n%s----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset));
+    String palabraSecreta = IO.readln(String.format("\n%s----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset));
 
-     String palabraSecretaSinTildes = quitarTildesYDieresis(palabraSecreta);
+    String palabraSecretaSinTildes = quitarTildesYDieresis(palabraSecreta);
 
 
-     char[] arrayDePalabraSecreta = crearYRellenarArrayDePalabraSecreta(palabraSecretaSinTildes);
-     char[] arrayDeRayas = crearArrayRayas(palabraSecretaSinTildes);
-     boolean[] aciertos = crearArrayBooleans(palabraSecretaSinTildes);
+    char[] arrayDePalabraSecreta = crearYRellenarArrayDePalabraSecreta(palabraSecretaSinTildes);
+    char[] arrayDeRayas = crearArrayRayas(palabraSecretaSinTildes);
+    boolean[] aciertos = crearArrayBooleans(palabraSecretaSinTildes);
 
-     String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\nAntes de empezar, ¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecretaSinTildes.length(), reset)).toLowerCase();
+    String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\nAntes de empezar, ¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecretaSinTildes.length(), reset)).toLowerCase();
 
-     IO.println("\n".repeat(30));
-     darPista(respuesta, palabraSecretaSinTildes);
+    IO.println("\n".repeat(30));
+    darPista(respuesta, palabraSecretaSinTildes);
 
-     IO.print(String.format("\n%s----TURNO JUGADOR 2----%s\n", morado, reset));
+    IO.print(String.format("\n%s----TURNO JUGADOR 2----%s\n", morado, reset));
 
-     for (char caracterActual : arrayDeRayas) {
-         IO.print(caracterActual);
-         IO.print(" ");
-     }
+    for (char caracterActual : arrayDeRayas) {
+        IO.print(caracterActual);
+        IO.print(" ");
+    }
+    IO.println();
 
-     do {
-         intento = IO.readln("\nIntroduce tu intento: ").toLowerCase().charAt(0);
+    do {
+        intento = IO.readln("\nIntroduce tu intento: ").toLowerCase().charAt(0);
 
-         if (comprobarExistencia(intento, arrayDePalabraSecreta, arrayDeRayas, aciertos)) {
-             IO.println();
-             for (char actual : arrayDeRayas) {
-                 IO.print(actual);
-                 IO.print(" ");
-             }
-             IO.println();
+        if (comprobarExistencia(intento, arrayDePalabraSecreta, arrayDeRayas, aciertos)) {
+            IO.println();
+            for (char actual : arrayDeRayas) {
+                IO.print(actual);
+                IO.print(" ");
+            }
+            IO.println();
 
-             contadorAciertos = contarCoincidencia(aciertos);
-         } else {
-             IO.println(String.format("\nla letra %c no está en la palabra.", intento));
-             numFallos++;
-             dibujarAhorcado(numFallos);
-         }
-     } while (contadorAciertos != palabraSecretaSinTildes.length() && numFallos <= 15);
+            contadorAciertos = contarCoincidencia(aciertos);
+        } else {
+            IO.println(String.format("\nla letra %c no está en la palabra.", intento));
+            numFallos++;
+            dibujarAhorcado(numFallos);
+        }
+    } while (contadorAciertos != palabraSecretaSinTildes.length() && numFallos <= 15);
 
-     IO.println(String.format(
-             (contadorAciertos == palabraSecretaSinTildes.length()) ? verde + "\nGANASTE, LA PALABRA ERA: %S."  : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;( lA PALABRA SECRETA ERA \"%S\"."
-     ,palabraSecreta));
+    IO.println(String.format(
+            (contadorAciertos == palabraSecretaSinTildes.length()) ? verde + "\nGANASTE, LA PALABRA ERA: %S."  : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;( lA PALABRA SECRETA ERA \"%S\"."
+    ,palabraSecreta));
 }
