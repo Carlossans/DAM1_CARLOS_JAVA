@@ -1,13 +1,10 @@
 final String morado = "\u001B[35m", azul = "\u001B[34m", rojo = "\u001B[31m", verde = "\u001B[32m", reset = "\u001B[0m", miniEspacio = "\u2009";
 
 String quitarTildesYDieresis(String palabraSecreta) {
-//   for (int i = 0; i < palabraSecreta.length(); i++) {
-//       if (palabraSecreta.charAt(i) == 'á') palabraSecreta.charAt(i) = 'a';
-//   }
 
-    String palabraSinTildes = palabraSecreta.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u').replace('ü', 'u');
+    String palabraSecretaSinTildes = palabraSecreta.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u').replace('ü', 'u');
 
-   return palabraSecreta;
+    return palabraSecretaSinTildes;
 }
 
 char[] crearYRellenarArrayDePalabraSecreta(String palabraSecreta) {
