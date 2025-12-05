@@ -140,8 +140,6 @@ void main() {
     do {
         intento = IO.readln("\nIntroduce tu intento: ").toLowerCase().charAt(0);
 
-        //ahora quiero comprobar si el caracter está en la palabra/array 1 o varias veces.
-
         if (comprobarExistencia(intento, arrayDePalabraSecreta, arrayDeRayas, aciertos)) {
             IO.println();
             for (char actual : arrayDeRayas) {
