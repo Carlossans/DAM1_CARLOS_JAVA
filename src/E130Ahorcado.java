@@ -134,6 +134,7 @@ void main() {
         //ahora quiero comprobar si el caracter está en la palabra/array 1 o varias veces.
 
         if (comprobarExistencia(intento, arrayDePalabraSecreta, arrayDeRayas,contadorAciertos, aciertos)) {
+            IO.println();
             for (char actual : arrayDeRayas) {
                 IO.print(actual);
                 IO.print(" ");
@@ -151,7 +152,7 @@ void main() {
     } while (contadorAciertos != palabraSecreta.length() && numFallos <= 9);
 
     IO.println(String.format(
-            (contadorAciertos == palabraSecreta.length()) ? "GANASTE, LA PALABRA ERA: %s." : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;(, lA PALABRA SECRETA ERA \"%S\"."
-    ,palabraSecreta, rojo, reset));
+            (contadorAciertos == palabraSecreta.length()) ? verde + "\nGANASTE, LA PALABRA ERA: %S."  : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;( lA PALABRA SECRETA ERA \"%S\"."
+    ,palabraSecreta));
 
 }
