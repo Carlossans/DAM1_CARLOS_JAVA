@@ -26,7 +26,7 @@ int contarVocales(String palabraSecreta) {
     int contadorVocales = 0;
 
     for (int i = 0; i < palabraSecreta.length(); i++) {
-        if (palabraSecreta.charAt(i) == 'a' || palabraSecreta.charAt(i) == 'á' || palabraSecreta.charAt(i) == 'e' || palabraSecreta.charAt(i) == 'é' || palabraSecreta.charAt(i) == 'o' || palabraSecreta.charAt(i) == 'ó' || palabraSecreta.charAt(i) == 'u' || palabraSecreta.charAt(i) == 'ú' || palabraSecreta.charAt(i) == 'ü') {
+        if (palabraSecreta.charAt(i) == 'a' || palabraSecreta.charAt(i) == 'á' || palabraSecreta.charAt(i) == 'e' || palabraSecreta.charAt(i) == 'é' || palabraSecreta.charAt(i) == 'o' || palabraSecreta.charAt(i) == 'ó' || palabraSecreta.charAt(i) == 'i' || palabraSecreta.charAt(i) == 'í' || palabraSecreta.charAt(i) == 'u' || palabraSecreta.charAt(i) == 'ú' || palabraSecreta.charAt(i) == 'ü') {
             contadorVocales++;
         }
     }
@@ -159,5 +159,4 @@ void main() {
     IO.println(String.format(
             (contadorAciertos == palabraSecreta.length()) ? verde + "\nGANASTE, LA PALABRA ERA: %S."  : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;( lA PALABRA SECRETA ERA \"%S\"."
     ,palabraSecreta));
-
 }
