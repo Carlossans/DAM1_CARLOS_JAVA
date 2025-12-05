@@ -91,76 +91,97 @@ void dibujarAhorcado(int numFallos) {
             IO.println("|");
         }
         case 5 -> {
-            IO.print(" ----\n");
+            IO.print(" _\n");
             IO.println("|");
             IO.println("|");
             IO.println("|");
             IO.println("|");
         }
         case 6 -> {
+            IO.print(" __\n");
+            IO.println("|");
+            IO.println("|");
+            IO.println("|");
+            IO.println("|");
+        }
+        case 7 -> {
+            IO.print(" ___\n");
+            IO.println("|");
+            IO.println("|");
+            IO.println("|");
+            IO.println("|");
+        }
+        case 8 -> {
+            IO.print(" ____\n");
+            IO.println("|");
+            IO.println("|");
+            IO.println("|");
+            IO.println("|");
+        }
+        case 9 -> {
             IO.print(" ----\n");
             IO.println("|   (");
             IO.println("|");
             IO.println("|");
             IO.println("|");
         }
-        case 7 -> {
-            IO.print(" ----\n");
-            IO.println("|   ()");
-            IO.println("|");
-            IO.println("|");
-            IO.println("|");
-        }
-        case 8 -> {
-            IO.print(" ----\n");
-            IO.println("|   ()");
-            IO.println(String.format("|   %s|", miniEspacio));
-            IO.println("|");
-            IO.println("|");
-        }
-        case 9 -> {
-            IO.print(" ----\n");
-            IO.println("|   ()");
-            IO.println(String.format("|   %s|", miniEspacio));
-            IO.println(String.format("|   %s|", miniEspacio));
-            IO.println("|");
-        }
         case 10 -> {
+            IO.print(" ----\n");
+            IO.println("|   ()");
+            IO.println("|");
+            IO.println("|");
+            IO.println("|");
+        }
+        case 11 -> {
+            IO.print(" ----\n");
+            IO.println("|   ()");
+            IO.println(String.format("|   %s|", miniEspacio));
+            IO.println("|");
+            IO.println("|");
+        }
+        case 12 -> {
+            IO.print(" ----\n");
+            IO.println("|   ()");
+            IO.println(String.format("|   %s|", miniEspacio));
+            IO.println(String.format("|   %s|", miniEspacio));
+            IO.println("|");
+        }
+        case 13 -> {
             IO.print(" ----\n");
             IO.println("|   ()");
             IO.println(String.format("|  %s-|", miniEspacio));
             IO.println(String.format("|   %s|", miniEspacio));
             IO.println("|");
         }
-        case 11 -> {
+        case 14 -> {
             IO.print(" ----\n");
             IO.println("|   ()");
             IO.println(String.format("|  %s-|-", miniEspacio));
             IO.println(String.format("|   %s|", miniEspacio));
             IO.println("|");
         }
-        case 12 -> {
+        case 15 -> {
             IO.print(" ----\n");
             IO.println("|   ()");
             IO.println(String.format("|  %s-|-", miniEspacio));
             IO.println(String.format("|   %s|", miniEspacio));
             IO.println("|   /");
         }
-        case 13 -> {
+        case 16 -> {
             IO.print(" ----\n");
             IO.println("|   ()");
             IO.println(String.format("|  %s-|-", miniEspacio));
             IO.println(String.format("|   %s|", miniEspacio));
             IO.println("|   /\\");
         }
-        case 14 -> {
+        case 17 -> {
             IO.print(" ----\n");
             IO.println("|   ()");
             IO.println(String.format("|  %s-|-", miniEspacio));
             IO.println(String.format("|   %s|", miniEspacio));
             IO.println("|  _/\\");
         }
-        case 15 -> {
+        case 18 -> {
             IO.print(" ----\n");
             IO.println("|   ()");
             IO.println(String.format("|  %s-|-", miniEspacio));
@@ -209,10 +230,10 @@ void main() {
             contadorAciertos = contarCoincidencia(aciertos);
         } else {
             IO.println(String.format("\nla letra %c no está en la palabra.", intento));
-            numFallos++;
             dibujarAhorcado(numFallos);
+            numFallos++;
         }
-    } while (contadorAciertos != palabraSecretaSinTildes.length() && numFallos < 15);
+    } while (contadorAciertos != palabraSecretaSinTildes.length() && numFallos <= 18);
 
     IO.println(String.format(
             (contadorAciertos == palabraSecretaSinTildes.length()) ? verde + "\nGANASTE, LA PALABRA ERA: %S."  : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;( lA PALABRA SECRETA ERA \"%S\"."
