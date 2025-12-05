@@ -44,8 +44,8 @@ void darPista(String respuesta, String palabraSecreta) {
             , azul, contarVocales(palabraSecreta), contarConsonantes(palabraSecreta), reset));
 }
 
-boolean comprobarExistencia(char intento, char[] arrayDePalabra, char[] arrayDeRayas, int contadorAciertos, boolean[] aciertos) {
-
+boolean comprobarExistencia(char intento, char[] arrayDePalabra, char[] arrayDeRayas, boolean[] aciertos) {
+    int contadorAciertos = 0;
     for (int i = 0; i < arrayDePalabra.length; i++) {
         if (intento == arrayDePalabra[i]) {
             arrayDeRayas[i] = intento;
@@ -54,6 +54,15 @@ boolean comprobarExistencia(char intento, char[] arrayDePalabra, char[] arrayDeR
         }
     }
     return (contadorAciertos >= 1);
+}
+
+int contarCoincidencia(boolean[] arrayAciertos) {
+    int aciertos = 0;
+    for (boolean actual : arrayAciertos) {
+        if (actual) aciertos++;
+    }
+
+    return aciertos;
 }
 
 void dibujarAhorcado(int numFallos) {
@@ -133,7 +142,7 @@ void main() {
 
         //ahora quiero comprobar si el caracter está en la palabra/array 1 o varias veces.
 
-        if (comprobarExistencia(intento, arrayDePalabraSecreta, arrayDeRayas,contadorAciertos, aciertos)) {
+        if (comprobarExistencia(intento, arrayDePalabraSecreta, arrayDeRayas, aciertos)) {
             IO.println();
             for (char actual : arrayDeRayas) {
                 IO.print(actual);
@@ -141,9 +150,7 @@ void main() {
             }
             IO.println();
 
-            for (boolean intentos : aciertos) {
-                if (intentos) contadorAciertos++;
-            }
+            contadorAciertos = contarCoincidencia(aciertos);
         } else {
             IO.println(String.format("\nla letra %c no está en la palabra.", intento));
             numFallos++;
