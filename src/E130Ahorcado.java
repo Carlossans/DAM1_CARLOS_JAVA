@@ -70,6 +70,8 @@ int contarCoincidencia(boolean[] arrayAciertos) {
     return aciertos;
 }
 
+//cambiar barra media "-" por barra baja "_" para el listón superior
+
 void dibujarAhorcado(int numFallos) {
     switch (numFallos) {
         case 1 -> IO.println("|");
@@ -210,7 +212,7 @@ void main() {
             numFallos++;
             dibujarAhorcado(numFallos);
         }
-    } while (contadorAciertos != palabraSecretaSinTildes.length() && numFallos <= 15);
+    } while (contadorAciertos != palabraSecretaSinTildes.length() && numFallos < 15);
 
     IO.println(String.format(
             (contadorAciertos == palabraSecretaSinTildes.length()) ? verde + "\nGANASTE, LA PALABRA ERA: %S."  : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;( lA PALABRA SECRETA ERA \"%S\"."
