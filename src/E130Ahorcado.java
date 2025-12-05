@@ -121,9 +121,23 @@ void dibujarAhorcado(int numFallos) {
         case 9 -> {
             IO.print(" ----\n");
             IO.println("    ()");
-            IO.println("|  -|");
-            IO.println("|   |");
+            IO.println(String.format("|  %s-|", miniEspacio));
+            IO.println(String.format("|   %s|", miniEspacio));
             IO.println("|");
+        }
+        case 10 -> {
+            IO.print(" ----\n");
+            IO.println("    ()");
+            IO.println(String.format("|  %s-|-", miniEspacio));
+            IO.println(String.format("|   %s|", miniEspacio));
+            IO.println("|");
+        }
+        case 11 -> {
+            IO.print(" ----\n");
+            IO.println("    ()");
+            IO.println(String.format("|  %s-|-", miniEspacio));
+            IO.println(String.format("|   %s|", miniEspacio));
+            IO.println("|   %s/");
         }
         // case 3 -> {
         //     IO.println("\n| ()");
@@ -173,7 +187,7 @@ void dibujarAhorcado(int numFallos) {
 
 void main() {
     char intento;
-    int numFallos = 9;
+    int numFallos = 11;
     // int numFallos = 1, contadorAciertos = 0;
 
     dibujarAhorcado(numFallos);
