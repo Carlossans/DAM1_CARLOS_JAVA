@@ -2,9 +2,7 @@ final String morado = "\u001B[35m", azul = "\u001B[34m", rojo = "\u001B[31m", ve
 
 String quitarTildesYDieresis(String palabraSecreta) {
 
-    String palabraSecretaSinTildes = palabraSecreta.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u').replace('ü', 'u');
-
-    return palabraSecretaSinTildes;
+    return palabraSecreta.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u').replace('ü', 'u');
 }
 
 char[] crearYRellenarArrayDePalabraSecreta(String palabraSecreta) {
@@ -85,154 +83,135 @@ void dibujarAhorcado(int numFallos) {
             IO.println("|");
         }
         case 4 -> {
-            IO.print(" ----\n");
+            IO.println("|");
             IO.println("|");
             IO.println("|");
             IO.println("|");
         }
         case 5 -> {
             IO.print(" ----\n");
-            IO.println("    (");
+            IO.println("|");
             IO.println("|");
             IO.println("|");
             IO.println("|");
         }
         case 6 -> {
             IO.print(" ----\n");
-            IO.println("    ()");
+            IO.println("|   (");
             IO.println("|");
             IO.println("|");
             IO.println("|");
         }
         case 7 -> {
             IO.print(" ----\n");
-            IO.println("    ()");
-            IO.println("|   |");
+            IO.println("|   ()");
+            IO.println("|");
             IO.println("|");
             IO.println("|");
         }
         case 8 -> {
             IO.print(" ----\n");
-            IO.println("    ()");
-            IO.println("|   |");
-            IO.println("|   |");
+            IO.println("|   ()");
+            IO.println(String.format("|   %s|", miniEspacio));
+            IO.println("|");
             IO.println("|");
         }
         case 9 -> {
             IO.print(" ----\n");
-            IO.println("    ()");
-            IO.println(String.format("|  %s-|", miniEspacio));
+            IO.println("|   ()");
+            IO.println(String.format("|   %s|", miniEspacio));
             IO.println(String.format("|   %s|", miniEspacio));
             IO.println("|");
         }
         case 10 -> {
             IO.print(" ----\n");
-            IO.println("    ()");
-            IO.println(String.format("|  %s-|-", miniEspacio));
+            IO.println("|   ()");
+            IO.println(String.format("|  %s-|", miniEspacio));
             IO.println(String.format("|   %s|", miniEspacio));
             IO.println("|");
         }
         case 11 -> {
             IO.print(" ----\n");
-            IO.println("    ()");
+            IO.println("|   ()");
             IO.println(String.format("|  %s-|-", miniEspacio));
             IO.println(String.format("|   %s|", miniEspacio));
-            IO.println("|   %s/");
+            IO.println("|");
         }
-        // case 3 -> {
-        //     IO.println("\n| ()");
-        //     IO.println(String.format("| %s|", miniEspacio));
-        // }
-        // case 4 -> {
-        //     IO.println("\n| ()");
-        //     IO.println(String.format("| %s|", miniEspacio));
-        //     IO.println(String.format("| %s|", miniEspacio));
-        // }
-        // case 5 -> {
-        //     IO.println("\n| ()");
-        //     IO.println(String.format("|%s-|", miniEspacio));
-        //     IO.println(String.format("| %s|", miniEspacio));
-        // }
-        // case 6 -> {
-        //     IO.println("\n| ()");
-        //     IO.println(String.format("|%s-|-", miniEspacio));
-        //     IO.println(String.format("|%s |", miniEspacio));
-        // }
-        // case 7 -> {
-        //     IO.println("\n| ()");
-        //     IO.println(String.format("|%s-|-", miniEspacio));
-        //     IO.println(String.format("|%s |", miniEspacio));
-        //     IO.println("| /");
-        // }
-        // case 8 -> {
-        //     IO.println("\n| ()");
-        //     IO.println(String.format("|%s-|-", miniEspacio));
-        //     IO.println(String.format("|%s |", miniEspacio));
-        //     IO.println("| /\\");
-        // }
-        // case 9 -> {
-        //     IO.println("\n| ()");
-        //     IO.println(String.format("|%s-|-", miniEspacio));
-        //     IO.println(String.format("|%s |", miniEspacio));
-        //     IO.println("|_/\\");
-        // }
-        // case 10 -> {
-        //     IO.println("\n| ()");
-        //     IO.println(String.format("|%s-|-", miniEspacio));
-        //     IO.println(String.format("|%s |", miniEspacio));
-        //     IO.println("|_/\\_");
-        // }
+        case 12 -> {
+            IO.print(" ----\n");
+            IO.println("|   ()");
+            IO.println(String.format("|  %s-|-", miniEspacio));
+            IO.println(String.format("|   %s|", miniEspacio));
+            IO.println("|   /");
+        }
+        case 13 -> {
+            IO.print(" ----\n");
+            IO.println("|   ()");
+            IO.println(String.format("|  %s-|-", miniEspacio));
+            IO.println(String.format("|   %s|", miniEspacio));
+            IO.println("|   /\\");
+        }
+        case 14 -> {
+            IO.print(" ----\n");
+            IO.println("|   ()");
+            IO.println(String.format("|  %s-|-", miniEspacio));
+            IO.println(String.format("|   %s|", miniEspacio));
+            IO.println("|  _/\\");
+        }
+        case 15 -> {
+            IO.print(" ----\n");
+            IO.println("|   ()");
+            IO.println(String.format("|  %s-|-", miniEspacio));
+            IO.println(String.format("|   %s|", miniEspacio));
+            IO.println("|  _/\\_");
+        }
     }
 }
 
 void main() {
     char intento;
-    int numFallos = 11;
-    // int numFallos = 1, contadorAciertos = 0;
+    int numFallos = 1, contadorAciertos = 0;
+     String palabraSecreta = IO.readln(String.format("\n%s----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset));
 
-    dibujarAhorcado(numFallos);
-
-    // String palabraSecreta = IO.readln(String.format("\n%s----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset));
-
-    // String palabraSecretaSinTildes = quitarTildesYDieresis(palabraSecreta);
+     String palabraSecretaSinTildes = quitarTildesYDieresis(palabraSecreta);
 
 
-    // char[] arrayDePalabraSecreta = crearYRellenarArrayDePalabraSecreta(palabraSecretaSinTildes);
-    // char[] arrayDeRayas = crearArrayRayas(palabraSecretaSinTildes);
-    // boolean[] aciertos = crearArrayBooleans(palabraSecretaSinTildes);
+     char[] arrayDePalabraSecreta = crearYRellenarArrayDePalabraSecreta(palabraSecretaSinTildes);
+     char[] arrayDeRayas = crearArrayRayas(palabraSecretaSinTildes);
+     boolean[] aciertos = crearArrayBooleans(palabraSecretaSinTildes);
 
-    // String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\nAntes de empezar, ¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecretaSinTildes.length(), reset)).toLowerCase();
+     String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\nAntes de empezar, ¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecretaSinTildes.length(), reset)).toLowerCase();
 
-    // IO.println("\n".repeat(30));
-    // darPista(respuesta, palabraSecretaSinTildes);
+     IO.println("\n".repeat(30));
+     darPista(respuesta, palabraSecretaSinTildes);
 
-    // IO.print(String.format("\n%s----TURNO JUGADOR 2----%s\n", morado, reset));
+     IO.print(String.format("\n%s----TURNO JUGADOR 2----%s\n", morado, reset));
 
-    // for (char caracterActual : arrayDeRayas) {
-    //     IO.print(caracterActual);
-    //     IO.print(" ");
-    // }
+     for (char caracterActual : arrayDeRayas) {
+         IO.print(caracterActual);
+         IO.print(" ");
+     }
 
-    // do {
-    //     intento = IO.readln("\nIntroduce tu intento: ").toLowerCase().charAt(0);
+     do {
+         intento = IO.readln("\nIntroduce tu intento: ").toLowerCase().charAt(0);
 
-    //     if (comprobarExistencia(intento, arrayDePalabraSecreta, arrayDeRayas, aciertos)) {
-    //         IO.println();
-    //         for (char actual : arrayDeRayas) {
-    //             IO.print(actual);
-    //             IO.print(" ");
-    //         }
-    //         IO.println();
+         if (comprobarExistencia(intento, arrayDePalabraSecreta, arrayDeRayas, aciertos)) {
+             IO.println();
+             for (char actual : arrayDeRayas) {
+                 IO.print(actual);
+                 IO.print(" ");
+             }
+             IO.println();
 
-    //         contadorAciertos = contarCoincidencia(aciertos);
-    //     } else {
-    //         IO.println(String.format("\nla letra %c no está en la palabra.", intento));
-    //         numFallos++;
-    //         dibujarAhorcado(numFallos);
-    //     }
-    // } while (contadorAciertos != palabraSecretaSinTildes.length() && numFallos <= 9);
+             contadorAciertos = contarCoincidencia(aciertos);
+         } else {
+             IO.println(String.format("\nla letra %c no está en la palabra.", intento));
+             numFallos++;
+             dibujarAhorcado(numFallos);
+         }
+     } while (contadorAciertos != palabraSecretaSinTildes.length() && numFallos <= 15);
 
-    // IO.println(String.format(
-    //         (contadorAciertos == palabraSecretaSinTildes.length()) ? verde + "\nGANASTE, LA PALABRA ERA: %S."  : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;( lA PALABRA SECRETA ERA \"%S\"."
-    // ,palabraSecreta));
+     IO.println(String.format(
+             (contadorAciertos == palabraSecretaSinTildes.length()) ? verde + "\nGANASTE, LA PALABRA ERA: %S."  : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;( lA PALABRA SECRETA ERA \"%S\"."
+     ,palabraSecreta));
 }
