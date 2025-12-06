@@ -277,9 +277,10 @@ void main() {
     char[] arrayDeRayas = crearArrayRayas(palabraSecretaSinTildes);
     boolean[] aciertos = crearArrayBooleans(palabraSecretaSinTildes);
 
+    IO.println("\n".repeat(30));
+
     String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\nAntes de empezar, ¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecretaSinTildes.length(), reset)).toLowerCase();
 
-    IO.println("\n".repeat(30));
     darPista(respuesta, palabraSecretaSinTildes);
 
     IO.print(String.format("\n%s----TURNO JUGADOR 2----%s\n", morado, reset));
