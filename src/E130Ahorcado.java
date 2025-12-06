@@ -1,6 +1,9 @@
 final String morado = "\u001B[35m", azul = "\u001B[34m", rojo = "\u001B[31m", verde = "\u001B[32m", reset = "\u001B[0m", miniEspacio = "\u2009";
 
-//comprobar si la palabra que ha metido ya era correcta o era erronea y mostrar mensaje, comprobar el array de rayas y crear uno nuevo para meter los errores
+//comprobar si la letra era erronea y mostrar mensaje, crear uno nuevo para meter los errores y comrpobarlos
+//he creado el array de 27 - longitud palabra secreta para que quepan todas las letras del abecedario menos las de la palabra secreta
+//despues de cada intento erroneo, meter la letra en el array y mostrar las letras que hay en el array
+//Si la letra ya esta en el array, no meterla y mostrar mensaje
 
 String quitarTildesYDieresis(String palabraSecreta) {
 
@@ -26,7 +29,28 @@ char[] crearArrayRayas(String palabraSecreta) {
 }
 
 boolean[] crearArrayBooleans(String palabraSecreta) {
+
     return new boolean[palabraSecreta.length()];
+}
+
+boolean comprobarSiLaLetraYaEraCorrecta(char intento, char[] arrayDeRayas) {
+
+    for (int i = 0; i < arrayDeRayas.length; i++) {
+        if (intento == arrayDeRayas[i]) {
+            return true;
+        }
+    }
+    return false;
+}
+
+int contarSiLaLetraYaEraCorrecta(char intento, char[] arrayDeRayas) {
+    int contador = 0;
+    
+    if (comprobarSiLaLetraYaEraCorrecta(intento, arrayDeRayas)) {
+        contador++;
+    }
+
+    return contador;
 }
 
 int contarVocales(String palabraSecreta) {
@@ -73,6 +97,7 @@ int contarCoincidencia(boolean[] arrayAciertos) {
 }
 
 void dibujarAhorcado(int numFallos) {
+
     switch (numFallos) {
         case 1 -> IO.println("|");
         case 2 -> {
@@ -241,13 +266,14 @@ void dibujarAhorcado(int numFallos) {
 
 void main() {
     char intento;
-    int numFallos = 1, contadorAciertos = 0;
+    int numFallos = 1, contadorAciertos = 0, contadorLetrasCorrectasYaIntroducidas;
 
     String palabraSecreta = IO.readln(String.format("\n%s----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset));
 
     String palabraSecretaSinTildes = quitarTildesYDieresis(palabraSecreta);
 
     char[] arrayDePalabraSecreta = crearYRellenarArrayDePalabraSecreta(palabraSecretaSinTildes);
+    char[] arrayDeLetrasErroneas = new char[ 27 - palabraSecretaSinTildes.length()];
     char[] arrayDeRayas = crearArrayRayas(palabraSecretaSinTildes);
     boolean[] aciertos = crearArrayBooleans(palabraSecretaSinTildes);
 
@@ -267,6 +293,13 @@ void main() {
     do {
         intento = IO.readln("\nIntroduce tu intento: ").toLowerCase().charAt(0);
 
+        if (comprobarSiLaLetraYaEraCorrecta(intento, arrayDeRayas)) {
+            contadorLetrasCorrectasYaIntroducidas = contarSiLaLetraYaEraCorrecta(intento, arrayDeRayas);
+
+            if (contadorLetrasCorrectasYaIntroducidas >= 1) IO.println(String.format("%s\nYa habías acertado la letra \"%c\" anteriormente, intenta con otra letra.%s", morado, intento, reset));
+        }
+
+
         if (comprobarExistencia(intento, arrayDePalabraSecreta, arrayDeRayas, aciertos)) {
             IO.println();
             for (char actual : arrayDeRayas) {
@@ -278,7 +311,7 @@ void main() {
             contadorAciertos = contarCoincidencia(aciertos);
 
             if (contadorAciertos == (palabraSecreta.length() / 2)) {
-                String opcion  = IO.readln("\nLlevas más o menos la mitad de aciertos de palabra secreta, ¿Te atreves a introducir lo que crees que es la palabra secreta? (SI/NO) \n");
+                String opcion  = IO.readln("\nLlevas más o menos la mitad de aciertos, ¿Te atreves a introducir lo que crees que es la palabra secreta? (SI/NO) \n");
 
                 if (opcion.equals("si")) {
                     String resolucion = IO.readln("\nIntroduce lo que crees que es la palabra secreta: ");
@@ -287,8 +320,12 @@ void main() {
                         IO.println(String.format("\n%sCORRECTOO, LA PALABRA ERA: \"%S\"%s", verde, palabraSecretaSinTildes,reset));
                         return;
                     } else {
-                        IO.println(String.format("\n%sINCORRECTO. CONTINUA CON TUS INTENTOS.%s", rojo,reset));
+                        IO.println(String.format("\n%sINCORRECTO. CONTINUA CON TUS INTENTOS.%s\n", rojo,reset));
+                        dibujarAhorcado(numFallos);
+                        numFallos++;
+                    
                     }
+
                 } else {
                     IO.println("\nContinua con tus intentos.");
                 }
