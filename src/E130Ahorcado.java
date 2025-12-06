@@ -282,10 +282,10 @@ void main() {
                     String resolucion = IO.readln("\nIntroduce lo que crees que es la palabra secreta: ");
 
                     if (resolucion.equals(palabraSecretaSinTildes)) {
-                        IO.println(String.format("%sCORRECTOO, LA PALABRA ERA: \"%S\"%s", verde, palabraSecretaSinTildes,reset));
+                        IO.println(String.format("\n%sCORRECTOO, LA PALABRA ERA: \"%S\"%s", verde, palabraSecretaSinTildes,reset));
                         return;
                     } else {
-                        IO.println(String.format("%sINCORRECTO. CONTINUA CON TUS INTENTOS.%s", rojo,reset));
+                        IO.println(String.format("\n%sINCORRECTO. CONTINUA CON TUS INTENTOS.%s", rojo,reset));
                     }
                 } else {
                     IO.println("\nContinua con tus intentos.");
