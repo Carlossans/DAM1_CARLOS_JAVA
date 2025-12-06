@@ -1,9 +1,6 @@
-final String morado = "\u001B[35m", azul = "\u001B[34m", rojo = "\u001B[31m", verde = "\u001B[32m", reset = "\u001B[0m", miniEspacio = "\u2009";
+final String morado = "\u001B[35m", azul = "\u001B[34m", rojo = "\u001B[31m", verde = "\u001B[32m", reset = "\u001B[0m", miniEspacio = "\u2009", tachado = "\u0336";
 
-//comprobar si la letra era erronea y mostrar mensaje, crear uno nuevo para meter los errores y comrpobarlos
-//he creado el array de 27 - longitud palabra secreta para que quepan todas las letras del abecedario menos las de la palabra secreta
-//despues de cada intento erroneo, meter la letra en el array y mostrar las letras que hay en el array
-//Si la letra ya esta en el array, no meterla y mostrar mensaje
+//Si la letra ya está en el array, no meterla y mostrar mensaje
 
 String quitarTildesYDieresis(String palabraSecreta) {
 
@@ -35,8 +32,8 @@ boolean[] crearArrayBooleans(String palabraSecreta) {
 
 boolean comprobarSiLaLetraYaEraCorrecta(char intento, char[] arrayDeRayas) {
 
-    for (int i = 0; i < arrayDeRayas.length; i++) {
-        if (intento == arrayDeRayas[i]) {
+    for (char letra : arrayDeRayas) {
+        if (intento == letra) {
             return true;
         }
     }
@@ -268,12 +265,12 @@ void main() {
     char intento;
     int numFallos = 1, contadorAciertos = 0, contadorLetrasCorrectasYaIntroducidas;
 
-    String palabraSecreta = IO.readln(String.format("\n%s----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset));
+    String palabraSecreta = IO.readln(String.format("\n%s----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset)).toLowerCase();
 
     String palabraSecretaSinTildes = quitarTildesYDieresis(palabraSecreta);
 
     char[] arrayDePalabraSecreta = crearYRellenarArrayDePalabraSecreta(palabraSecretaSinTildes);
-    char[] arrayDeLetrasErroneas = new char[ 27 - palabraSecretaSinTildes.length()];
+    ArrayList<Character> arrayDeLetrasErroneas = new ArrayList<Character>();
     char[] arrayDeRayas = crearArrayRayas(palabraSecretaSinTildes);
     boolean[] aciertos = crearArrayBooleans(palabraSecretaSinTildes);
 
@@ -321,7 +318,7 @@ void main() {
                         IO.println(String.format("\n%sCORRECTOO, LA PALABRA ERA: \"%S\"%s", verde, palabraSecretaSinTildes,reset));
                         return;
                     } else {
-                        IO.println(String.format("\n%sINCORRECTO. CONTINUA CON TUS INTENTOS.%s\n", rojo,reset));
+                        IO.println(String.format("\n%sINCORRECTO.%s\n", rojo,reset));
                         dibujarAhorcado(numFallos);
                         numFallos++;
                     
@@ -332,13 +329,25 @@ void main() {
                 }
             }
         } else {
+
+            for (char letra : arrayDeLetrasErroneas) {
+                if (intento == letra) IO.println("\nYa habías errado con esa letra, prueba con otra.");
+            }
+
             IO.println(String.format("\n%sla letra %c no está en la palabra.%s\n", rojo, intento, reset));
+            arrayDeLetrasErroneas.add(intento);
+            IO.println("\nA continuación verás todas las letras que has introducir y no se encuentran en la palabra secreta: ");
+
+            for (char letraErronea : arrayDeLetrasErroneas) {
+                IO.print(String.format("%s%c%s%s ", rojo, letraErronea, tachado, reset));
+            }
+            IO.println("\n");
             dibujarAhorcado(numFallos);
             numFallos++;
         }
     } while (contadorAciertos != palabraSecretaSinTildes.length() && numFallos <= 24);
 
     IO.println(String.format(
-            (contadorAciertos == palabraSecretaSinTildes.length()) ? verde + "\nGANASTE, LA PALABRA ERA: %S."  : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;( lA PALABRA SECRETA ERA \"%S\"."
+            (contadorAciertos == palabraSecretaSinTildes.length()) ? verde + "\nGANASTE, LA PALABRA ERA: \"%S.\""  : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;( lA PALABRA SECRETA ERA \"%S\"."
     ,palabraSecreta));
 }
