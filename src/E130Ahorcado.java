@@ -70,8 +70,6 @@ int contarCoincidencia(boolean[] arrayAciertos) {
     return aciertos;
 }
 
-//cambiar barra media "-" por barra baja "_" para el listón superior
-
 void dibujarAhorcado(int numFallos) {
     switch (numFallos) {
         case 1 -> IO.println("|");
@@ -91,102 +89,150 @@ void dibujarAhorcado(int numFallos) {
             IO.println("|");
         }
         case 5 -> {
-            IO.print(" _\n");
+            IO.print(" -\n");
             IO.println("|");
             IO.println("|");
             IO.println("|");
             IO.println("|");
         }
         case 6 -> {
-            IO.print(" __\n");
+            IO.print(" --\n");
             IO.println("|");
             IO.println("|");
             IO.println("|");
             IO.println("|");
         }
         case 7 -> {
-            IO.print(" ___\n");
+            IO.print(" ---\n");
             IO.println("|");
             IO.println("|");
             IO.println("|");
             IO.println("|");
         }
         case 8 -> {
-            IO.print(" ____\n");
+            IO.print(" ----\n");
             IO.println("|");
             IO.println("|");
             IO.println("|");
             IO.println("|");
         }
         case 9 -> {
-            IO.print(" ----\n");
-            IO.println("|   (");
+            IO.print(" ----¬\n");
+            IO.println("|");
             IO.println("|");
             IO.println("|");
             IO.println("|");
         }
         case 10 -> {
-            IO.print(" ----\n");
-            IO.println("|   ()");
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
             IO.println("|");
             IO.println("|");
             IO.println("|");
         }
         case 11 -> {
-            IO.print(" ----\n");
-            IO.println("|   ()");
-            IO.println(String.format("|   %s|", miniEspacio));
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    (");
             IO.println("|");
             IO.println("|");
         }
         case 12 -> {
-            IO.print(" ----\n");
-            IO.println("|   ()");
-            IO.println(String.format("|   %s|", miniEspacio));
-            IO.println(String.format("|   %s|", miniEspacio));
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    ()");
+            IO.println("|");
             IO.println("|");
         }
         case 13 -> {
-            IO.print(" ----\n");
-            IO.println("|   ()");
-            IO.println(String.format("|  %s-|", miniEspacio));
-            IO.println(String.format("|   %s|", miniEspacio));
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    ()");
+            IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|");
         }
         case 14 -> {
-            IO.print(" ----\n");
-            IO.println("|   ()");
-            IO.println(String.format("|  %s-|-", miniEspacio));
-            IO.println(String.format("|   %s|", miniEspacio));
-            IO.println("|");
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    ()");
+            IO.println(String.format("|    %s|", miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
         }
         case 15 -> {
-            IO.print(" ----\n");
-            IO.println("|   ()");
-            IO.println(String.format("|  %s-|-", miniEspacio));
-            IO.println(String.format("|   %s|", miniEspacio));
-            IO.println("|   /");
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    ()");
+            IO.println(String.format("|   %s-|", miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
         }
         case 16 -> {
-            IO.print(" ----\n");
-            IO.println("|   ()");
-            IO.println(String.format("|  %s-|-", miniEspacio));
-            IO.println(String.format("|   %s|", miniEspacio));
-            IO.println("|   /\\");
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    ()");
+            IO.println(String.format("|  %s--|", miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
         }
         case 17 -> {
-            IO.print(" ----\n");
-            IO.println("|   ()");
-            IO.println(String.format("|  %s-|-", miniEspacio));
-            IO.println(String.format("|   %s|", miniEspacio));
-            IO.println("|  _/\\");
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    ()");
+            IO.println(String.format("| %so--|", miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
         }
+
         case 18 -> {
-            IO.print(" ----\n");
-            IO.println("|   ()");
-            IO.println(String.format("|  %s-|-", miniEspacio));
-            IO.println(String.format("|   %s|", miniEspacio));
-            IO.println("|  _/\\_");
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    ()");
+            IO.println(String.format("| %so--|-", miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
+        }
+        case 19 -> {
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    ()");
+            IO.println(String.format("| %so--|--", miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
+        }
+        case 20 -> {
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    ()");
+            IO.println(String.format("| %so--|--o", miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
+        }
+
+        case 21 -> {
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    ()");
+            IO.println(String.format("| %so--|--o", miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
+            IO.println("    /");
+        }
+        case 22 -> {
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    ()");
+            IO.println(String.format("| %so--|--o", miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
+            IO.println("    /  \\");
+        }
+        case 23 -> {
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    ()");
+            IO.println(String.format("| %so--|--o", miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
+            IO.println("   _/  \\");
+        }
+        case 24 -> {
+            IO.print(" ----¬\n");
+            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println("|    ()");
+            IO.println(String.format("| %so--|--o", miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
+            IO.println("   _/  \\_");
         }
     }
 }
@@ -233,7 +279,7 @@ void main() {
             dibujarAhorcado(numFallos);
             numFallos++;
         }
-    } while (contadorAciertos != palabraSecretaSinTildes.length() && numFallos <= 18);
+    } while (contadorAciertos != palabraSecretaSinTildes.length() && numFallos <= 24);
 
     IO.println(String.format(
             (contadorAciertos == palabraSecretaSinTildes.length()) ? verde + "\nGANASTE, LA PALABRA ERA: %S."  : rojo + "\nPERDISTEEEE,TE CONVERTISTE EN JUAN PABLO ;( lA PALABRA SECRETA ERA \"%S\"."
