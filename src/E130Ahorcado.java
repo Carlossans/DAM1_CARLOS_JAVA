@@ -1,5 +1,7 @@
 final String morado = "\u001B[35m", azul = "\u001B[34m", rojo = "\u001B[31m", verde = "\u001B[32m", reset = "\u001B[0m", miniEspacio = "\u2009";
 
+//comprobar si la palabra que ha metido ya era correcta o era erronea y mostrar mensaje, comprobar el array de rayas y crear uno nuevo para meter los errores
+
 String quitarTildesYDieresis(String palabraSecreta) {
 
     return palabraSecreta.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u').replace('ü', 'u');
