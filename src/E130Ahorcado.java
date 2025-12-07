@@ -1,6 +1,6 @@
 final String morado = "\u001B[35m", azul = "\u001B[34m", rojo = "\u001B[31m", verde = "\u001B[32m", reset = "\u001B[0m", miniEspacio = "\u2009", tachado = "\u0336";
 
-//depurar lo de resolver con la mitad de aciertos y dibujo (que no sean tantos pasos o algo) no sé
+//depurar lo del dibujo (que no sean tantos pasos o algo) no sé
 
 String quitarTildesYDieresis(String palabraSecreta) {
 
@@ -274,7 +274,7 @@ void dibujarAhorcado(int numFallos) {
 
 void main() {
     char intento;
-    int numFallos = 1, contadorAciertos = 0, contadorLetrasCorrectasYaIntroducidas;
+    int numFallos = 1, contadorAciertos = 0, contadorLetrasCorrectasYaIntroducidas, contadorMuestreoResolucion = 0;
 
     String palabraSecreta = IO.readln(String.format("\n%s----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset)).toLowerCase();
 
@@ -287,7 +287,7 @@ void main() {
 
     IO.println("\n".repeat(30));
 
-    String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\nAntes de empezar, ¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecretaSinTildes.length(), reset)).toLowerCase().replaceAll("\\s" , "");
+    String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\n¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecretaSinTildes.length(), reset)).toLowerCase().replaceAll("\\s" , "");
 
     darPista(respuesta, palabraSecretaSinTildes);
 
@@ -319,24 +319,27 @@ void main() {
 
             contadorAciertos = contarCoincidencia(aciertos);
 
-            if (contadorAciertos >= (palabraSecreta.length() / 2)) {
-                String opcion  = IO.readln("\nLlevas más o menos la mitad de aciertos, ¿Te atreves a introducir lo que crees que es la palabra secreta? (SI/NO) \n");
+            if (contadorMuestreoResolucion != 1) {
+                if (contadorAciertos >= (palabraSecretaSinTildes.length() / 2)) {
+                    String opcion = IO.readln("\nLlevas más o menos la mitad de aciertos, ¿Te atreves a introducir lo que crees que es la palabra secreta? (SI/NO) \n");
+                    contadorMuestreoResolucion++;
 
-                if (opcion.equals("si")) {
-                    String resolucion = IO.readln("\nIntroduce lo que crees que es la palabra secreta: ").replaceAll("\\s" , "").toLowerCase();
+                    if (opcion.equals("si")) {
+                        String resolucion = IO.readln("\nIntroduce lo que crees que es la palabra secreta: ").replaceAll("\\s", "").toLowerCase();
 
-                    if (resolucion.equals(palabraSecretaSinTildes)) {
-                        IO.println(String.format("\n%sCORRECTOO, LA PALABRA ERA: \"%S\"%s", verde, palabraSecretaSinTildes,reset));
-                        return;
+                        if (resolucion.equals(palabraSecretaSinTildes)) {
+                            IO.println(String.format("\n%sCORRECTOO, LA PALABRA ERA: \"%S\"%s", verde, palabraSecretaSinTildes, reset));
+                            return;
+                        } else {
+                            IO.println(String.format("\n%sINCORRECTO.%s\n", rojo, reset));
+                            dibujarAhorcado(numFallos);
+                            numFallos++;
+
+                        }
+
                     } else {
-                        IO.println(String.format("\n%sINCORRECTO.%s\n", rojo,reset));
-                        dibujarAhorcado(numFallos);
-                        numFallos++;
-                    
+                        IO.println("\nContinua con tus intentos.");
                     }
-
-                } else {
-                    IO.println("\nContinua con tus intentos.");
                 }
             }
         } else {
