@@ -1,6 +1,6 @@
 final String morado = "\u001B[35m", azul = "\u001B[34m", rojo = "\u001B[31m", verde = "\u001B[32m", reset = "\u001B[0m", miniEspacio = "\u2009", tachado = "\u0336";
 
-//Si la letra ya está en el array, no meterla y mostrar mensaje
+//depurar lo de resolver con la mitad de aciertos y dibujo (que no sean tantos pasos o algo) no sé
 
 String quitarTildesYDieresis(String palabraSecreta) {
 
@@ -50,6 +50,16 @@ int contarSiLaLetraYaEraCorrecta(char intento, char[] arrayDeRayas) {
     return contador;
 }
 
+boolean comprobarSiLaLetraYaEraErronea(char intento,  ArrayList<Character>arrayDeLetrasErroneas) {
+
+    for (char letra : arrayDeLetrasErroneas) {
+        if (intento == letra) {
+            return true;
+        }
+    }
+    return false;
+}
+
 int contarVocales(String palabraSecreta) {
     int contadorVocales = 0;
 
@@ -74,6 +84,7 @@ void darPista(String respuesta, String palabraSecreta) {
 
 boolean comprobarExistencia(char intento, char[] arrayDePalabra, char[] arrayDeRayas, boolean[] aciertos) {
     int contadorAciertos = 0;
+
     for (int i = 0; i < arrayDePalabra.length; i++) {
         if (intento == arrayDePalabra[i]) {
             arrayDeRayas[i] = intento;
@@ -270,13 +281,13 @@ void main() {
     String palabraSecretaSinTildes = quitarTildesYDieresis(palabraSecreta);
 
     char[] arrayDePalabraSecreta = crearYRellenarArrayDePalabraSecreta(palabraSecretaSinTildes);
-    ArrayList<Character> arrayDeLetrasErroneas = new ArrayList<Character>();
+    ArrayList<Character> arrayDeLetrasErroneas = new ArrayList<>();
     char[] arrayDeRayas = crearArrayRayas(palabraSecretaSinTildes);
     boolean[] aciertos = crearArrayBooleans(palabraSecretaSinTildes);
 
     IO.println("\n".repeat(30));
 
-    String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\nAntes de empezar, ¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecretaSinTildes.length(), reset)).toLowerCase();
+    String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\nAntes de empezar, ¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecretaSinTildes.length(), reset)).toLowerCase().replaceAll("\\s" , "");
 
     darPista(respuesta, palabraSecretaSinTildes);
 
@@ -312,7 +323,7 @@ void main() {
                 String opcion  = IO.readln("\nLlevas más o menos la mitad de aciertos, ¿Te atreves a introducir lo que crees que es la palabra secreta? (SI/NO) \n");
 
                 if (opcion.equals("si")) {
-                    String resolucion = IO.readln("\nIntroduce lo que crees que es la palabra secreta: ");
+                    String resolucion = IO.readln("\nIntroduce lo que crees que es la palabra secreta: ").replaceAll("\\s" , "").toLowerCase();
 
                     if (resolucion.equals(palabraSecretaSinTildes)) {
                         IO.println(String.format("\n%sCORRECTOO, LA PALABRA ERA: \"%S\"%s", verde, palabraSecretaSinTildes,reset));
@@ -330,22 +341,22 @@ void main() {
             }
         } else {
 
-            for (char letra : arrayDeLetrasErroneas) {
-                if (intento == letra) IO.println("\nYa habías errado con esa letra, prueba con otra.");
-                else break;
+            if (comprobarSiLaLetraYaEraErronea(intento, arrayDeLetrasErroneas)) {
+                IO.println("\nYa habías errado con esa letra, prueba con otra.");
+            } else {
+
+                IO.println(String.format("\n%sla letra %c no está en la palabra.%s", rojo, intento, reset));
+                arrayDeLetrasErroneas.add(intento);
+                IO.println("\nA continuación verás todas las letras que has introducir y no se encuentran en la palabra secreta: ");
+
+                for (char letraErronea : arrayDeLetrasErroneas) {
+                    IO.print(String.format("%s%c%s%s ", rojo, letraErronea, tachado, reset));
+                }
+
+                IO.println("\n");
+                dibujarAhorcado(numFallos);
+                numFallos++;
             }
-
-            IO.println(String.format("\n%sla letra %c no está en la palabra.%s\n", rojo, intento, reset));
-            arrayDeLetrasErroneas.add(intento);
-            IO.println("\nA continuación verás todas las letras que has introducir y no se encuentran en la palabra secreta: ");
-
-            for (char letraErronea : arrayDeLetrasErroneas) {
-                IO.print(String.format("%s%c%s%s ", rojo, letraErronea, tachado, reset));
-            }
-
-            IO.println("\n");
-            dibujarAhorcado(numFallos);
-            numFallos++;
         }
     } while (contadorAciertos != palabraSecretaSinTildes.length() && numFallos <= 24);
 
