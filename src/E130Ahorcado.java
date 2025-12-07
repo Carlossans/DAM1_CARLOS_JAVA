@@ -319,7 +319,7 @@ void main() {
 
             contadorAciertos = contarCoincidencia(aciertos);
 
-            if (contadorAciertos == (palabraSecreta.length() / 2)) {
+            if (contadorAciertos >= (palabraSecreta.length() / 2)) {
                 String opcion  = IO.readln("\nLlevas más o menos la mitad de aciertos, ¿Te atreves a introducir lo que crees que es la palabra secreta? (SI/NO) \n");
 
                 if (opcion.equals("si")) {
