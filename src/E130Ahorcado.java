@@ -332,6 +332,7 @@ void main() {
 
             for (char letra : arrayDeLetrasErroneas) {
                 if (intento == letra) IO.println("\nYa habías errado con esa letra, prueba con otra.");
+                else break;
             }
 
             IO.println(String.format("\n%sla letra %c no está en la palabra.%s\n", rojo, intento, reset));
@@ -341,6 +342,7 @@ void main() {
             for (char letraErronea : arrayDeLetrasErroneas) {
                 IO.print(String.format("%s%c%s%s ", rojo, letraErronea, tachado, reset));
             }
+
             IO.println("\n");
             dibujarAhorcado(numFallos);
             numFallos++;
