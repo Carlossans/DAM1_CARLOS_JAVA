@@ -8,8 +8,8 @@ String quitarTildesYDieresis(String palabraSecreta) {
 }
 
 char[] crearArrayYRellenarRayas(String palabraSecreta) {
-    char[] rayas = new char[palabraSecreta.length()];
 
+    char[] rayas = new char[palabraSecreta.length()];
     Arrays.fill(rayas, '_');
 
     return rayas;
@@ -25,21 +25,12 @@ boolean comprobarSiLaLetraEstaRepetida(char intento, char[] arrayDeRayas) {
     return false;
 }
 
-boolean comprobarSiLaLetraYaEraErronea(char intento,  ArrayList<Character>arrayDeLetrasErroneas) {
-
-    for (char letra : arrayDeLetrasErroneas) {
-        if (intento == letra) {
-            return true;
-        }
-    }
-    return false;
-}
-
 int contarVocales(String palabraSecreta) {
+
     int contadorVocales = 0;
 
     for (int i = 0; i < palabraSecreta.length(); i++) {
-        if (palabraSecreta.charAt(i) == 'a' || palabraSecreta.charAt(i) == 'e' || palabraSecreta.charAt(i) == 'i' || palabraSecreta.charAt(i) == 'o' ||palabraSecreta.charAt(i) == 'u') {
+        if (palabraSecreta.charAt(i) == 'a' || palabraSecreta.charAt(i) == 'e' || palabraSecreta.charAt(i) == 'i' || palabraSecreta.charAt(i) == 'o' || palabraSecreta.charAt(i) == 'u') {
             contadorVocales++;
         }
     }
@@ -48,6 +39,7 @@ int contarVocales(String palabraSecreta) {
 }
 
 void darPista(String respuesta, String palabraSecreta) {
+
     IO.println(String.format(
             (respuesta.equals("si")) ? "\n%sLa palabra tiene %d vocales y %d consonantes%s" : "Tú verás..."
             , azul, contarVocales(palabraSecreta), palabraSecreta.length() - contarVocales(palabraSecreta), reset));
@@ -66,13 +58,25 @@ boolean comprobarExistencia(char intento, char[] arrayDePalabra, char[] arrayDeR
     return (contadorAciertos >= 1);
 }
 
-int contarCoincidencia(boolean[] arrayAciertos) {
+int contarCoincidencias(boolean[] arrayAciertos) {
+
     int aciertos = 0;
+
     for (boolean actual : arrayAciertos) {
         if (actual) aciertos++;
     }
 
     return aciertos;
+}
+
+boolean comprobarSiLaLetraYaEraErronea(char intento, ArrayList<Character> arrayDeLetrasErroneas) {
+
+    for (char letra : arrayDeLetrasErroneas) {
+        if (intento == letra) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void dibujarAhorcado(int numFallos) {
@@ -86,56 +90,56 @@ void dibujarAhorcado(int numFallos) {
         }
         case 2 -> {
             IO.print(" ————¬\n");
-            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|");
             IO.println("|");
             IO.println("|");
         }
         case 3 -> {
             IO.print(" ————¬\n");
-            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|    ()");
             IO.println("|");
             IO.println("|");
         }
         case 4 -> {
             IO.print(" ————¬\n");
-            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|    ()");
             IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|");
         }
         case 5 -> {
             IO.print(" ————¬\n");
-            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|    ()");
             IO.println(String.format("|    %s|", miniEspacio));
             IO.println(String.format("|    %s|", miniEspacio));
         }
         case 6 -> {
             IO.print(" ————¬\n");
-            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|    ()");
             IO.println(String.format("|  %s——|", miniEspacio));
             IO.println(String.format("|    %s|", miniEspacio));
         }
-        case  7 -> {
+        case 7 -> {
             IO.print(" ————¬\n");
-            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|    ()");
             IO.println(String.format("| %so——|", miniEspacio));
             IO.println(String.format("|    %s|", miniEspacio));
         }
         case 8 -> {
             IO.print(" ————¬\n");
-            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|    ()");
             IO.println(String.format("| %so——|——", miniEspacio));
             IO.println(String.format("|    %s|", miniEspacio));
         }
         case 9 -> {
             IO.print(" ————¬\n");
-            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|    ()");
             IO.println(String.format("| %so——|——o", miniEspacio));
             IO.println(String.format("|    %s|", miniEspacio));
@@ -143,7 +147,7 @@ void dibujarAhorcado(int numFallos) {
 
         case 10 -> {
             IO.print(" ————¬\n");
-            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|    ()");
             IO.println(String.format("| %so——|——o", miniEspacio));
             IO.println(String.format("|    %s|", miniEspacio));
@@ -151,7 +155,7 @@ void dibujarAhorcado(int numFallos) {
         }
         case 11 -> {
             IO.print(" ————¬\n");
-            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|    ()");
             IO.println(String.format("| %so——|——o", miniEspacio));
             IO.println(String.format("|    %s|", miniEspacio));
@@ -159,7 +163,7 @@ void dibujarAhorcado(int numFallos) {
         }
         case 12 -> {
             IO.print(" ————¬\n");
-            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|    ()");
             IO.println(String.format("| %so——|——o", miniEspacio));
             IO.println(String.format("|    %s|", miniEspacio));
@@ -167,7 +171,7 @@ void dibujarAhorcado(int numFallos) {
         }
         case 13 -> {
             IO.print(" ————¬\n");
-            IO.println(String.format("|    %s|",miniEspacio));
+            IO.println(String.format("|    %s|", miniEspacio));
             IO.println("|    ()");
             IO.println(String.format("| %so——|——o", miniEspacio));
             IO.println(String.format("|    %s|", miniEspacio));
@@ -180,7 +184,7 @@ void main() {
     char intento;
     int numFallos = 1, contadorAciertos = 0, contadorMuestreoResolucion = 0;
 
-    String palabraSecreta = IO.readln(String.format("\n%s----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset)).toLowerCase().replaceAll("\\s" , "");
+    String palabraSecreta = IO.readln(String.format("\n%s----TURNO JUGADOR 1----%s\nIntroduce la palabra secreta: ", morado, reset)).toLowerCase().replaceAll("\\s", "");
 
     String palabraSecretaSinTildes = quitarTildesYDieresis(palabraSecreta);
 
@@ -191,7 +195,7 @@ void main() {
 
     IO.println("\n".repeat(30));
 
-    String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\n¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecretaSinTildes.length(), reset)).toLowerCase().replaceAll("\\s" , "");
+    String respuesta = IO.readln(String.format("\n%sLa palabra tiene %d letras.%s\n\n¿Quieres una pista antes de empezar? (SI/NO), si decides que no, no se te volverá a mostrar esta opción: ", azul, palabraSecretaSinTildes.length(), reset)).toLowerCase().replaceAll("\\s", "");
 
     darPista(respuesta, palabraSecretaSinTildes);
 
@@ -204,27 +208,27 @@ void main() {
     IO.println();
 
     do {
-        intento = IO.readln("\nIntroduce tu intento: ").toLowerCase().replaceAll("\\s" , "").charAt(0);
+        intento = IO.readln("\nIntroduce tu intento: ").toLowerCase().replaceAll("\\s", "").charAt(0);
 
         if (comprobarSiLaLetraEstaRepetida(intento, arrayDeRayas)) {
             IO.println(String.format("%s\nYa habías acertado la letra \"%c\" anteriormente, intenta con otra letra.%s", morado, intento, reset));
         }
 
-
         if (comprobarExistencia(intento, arrayDePalabraSecreta, arrayDeRayas, aciertos)) {
             IO.println();
+
             for (char actual : arrayDeRayas) {
                 IO.print(actual);
                 IO.print(" ");
             }
             IO.println();
 
-            contadorAciertos = contarCoincidencia(aciertos);
+            contadorAciertos = contarCoincidencias(aciertos);
 
             if (contadorMuestreoResolucion != 1) {
 
                 if (contadorAciertos >= (palabraSecretaSinTildes.length() / 2)) {
-                    String opcion = IO.readln("\nLlevas más o menos la mitad de aciertos, ¿Te atreves a introducir lo que crees que es la palabra secreta? (SI/NO) \n").replaceAll("\\s" , "").toLowerCase();
+                    String opcion = IO.readln("\nLlevas más o menos la mitad de aciertos, ¿Te atreves a introducir lo que crees que es la palabra secreta? (SI/NO) \n").replaceAll("\\s", "").toLowerCase();
                     contadorMuestreoResolucion++;
 
                     if (opcion.equals("si")) {
@@ -248,16 +252,16 @@ void main() {
             if (comprobarSiLaLetraYaEraErronea(intento, arrayDeLetrasErroneas)) {
                 IO.println(String.format("\n%sYa habías errado con esa letra, prueba con otra.%s", morado, reset));
             } else {
-
                 IO.println(String.format("\n%sla letra %c no está en la palabra.%s", rojo, intento, reset));
                 arrayDeLetrasErroneas.add(intento);
+
                 IO.println("\nA continuación verás todas las letras que has introducido y que no se encuentran en la palabra secreta: ");
 
                 for (char letraErronea : arrayDeLetrasErroneas) {
                     IO.print(String.format("%s%c%s%s ", rojo, letraErronea, tachado, reset));
                 }
-
                 IO.println("\n");
+
                 dibujarAhorcado(numFallos);
                 numFallos++;
             }
@@ -265,6 +269,6 @@ void main() {
     } while (contadorAciertos != palabraSecretaSinTildes.length() && numFallos <= intentosMax);
 
     IO.println(String.format(
-            (contadorAciertos == palabraSecretaSinTildes.length()) ? verde + "\nGANASTE, LA PALABRA ERA: \"%S.\""  : rojo + "\nPERDISTEEEE, AGOTASTE TODOS TUS INTENTOS, lA PALABRA SECRETA ERA \"%S\"."
-    ,palabraSecreta));
+            (contadorAciertos == palabraSecretaSinTildes.length()) ? verde + "\nGANASTE, LA PALABRA ERA: \"%S.\"" + reset : rojo + "\nPERDISTEEEE, AGOTASTE TODOS TUS INTENTOS, lA PALABRA SECRETA ERA \"%S\"." + reset
+            , palabraSecreta));
 }
