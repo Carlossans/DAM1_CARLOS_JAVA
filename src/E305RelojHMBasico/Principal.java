@@ -20,11 +20,11 @@ public class Principal {
 
         System.out.println("Restado muchos minutos: " + reloj1);
 
-        int diferenciaMinutos = reloj2.diferenciaMinutos(reloj3);
+        int diferenciaMinutos = reloj2.calcularDiferenciaMinutos(reloj3);
 
         System.out.println("Diferencia en minutos entre reloj2 y reloj3: " + diferenciaMinutos);
 
-        Reloj difReloj = reloj2.diferenciaReloj(reloj3);
+        Reloj difReloj = reloj2.calcularDiferenciaReloj(reloj3);
 
         System.out.println("Diferencia en Reloj entre reloj2 y reloj3: " + difReloj);
     }

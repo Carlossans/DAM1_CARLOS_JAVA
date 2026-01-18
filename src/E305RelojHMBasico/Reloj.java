@@ -10,22 +10,22 @@ public class Reloj {
         this.m = 15;
     }
 
+    public Reloj(int totalMinutos) {
+        this.h = totalMinutos / 60;
+        this.m = totalMinutos % 60;
+    }
+
     public Reloj(int h, int m) {
         int total = h * 60 + m;
         formatearHora(total);
 
     }
 
-    public Reloj(int totalMinutos) {
-        this.h = totalMinutos / 60;
-        this.m = totalMinutos % 60;
-    }
-
     public void formatearHora(int totalMinutos) {
         int minutosDia = 24 * 60;
-        totalMinutos %= minutosDia;
+        totalMinutos = totalMinutos %  minutosDia;
         if (totalMinutos < 0) {
-            totalMinutos += minutosDia;
+            totalMinutos = totalMinutos + minutosDia;
         }
         this.h = totalMinutos / 60;
         this.m = totalMinutos % 60;
@@ -46,14 +46,14 @@ public class Reloj {
         formatearHora(total);
     }
 
-    public int diferenciaMinutos(Reloj otro) {
+    public int calcularDiferenciaMinutos(Reloj otro) {
         int t1 = this.h * 60 + this.m;
         int t2 = otro.h * 60 + otro.m;
-        return t1 - t2;
+        return t2 - t1;
     }
 
-    public Reloj diferenciaReloj(Reloj otro) {
-        int diferencia = Math.abs(diferenciaMinutos(otro));
+    public Reloj calcularDiferenciaReloj(Reloj otro) {
+        int diferencia = Math.abs(calcularDiferenciaMinutos(otro));
         return new Reloj(diferencia);
     }
 
