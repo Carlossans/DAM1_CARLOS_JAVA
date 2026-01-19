@@ -22,8 +22,8 @@ public class Reloj {
     }
 
     public void formatearHora(int totalMinutos) {
-        int minutosDia = 24 * 60;
-        totalMinutos = totalMinutos %  minutosDia;
+        int minutosDia = 24 * 60; //minutos totales del día
+        totalMinutos = totalMinutos %  minutosDia; //Ajustas si los minutos superan los de un día completo
         if (totalMinutos < 0) {
             totalMinutos = totalMinutos + minutosDia;
         }
