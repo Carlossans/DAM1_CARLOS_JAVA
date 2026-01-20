@@ -2,54 +2,53 @@ package E305RelojHMBasico;
 
 public class Reloj {
 
-    private int h;
-    private int m;
+    private int totalMinutos;
 
     public Reloj() {
-        this.h = 8;
-        this.m = 15;
+        this.totalMinutos = 8 * 60 + 15;
+        formatearHora(totalMinutos);
     }
 
-    public Reloj(int totalMinutos) {
-        this.h = totalMinutos / 60;
-        this.m = totalMinutos % 60;
+    public Reloj(int totalDeMinutos) {
+        this.totalMinutos = totalDeMinutos;
+        formatearHora(totalMinutos);
     }
 
     public Reloj(int h, int m) {
-        int total = h * 60 + m;
-        formatearHora(total);
+        int totalMinutos = h * 60 + m;
+        formatearHora(totalMinutos);
 
     }
 
     public void formatearHora(int totalMinutos) {
-        int minutosDia = 24 * 60; //minutos totales del día
-        totalMinutos = totalMinutos %  minutosDia; //Ajustas si los minutos superan los de un día completo
+        this.totalMinutos = totalMinutos;
+        ajustarExcesos();
+    }
+
+    public void ajustarExcesos() {
+        int minutosDia = 24 * 60;
+        totalMinutos = totalMinutos % minutosDia; // Ajustas si los minutos superan los de un día completo
         if (totalMinutos < 0) {
             totalMinutos = totalMinutos + minutosDia;
         }
-        this.h = totalMinutos / 60;
-        this.m = totalMinutos % 60;
     }
-
 
     public void tick() {
         sumarMinutos(1);
     }
 
     public void sumarMinutos(int minutos) {
-        int total = h * 60 + m + minutos;
-        formatearHora(total);
+        totalMinutos = totalMinutos + minutos;
+        formatearHora(totalMinutos);
     }
 
     public void restarMinutos(int minutos) {
-        int total = h * 60 + m - minutos;
-        formatearHora(total);
+        totalMinutos = totalMinutos - minutos;
+        formatearHora(totalMinutos);
     }
 
     public int calcularDiferenciaMinutos(Reloj otro) {
-        int t1 = this.h * 60 + this.m;
-        int t2 = otro.h * 60 + otro.m;
-        return t2 - t1;
+        return otro.totalMinutos - this.totalMinutos; // hacer prueba si el this
     }
 
     public Reloj calcularDiferenciaReloj(Reloj otro) {
@@ -58,7 +57,8 @@ public class Reloj {
     }
 
     public String toString() {
+        int h = totalMinutos / 60;
+        int m = totalMinutos % 60;
         return String.format("%02d:%02d", h, m);
     }
 }
-
