@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class E909Kaprekar100 {
+public class E922Kaprekar100 {
     private static int asc(int numero) {
         int[] digitos = new int[4];
         for (int i = 3; i >= 0; i--) {
