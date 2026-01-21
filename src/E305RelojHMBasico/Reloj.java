@@ -5,19 +5,17 @@ public class Reloj {
     private int totalMinutos;
 
     public Reloj() {
-        this.totalMinutos = 8 * 60 + 15;
-        formatearHora(totalMinutos);
+        this(8, 15);
+    }
+
+    public Reloj(int h, int m) {
+        this(h * 60 + m);
+
     }
 
     public Reloj(int totalDeMinutos) {
         this.totalMinutos = totalDeMinutos;
         formatearHora(totalMinutos);
-    }
-
-    public Reloj(int h, int m) {
-        int totalMinutos = h * 60 + m;
-        formatearHora(totalMinutos);
-
     }
 
     public void formatearHora(int totalMinutos) {
@@ -27,7 +25,7 @@ public class Reloj {
 
     public void ajustarExcesos() {
         int minutosDia = 24 * 60;
-        totalMinutos = totalMinutos % minutosDia; // Ajustas si los minutos superan los de un día completo
+        totalMinutos = totalMinutos % minutosDia;
         if (totalMinutos < 0) {
             totalMinutos = totalMinutos + minutosDia;
         }
@@ -48,7 +46,7 @@ public class Reloj {
     }
 
     public int calcularDiferenciaMinutos(Reloj otro) {
-        return otro.totalMinutos - this.totalMinutos; // hacer prueba si el this
+        return otro.totalMinutos - this.totalMinutos;
     }
 
     public Reloj calcularDiferenciaReloj(Reloj otro) {
