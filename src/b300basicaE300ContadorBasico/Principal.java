@@ -13,14 +13,14 @@ public class Principal {
         System.out.println(c3); // 77
         System.out.println(c4); // 75
 
-        // c3.incrementar();
-        // c4.incrementar();
+        c3.incrementar();
+        c4.incrementar();
 
-        // System.out.println(c3); // 82
-        // System.out.println(c4); // 80
+        System.out.println(c3); // 82
+        System.out.println(c4); // 80
 
-        // c4.decrementar();
-        // System.out.println(c4); // 75
+        c4.decrementar();
+        System.out.println(c4); // 75
     }
 }
 
