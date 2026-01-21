@@ -1,19 +1,18 @@
 package b300basicaE300ContadorBasico;
 
 public class Contador {
+
     private static final int MIN = 0;
     private static final int MAX = 100;
     private static final String ETIQUETA_POR_DEFECTO = " unidades";
 
-    private int valor = MIN;
+    private int valor;
     private String etiqueta;
     private int paso = 1;
     private boolean redondeo = false;
 
     public Contador() {
         this(50, 1, false);
-        this.valor = MIN;
-        this.etiqueta = ETIQUETA_POR_DEFECTO;
     }
 
     public Contador(int valorInicial) {
@@ -24,23 +23,24 @@ public class Contador {
         this(valorInicial, paso, false);
     }
 
-    public Contador(int valorInicial, int paso, boolean redondeo) { // este nose como se hace
+    public Contador(int valorInicial, int paso, boolean redondeo) {
+        // Si el paso es menor o igual que 0, lo forzamos a 1
         this.paso = (paso <= 0) ? 1 : paso;
+
+        // Guardamos si se quiere redondeo o no
         this.redondeo = redondeo;
 
+        // Si el redondeo está activado, ajustamos el valor inicial
+        // al múltiplo inferior más cercano del paso
         if (redondeo) {
+
             valorInicial = (valorInicial / this.paso) * this.paso;
         }
 
         setValor(valorInicial);
+
         this.etiqueta = ETIQUETA_POR_DEFECTO;
     }
-
-    // public Contador(int valorInicial, String etiqueta) {
-    //     setValor(valorInicial);
-    //     this.etiqueta = (etiqueta == null || etiqueta.trim().isEmpty()) ?
-    //             ETIQUETA_POR_DEFECTO : etiqueta;
-    // }
 
     public int getValor() {
         return valor;
@@ -54,6 +54,16 @@ public class Contador {
         } else {
             valor = nuevoValor;
         }
+    }
+
+    public String getEtiqueta() {
+        return etiqueta;
+    }
+
+    public void setEtiqueta(String etiqueta) {
+        this.etiqueta = (etiqueta == null || etiqueta.trim().isEmpty())
+                ? ETIQUETA_POR_DEFECTO
+                : etiqueta;
     }
 
     public int getPaso() {
@@ -72,14 +82,6 @@ public class Contador {
 
     public void setRedondeo(boolean redondeo) {
         this.redondeo = redondeo;
-    }
-
-    public String getEtiqueta() {
-        return etiqueta;
-    }
-
-    public void setEtiqueta(String etiqueta) {
-        this.etiqueta = (etiqueta == null || etiqueta.trim().isEmpty()) ? ETIQUETA_POR_DEFECTO : etiqueta;
     }
 
     public void resetear() {
@@ -102,7 +104,6 @@ public class Contador {
         setValor(valor - cantidad);
     }
 
-    // toString para representación automática
     @Override
     public String toString() {
         return valor + etiqueta;
