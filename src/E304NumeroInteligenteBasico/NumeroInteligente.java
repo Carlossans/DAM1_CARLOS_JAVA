@@ -1,4 +1,4 @@
-package E303NumeroInteligenteBasico;
+package E304NumeroInteligenteBasico;
 
 public class NumeroInteligente {
     private int valor;

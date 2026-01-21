@@ -24,6 +24,26 @@ public class Contador {
                 ETIQUETA_POR_DEFECTO : etiqueta;
     }
 
+    public Contador(int valorInicial, int paso) {
+        setValor(valorInicial + paso);
+        this.etiqueta = (etiqueta == null || etiqueta.trim().isEmpty()) ?
+                ETIQUETA_POR_DEFECTO : etiqueta;
+    }
+
+    public Contador(int valorInicial, int paso, boolean redondeo) { // este nose como se hace
+
+        if (redondeo == true) {
+            int incrementoRedondeo = this.valor % 100;
+            setValor(valorInicial + paso + incrementoRedondeo);
+            this.etiqueta = (etiqueta == null || etiqueta.trim().isEmpty()) ?
+                    ETIQUETA_POR_DEFECTO : etiqueta;
+        }
+
+        setValor(valorInicial + paso);
+        this.etiqueta = (etiqueta == null || etiqueta.trim().isEmpty()) ?
+                ETIQUETA_POR_DEFECTO : etiqueta;
+    }
+
     public int getValor() {
         return valor;
     }
@@ -38,35 +58,35 @@ public class Contador {
         }
     }
 
-    public String getEtiqueta() {
-        return etiqueta;
-    }
-
-    public void setEtiqueta(String etiqueta) {
-        this.etiqueta = (etiqueta == null || etiqueta.trim().isEmpty()) ?
-                ETIQUETA_POR_DEFECTO : etiqueta;
-    }
-
-    public void resetear() {
-        this.valor = MIN;
-    }
-
-    public void incrementar() {
-        setValor(valor + 1);
-    }
-
-    public void incrementar(int cantidad) {
-        setValor(valor + cantidad);
-    }
-
-    public void decrementar() {
-        setValor(valor - 1);
-    }
-
-    public void decrementar(int cantidad) {
-        setValor(valor - cantidad);
-    }
-
+//    public String getEtiqueta() {
+//        return etiqueta;
+//    }
+//
+//    public void setEtiqueta(String etiqueta) {
+//        this.etiqueta = (etiqueta == null || etiqueta.trim().isEmpty()) ?
+//                ETIQUETA_POR_DEFECTO : etiqueta;
+//    }
+//
+//    public void resetear() {
+//        this.valor = MIN;
+//    }
+//
+//    public void incrementar() {
+//        setValor(valor + 1);
+//    }
+//
+//    public void incrementar(int cantidad) {
+//        setValor(valor + cantidad);
+//    }
+//
+//    public void decrementar() {
+//        setValor(valor - 1);
+//    }
+//
+//    public void decrementar(int cantidad) {
+//        setValor(valor - cantidad);
+//    }
+//
     // toString para representación automática
     @Override
     public String toString() {
