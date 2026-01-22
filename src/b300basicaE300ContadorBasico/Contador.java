@@ -6,7 +6,7 @@ public class Contador {
     private static final int MAX = 100;
     private static final String ETIQUETA_POR_DEFECTO = " unidades";
 
-    private int valor;
+    private int valor = 50;
     private String etiqueta;
     private int paso = 1;
     private boolean redondeo = false;
@@ -33,7 +33,6 @@ public class Contador {
         // Si el redondeo está activado, ajustamos el valor inicial
         // al múltiplo inferior más cercano del paso
         if (redondeo) {
-
             valorInicial = (valorInicial / this.paso) * this.paso;
         }
 

@@ -17,7 +17,7 @@ public class principal {
 
         contador c4 = (contador) c2.clone();
 
-        c4.incrementar(5);
+        //c4.incrementar(5);
 
         System.out.println("Contador c2: " + c2);
         System.out.println("Contador c4: " + c4);
