@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class E827CadenaAlReves {
     public static void imprimirCadenaAlReves(String palabra) {
 
-        if (palabra.length() == 0) return;
+        if (palabra.isEmpty()) return;
 
         System.out.print(palabra.charAt(palabra.length() - 1));
 
