@@ -1,3 +1,5 @@
+package R800Recursividad;
+
 import java.util.Scanner;
 
 public class E825Potencia {
