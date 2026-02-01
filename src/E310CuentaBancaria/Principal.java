@@ -1,45 +1,45 @@
 package E310CuentaBancaria;
 
 public class Principal {
-
+    // Método principal donde probamos la funcionalidad de la clase Cuenta
     public static void main(String[] args) {
-
-        // Crear cuentas
+        // Creamos una cuenta sin descubierto con saldo inicial de 100€
         Cuenta cuentaSinDescubierto = new Cuenta(100);
+        // Creamos una cuenta con descubierto de 70€ y saldo inicial de 100€
         Cuenta cuentaConDescubierto = new Cuenta(100, 70);
 
-        // Mostrar cuentas
+        // Mostramos el estado inicial de ambas cuentas
         System.out.println("Cuenta sin descubierto: " + cuentaSinDescubierto);
         System.out.println("Cuenta con descubierto: " + cuentaConDescubierto);
 
-        // Probar ingresar dinero
+        // Probamos a ingresar 50€ en la cuenta sin descubierto
         cuentaSinDescubierto.ingresarCajero(50);
         System.out.println("Después de ingresar 50€: " + cuentaSinDescubierto);
 
-        // Probar extraer dinero hasta llegar a 0
+        // Probamos a extraer 150€ de la cuenta sin descubierto
         cuentaSinDescubierto.extraerCajero(150);
         System.out.println("Después de extraer 150€: " + cuentaSinDescubierto);
 
-        // Probar cargar recibos con descubierto
+        // Probamos a cargar un recibo de 150€ en la cuenta con descubierto
         cuentaConDescubierto.cargarRecibo(150);
         System.out.println("Después de cargar recibo de 150€: " + cuentaConDescubierto);
 
-        // Probar equals
+        // Comparamos si las dos cuentas tienen el mismo saldo
         System.out.println("¿Las cuentas son iguales? " +
                 cuentaSinDescubierto.equals(cuentaConDescubierto));
 
-        // Probar clone
+        // Clonamos la cuenta con descubierto
         Cuenta copiaCuenta = cuentaConDescubierto.clone();
         System.out.println("Cuenta clonada: " + copiaCuenta);
 
-        // Probar error por extraer dejando saldo negativo
+        // Intentamos extraer 10€ de la cuenta sin descubierto (debería fallar)
         try {
             cuentaSinDescubierto.extraerCajero(10);
         } catch (RuntimeException e) {
             System.out.println("Error al extraer: " + e.getMessage());
         }
 
-        // Probar error por superar descubierto
+        // Intentamos cargar un recibo de 50€ en la cuenta con descubierto (debería fallar)
         try {
             cuentaConDescubierto.cargarRecibo(50);
         } catch (RuntimeException e) {
@@ -47,4 +47,3 @@ public class Principal {
         }
     }
 }
-
