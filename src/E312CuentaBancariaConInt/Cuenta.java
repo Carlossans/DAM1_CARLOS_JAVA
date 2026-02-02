@@ -8,8 +8,8 @@ public class Cuenta implements Cloneable {
         return (int) Math.round(num * 100) ;
     }
 
-    public int convertirAEuros(int num) {
-        return num / 100;
+    public double convertirAEuros(int num) {
+        return num / 100.0;
     }
 
     public Cuenta(double saldoInicial) {
