@@ -1,4 +1,4 @@
-package E310CuentaBancaria;
+package E312CuentaBancariaConInt;
 
 public class Principal {
     public static void main(String[] args) {
@@ -23,22 +23,16 @@ public class Principal {
         Cuenta copiaCuenta = cuentaConDescubierto.clone();
         System.out.println("Cuenta clonada: " + copiaCuenta);
 
-        // Intentamos extraer 10 € de la cuenta sin descubierto (debería fallar)
         try {
             cuentaSinDescubierto.extraerCajero(10);
         } catch (RuntimeException e) {
             System.out.println("Error al extraer: " + e.getMessage());
         }
 
-        // Intentamos cargar un recibo de 50 € en la cuenta con descubierto (debería fallar)
         try {
             cuentaConDescubierto.cargarRecibo(50);
         } catch (RuntimeException e) {
             System.out.println("Error al cargar recibo: " + e.getMessage());
         }
-
-        if (cuentaConDescubierto.equals(copiaCuenta)) {
-            System.out.println("hola");
-        } else System.out.println("no hola");
     }
 }
