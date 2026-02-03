@@ -1,14 +1,9 @@
 package E304ContadorConMinMaxConfigurables;
 
 public class Contador {
-    // QUITAMOS las constantes MIN y MAX que eran fijas
-    // private static final int MIN = 1;
-    // private static final int MAX = 100;
-    
-    // En su lugar, creamos CAMPOS (variables de instancia) configurables
-    private int minimo = 1;       // Valor mínimo por defecto
-    private int maximo = 100;     // Valor máximo por defecto
-    private static final int VALOR_POR_DEFECTO = 50; // Esto sigue igual
+    private int minimo = 1;
+    private int maximo = 100;
+    private static final int VALOR_POR_DEFECTO = 50;
     
     private int valor;
     private String etiqueta;
