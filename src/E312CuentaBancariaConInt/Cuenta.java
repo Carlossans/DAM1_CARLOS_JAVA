@@ -57,10 +57,7 @@ public class Cuenta implements Cloneable {
     }
 
     public Cuenta clone() {
-        try {
-            return (Cuenta) super.clone();
-        } catch (CloneNotSupportedException e) {
-            return null;
-        }
+        Cuenta clone = new Cuenta (this.saldoEnCentimos, this.descubiertoMaximoEnCentimos);
+        return clone;
     }
 }

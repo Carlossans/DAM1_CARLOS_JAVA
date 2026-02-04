@@ -3,9 +3,7 @@ package E304ContadorConMinMaxConfigurables;
 public class Principal {
     public static void main(String[] args) {
         System.out.println("CREACIÓN DE CONTADORES CON LÍMITES");
-        System.out.println("===================================\n");
 
-        // Contador con valores por defecto (min=1, max=100, valor=50)
         Contador c1 = new Contador();
         System.out.println("c1 (constructor por defecto): " + c1);
         
