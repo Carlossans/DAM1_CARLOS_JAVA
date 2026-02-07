@@ -59,6 +59,11 @@ class Partida {
         this.victoriasJugador1 = 0; // Empiezan con 0 puntos
         this.victoriasJugador2 = 0;
         this.teclado = new Scanner(System.in); // Inicializa el lector de teclado
+
+        // Creamos los 5 globos desde el inicio (cada uno con capacidad aleatoria)
+        for (int i = 0; i < 5; i++) {
+            historialGlobos.add(new Globos());
+        }
     }
 
     // Método principal que ejecuta la lógica de la Fase 3
@@ -68,8 +73,7 @@ class Partida {
         // Bucle de máximo 5 rondas
         for (int ronda = 1; ronda <= 5; ronda++) {
             System.out.println("\nRONDA " + ronda);
-            Globos globoActual = new Globos(); // Creamos el globo de esta ronda
-            historialGlobos.add(globoActual); // Lo guardamos en el historial (ArrayList)
+            Globos globoActual = historialGlobos.get(ronda - 1); // Usamos el globo ya creado
 
             boolean turnoJugador1 = true; // Control de turnos (empieza J1)
             
@@ -116,10 +120,11 @@ class Partida {
             System.out.println("EL GANADOR ES EL JUGADOR 2");
         }
 
-        System.out.println("\nRESUMEN DE LOS GLOBOS JUGADOS:");
-        // Recorre el ArrayList para mostrar cómo quedó cada globo
+        System.out.println("\nRESUMEN DE LOS 5 GLOBOS:");
+        // Recorre el ArrayList para mostrar cómo quedó cada globo (jugado o no)
         for (int i = 0; i < historialGlobos.size(); i++) {
             System.out.println("Globo " + (i + 1) + ": " + historialGlobos.get(i).toString());
         }
     }
 }
+
