@@ -5,13 +5,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Globos {
-    private int capacidad;  // Aire máximo que soporta el globo
+    private int capacidadMaxima;  // Aire máximo que soporta el globo
     private int aireActual; // Aire que tiene en el momento
 
     // Constructor: se ejecuta al crear un "new Globos()"
     public Globos() {
         Random aleatorio = new Random(); // Creamos el generador de aleatorios
-        this.capacidad = aleatorio.nextInt(41) + 10; // Calcula un número entre 10 y 50
+        this.capacidadMaxima = aleatorio.nextInt(41) + 10; // Calcula un número entre 10 y 50
         this.aireActual = 0; // Al nacer, el globo está vacío
     }
 
@@ -20,7 +20,7 @@ public class Globos {
     }
 
     public boolean explotado() {
-        return aireActual > capacidad; // Devuelve true si el aire supera la capacidad
+        return aireActual > capacidadMaxima; // Devuelve true si el aire supera la capacidad
     }
 
     public String toString() {
@@ -28,11 +28,11 @@ public class Globos {
         String resultado = "";
         
         // Bucle para poner un asterisco por cada unidad de aire (sin pasarse de la capacidad)
-        for (int i = 0; i < aireActual && i < capacidad; i++) {
+        for (int i = 0; i < aireActual && i < capacidadMaxima; i++) {
             sb.append("*");
         }
         // Bucle para rellenar con "O" el espacio que falta hasta la capacidad máxima
-        for (int i = aireActual; i < capacidad; i++) {
+        for (int i = aireActual; i < capacidadMaxima; i++) {
             sb.append("O");
         }
         
