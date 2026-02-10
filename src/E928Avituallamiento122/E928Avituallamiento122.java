@@ -1,58 +1,59 @@
 package E928Avituallamiento122;
-
 import java.util.Scanner;
 
 public class E928Avituallamiento122 {
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        while (sc.hasNextLine()) {
-            String linea = sc.nextLine().trim();
+        Scanner entrada = new Scanner(System.in);
 
-            // Si la línea está vacía, la saltamos
-            if (linea.isEmpty()) {
-                continue;
+        while (true) {
+
+            int alturaAnterior = entrada.nextInt();
+
+            if (alturaAnterior == -1) {
+                break;
             }
 
-            // Parseamos las alturas
-            String[] partes = linea.split("\\s+");
-            int[] alturas = new int[partes.length];
+            int km = 0;
 
-            for (int i = 0; i < partes.length; i++) {
-                alturas[i] = Integer.parseInt(partes[i]);
-            }
-
-            // Buscamos la zona llana más larga
             int mejorInicio = -1;
             int mejorLongitud = 0;
 
-            int i = 0;
-            while (i < alturas.length - 1) {
-                // Verificar si hay una zona llana que comienza en i
-                int j = i;
-                while (j < alturas.length - 1 && alturas[j] == alturas[j + 1]) {
-                    j++;
+            int inicioActual = 0;
+            int longitudActual = 0;
+
+            while (true) {
+
+                int alturaActual = entrada.nextInt();
+
+                if (alturaActual == -1) {
+                    break;
                 }
 
-                // Calcular la longitud de la zona llana
-                int longitud = j - i + 1;
-
-                // Si encontramos una zona llana más larga, la guardamos
-                if (j > i && longitud > mejorLongitud) {
-                    mejorInicio = i;
-                    mejorLongitud = longitud;
-                }
-
-                // Avanzar al siguiente punto después de la zona llana
-                if (j > i) {
-                    i = j + 1;
+                if (alturaActual == alturaAnterior) {
+                    if (longitudActual == 0) {
+                        inicioActual = km;
+                    }
+                    longitudActual++;
                 } else {
-                    i++;
+                    if (longitudActual > mejorLongitud) {
+                        mejorLongitud = longitudActual;
+                        mejorInicio = inicioActual;
+                    }
+                    longitudActual = 0;
                 }
+
+                alturaAnterior = alturaActual;
+                km++;
             }
 
-            // Imprimir resultado
-            if (mejorInicio == -1) {
+            if (longitudActual > mejorLongitud) {
+                mejorLongitud = longitudActual;
+                mejorInicio = inicioActual;
+            }
+
+            if (mejorLongitud == 0) {
                 System.out.println("HOY NO COMEN");
             } else {
                 System.out.println(mejorInicio + " " + mejorLongitud);
@@ -60,5 +61,3 @@ public class E928Avituallamiento122 {
         }
     }
 }
-
-
