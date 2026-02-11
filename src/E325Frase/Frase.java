@@ -37,7 +37,7 @@ public class Frase {
 
     // Método para añadir una cadena con espacio antes (si no está vacío)
     public void anexar(String cadena) {
-        if (texto.length() > 0) {
+        if (!texto.isEmpty()) { // texto.length() > 0
             texto.append(" ");
         }
         texto.append(cadena);
