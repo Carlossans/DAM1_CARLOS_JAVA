@@ -14,12 +14,7 @@ public class Frase {
     public Frase(int repeticiones, String cadena) {
         this();
 
-        for (int i = 0; i < repeticiones; i++) {
-            if (i > 0) {
-                texto.append(" ");
-            }
-            texto.append(cadena);
-        }
+        anexar(repeticiones, cadena);
     }
 
     public char caracterEn(int posicion) {
@@ -35,6 +30,15 @@ public class Frase {
             texto.append(" ");
         }
         texto.append(cadena);
+    }
+
+    public void anexar(int repeticiones, String cadena) {
+        for (int i = 0; i < repeticiones; i++) {
+            if (!texto.isEmpty()) {
+                texto.append(" ");
+            }
+            texto.append(cadena);
+        }
     }
 
     public void recortar(int numCaracteres) {
@@ -56,11 +60,9 @@ public class Frase {
     }
 
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (!(obj instanceof Frase otraFrase)) return false;
 
-        Frase otraFrase = (Frase) obj;
-        return this.texto.toString().equals(otraFrase.texto.toString());
+        return this.texto.toString().contentEquals(otraFrase.texto);
     }
 
     public Frase clone() {
