@@ -34,7 +34,7 @@ public class Carton {
     public void anotaBola (int bola) {
         for (int i = 0; i < numeros.size(); i++) {
             if (numeros.get(i) == bola) {
-                marcas.add(true);
+                marcas.set(i, true);
             }
         }
     }

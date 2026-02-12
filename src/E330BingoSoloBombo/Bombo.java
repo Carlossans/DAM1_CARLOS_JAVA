@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Bombo {
     private ArrayList<Integer> bombo;
-    private ArrayList<Integer> bolasSacadas = new ArrayList<Integer>();
+    private ArrayList<Integer> bolasSacadas = new ArrayList<>();
     private Random aleatorio = new Random();
     private int totalBolas;
 
