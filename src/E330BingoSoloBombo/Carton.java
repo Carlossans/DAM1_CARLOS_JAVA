@@ -38,4 +38,27 @@ public class Carton {
             }
         }
     }
+
+    public boolean hayBingo() {
+        for (Boolean marcada : marcas) {
+            if(!marcada) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public String toString() {
+        StringBuilder carton = new StringBuilder();
+
+        for (int i = 0; i < numeros.size(); i++) {
+            if (!marcas.get(i)) {
+                carton.append(numeros.get(i)).append(" ");
+            } else {
+                carton.append("[").append(numeros.get(i)).append("] ");
+            }
+        }
+
+        return carton.toString();
+    }
 }
