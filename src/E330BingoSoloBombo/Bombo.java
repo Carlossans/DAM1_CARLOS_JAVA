@@ -77,12 +77,5 @@ public class Bombo {
         
         return comparacionBolas.toString();
     }
-
-    public class carton {
-
-        public carton (int cantidadNumeros){
-
-        }
-    }
     
 }
