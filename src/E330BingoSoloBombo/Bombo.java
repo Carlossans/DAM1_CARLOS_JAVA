@@ -28,7 +28,7 @@ public class Bombo {
 
     public int dameBola() {
 
-        int indiceASacar = aleatorio.nextInt(0, bombo.size());
+        int indiceASacar = bombo.size() - 1;
 
         int bola = bombo.get(indiceASacar);
 
@@ -74,5 +74,4 @@ public class Bombo {
         
         return comparacionBolas.toString();
     }
-    
 }
