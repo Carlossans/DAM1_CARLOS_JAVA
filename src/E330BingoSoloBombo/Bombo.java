@@ -8,8 +8,11 @@ public class Bombo {
     private ArrayList<Integer> bombo;
     private ArrayList<Integer> bolasSacadas = new ArrayList<Integer>();
     private Random aleatorio = new Random();
+    private int totalBolas;
 
     public Bombo (int cantidadBolas) {
+        totalBolas = cantidadBolas;
+
         bombo = new ArrayList<>(cantidadBolas);
 
         for (int i = 1; i <= cantidadBolas; i++) {
@@ -17,6 +20,10 @@ public class Bombo {
         }
 
         revuelveBombo();
+    }
+
+    public int getTotalBolas() {
+        return totalBolas;
     }
 
     public int dameBola() {
@@ -69,6 +76,13 @@ public class Bombo {
         comparacionBolas.append("]");
         
         return comparacionBolas.toString();
+    }
+
+    public class carton {
+
+        public carton (int cantidadNumeros){
+
+        }
     }
     
 }
