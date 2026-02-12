@@ -27,9 +27,6 @@ public class Bombo {
     }
 
     public int dameBola() {
-        if (!hayBolas()) {
-            throw new IllegalStateException("No quedan bolas en el bombo");
-        }
 
         int indiceASacar = aleatorio.nextInt(0, bombo.size());
 

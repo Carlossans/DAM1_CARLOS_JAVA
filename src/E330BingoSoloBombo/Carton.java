@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Carton {
     private ArrayList<Integer> numeros;
     private ArrayList<Boolean> marcas;
-    private Bombo bombo; // atributo del objeto cartón
+    private Bombo bombo;
     private Random aleatorio = new Random();
 
     public Carton (int cantidadNumeros, Bombo bombo) {
@@ -22,10 +22,10 @@ public class Carton {
         int totalBolas = bombo.getTotalBolas();
 
         while (numeros.size() < cantidadNumeros) {
-            int numero = aleatorio.nextInt(totalBolas + 1);
+            int num = aleatorio.nextInt(totalBolas + 1);
 
-            if (!numeros.contains(numero)) {
-                numeros.add(numero);
+            if (!numeros.contains(num)) {
+                numeros.add(num);
                 marcas.add(false);
             }
         }
