@@ -61,7 +61,7 @@ public class Bombo {
     }
 
     public String toString() {
-        StringBuilder comparacionBolas = new StringBuilder("\nBolas que no han salido: [");
+        StringBuilder comparacionBolas = new StringBuilder("Bolas que no han salido: [");
         
         for (Integer bola : bombo) {
             comparacionBolas.append(bola).append(" ");
