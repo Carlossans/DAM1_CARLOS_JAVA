@@ -5,19 +5,26 @@ import java.util.ArrayList;
 
 public class Carton {
     private ArrayList<Integer> numeros;
+    private ArrayList<ArrayList<Integer>> filasNumeros = new ArrayList<>();
+    private ArrayList<ArrayList<Boolean>> filasMarcas = new ArrayList<>();
     private ArrayList<Boolean> marcas;
     private Bombo bombo;
     private Random aleatorio = new Random();
     private int id;
     private static int contadorId = 1;
+    private static final String VERDE = "\u001B[32m";
+    private static final String RESET = "\u001B[0m";
+    private static final int NUMFILAS = 0;
 
     public Carton (Bombo bombo) {
         int cantidadNumerosCalculada = Math.max(1, bombo.getTotalBolas() / 6);
 
         this.bombo = bombo;
         this.id = contadorId++;
-        numeros = new ArrayList<>();
-        marcas = new ArrayList<>();
+        for (int i = 0; i < NUMFILAS; i++) {
+            filasNumeros.add(new ArrayList<Integer>());
+            filasMarcas.add(new ArrayList<Boolean>());
+        }
 
         rellenarAleatoriamente(cantidadNumerosCalculada);
     }
@@ -58,7 +65,7 @@ public class Carton {
 
         for (int i = 0; i < numeros.size(); i++) {
             if (marcas.get(i)) {
-                carton.append("[").append(numeros.get(i)).append("] ");
+                carton.append("[").append(VERDE).append(numeros.get(i)).append(RESET).append("] ");
             } else {
                 carton.append(numeros.get(i)).append(" ");
             }
