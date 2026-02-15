@@ -61,10 +61,10 @@ public class Carton {
     }
 
     public void anotaBola(int bola) {
-        for (int i = 0; i < NUM_FILAS; i++) {
-            for (int j = 0; j < filasNumeros.get(i).size(); j++) {
-                if (filasNumeros.get(i).get(j) == bola) {
-                    filasMarcas.get(i).set(j, true);
+        for (int fila = 0; fila < NUM_FILAS; fila++) {
+            for (int columna = 0; columna < filasNumeros.get(fila).size(); columna++) {
+                if (filasNumeros.get(fila).get(columna) == bola) {
+                    filasMarcas.get(fila).set(columna, true);
                 }
             }
         }
@@ -73,9 +73,9 @@ public class Carton {
     public boolean hayLinea() {
         if (cantoLinea) return false;
 
-        for (ArrayList<Boolean> filaMarcas : filasMarcas) {
+        for (ArrayList<Boolean> fila : filasMarcas) {
             boolean lineaCompleta = true;
-            for (Boolean marcada : filaMarcas) {
+            for (Boolean marcada : fila) {
                 if (!marcada) {
                     lineaCompleta = false;
                     break;
@@ -90,8 +90,8 @@ public class Carton {
     }
 
     public boolean hayBingo() {
-        for (ArrayList<Boolean> filaMarcas : filasMarcas) {
-            for (Boolean marcada : filaMarcas) {
+        for (ArrayList<Boolean> fila : filasMarcas) {
+            for (Boolean marcada : fila) {
                 if(!marcada) {
                     return false;
                 }
@@ -101,18 +101,18 @@ public class Carton {
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("CARTÓN ").append(id).append(":\n");
         
-        for (int f = 0; f < NUM_FILAS; f++) {
-            sb.append("  "); // Margen
-            for (int c = 0; c < filasNumeros.get(f).size(); c++) {
-                int num = filasNumeros.get(f).get(c);
-                boolean marcada = filasMarcas.get(f).get(c);
+        for (int fila = 0; fila < NUM_FILAS; fila++) {
+            sb.append("  ");
+            for (int columna = 0; columna < filasNumeros.get(fila).size(); columna++) {
+                int num = filasNumeros.get(fila).get(columna);
+                boolean marcada = filasMarcas.get(fila).get(columna);
                 
                 if (marcada) {
                     sb.append("[").append(VERDE).append(String.format("%02d", num)).append(RESET).append("] ");
