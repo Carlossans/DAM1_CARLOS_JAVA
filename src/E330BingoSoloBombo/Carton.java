@@ -8,7 +8,7 @@ public class Carton {
     private ArrayList<ArrayList<Boolean>> filasMarcas;
 
     private Bombo bombo;
-    private Random aleatorio = new Random();
+    private Random aleatorio;
     private int id;
     private static int contadorId = 1;
     private boolean cantoLinea = false;
@@ -19,12 +19,13 @@ public class Carton {
 
     public Carton (Bombo bombo) {
         this.bombo = bombo;
+        aleatorio = new Random();
         id = contadorId++;
         filasMarcas = new ArrayList<>();
         filasNumeros = new ArrayList<>();
 
         for (int i = 0; i < NUM_FILAS; i++) {
-            filasNumeros.add(new ArrayList<>()); // no hace falta volver a especificar el tipo
+            filasNumeros.add(new ArrayList<>());
             filasMarcas.add(new ArrayList<>());
         }
 
@@ -54,7 +55,7 @@ public class Carton {
     }
 
     public boolean elCartonYaTieneNum(int num) {
-        for (ArrayList<Integer> fila : filasNumeros) { // comprueba todo el cartón
+        for (ArrayList<Integer> fila : filasNumeros) {
             if (fila.contains(num)) return true;
         }
         return false;
@@ -74,14 +75,7 @@ public class Carton {
         if (cantoLinea) return false;
 
         for (ArrayList<Boolean> fila : filasMarcas) {
-            boolean lineaCompleta = true;
-            for (Boolean marcada : fila) {
-                if (!marcada) {
-                    lineaCompleta = false;
-                    break;
-                }
-            }
-            if (lineaCompleta) {
+            if (!fila.contains(false)) {
                 cantoLinea = true;
                 return true;
             }
@@ -91,10 +85,8 @@ public class Carton {
 
     public boolean hayBingo() {
         for (ArrayList<Boolean> fila : filasMarcas) {
-            for (Boolean marcada : fila) {
-                if(!marcada) {
-                    return false;
-                }
+            if (fila.contains(false)) {
+                return false;
             }
         }
         return true;

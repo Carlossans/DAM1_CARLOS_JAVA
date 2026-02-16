@@ -44,7 +44,7 @@ public class Juego {
             mostrarCartones();
 
             if (!alguienTieneBingo) {
-                sleep(5000);
+                sleep(3500);
             }
         }
 
@@ -100,8 +100,6 @@ public class Juego {
                 System.out.printf("\n%sBINGO, EL CARTÓN GANADOR ES:%s\n %s\n",
                         AMARILLO, RESET, ganadores.getFirst());
             }
-        } else {
-            System.out.println("Se han acabado las bolas. Nadie cantó bingo"); // comprobar si esto tiene sentido
         }
         System.out.println(bombo);
     }

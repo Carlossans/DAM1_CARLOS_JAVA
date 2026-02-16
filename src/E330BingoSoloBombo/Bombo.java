@@ -7,12 +7,12 @@ import java.util.Random;
 public class Bombo {
     private ArrayList<Integer> bombo;
     private ArrayList<Integer> bolasSacadas = new ArrayList<>();
-    private Random aleatorio = new Random();
+    private Random aleatorio;
     private int totalBolas;
 
     public Bombo (int cantidadBolas) {
         totalBolas = cantidadBolas;
-
+        aleatorio = new Random();
         bombo = new ArrayList<>(cantidadBolas);
 
         for (int i = 1; i <= cantidadBolas; i++) {
@@ -41,15 +41,14 @@ public class Bombo {
 
     public void revuelveBombo() {
         // Fisher-Yates shuffle: desde la última posición hasta la segunda
-        // cambiar variables de fisher yates para que no parezca "chat" supuestamente
-        for (int i = bombo.size() - 1; i >= 1; i--) {
+        for (int posicionActual = bombo.size() - 1; posicionActual >= 1; posicionActual--) {
             
-            int j = aleatorio.nextInt(i + 1);
+            int posicionAleatoria = aleatorio.nextInt(posicionActual + 1);
             
-            int temporal = bombo.get(i);
+            int temporal = bombo.get(posicionActual);
             
-            bombo.set(i, bombo.get(j));
-            bombo.set(j, temporal);
+            bombo.set(posicionActual, bombo.get(posicionAleatoria));
+            bombo.set(posicionAleatoria, temporal);
         }
     }
 
