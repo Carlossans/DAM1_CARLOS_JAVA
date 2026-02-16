@@ -10,6 +10,10 @@ public class Principal {
     private static final String RESET = "\u001B[0m";
 
     public static void main(String[] args) throws InterruptedException {
+        //Juego partida = new Juego();
+
+        //partida.jugar();
+
         Random aleatorio = new Random();
         Bombo bombo = new Bombo(aleatorio.nextInt(60, 91));
         ArrayList<Carton> cartones = new ArrayList<>();
@@ -27,7 +31,7 @@ public class Principal {
         System.out.println("\n".repeat(30));
         System.out.printf("%sBIENVENIDO AL GRAN BINGO DEL I.E.S LAGUNA DE JOATZEL%s\n", AZUL, RESET);
 
-        System.out.printf(
+        System.out.printf( // Inútil porque siempre tiene más de un carton, se me olvido quitarlo
                 (numCartones > 1) ? "\nEL BOMBO TIENE %d BOLAS Y EL JUEGO CUENTA CON %d CARTONES\n\n"
                         : "\nEL BOMBO TIENE %d BOLAS Y EL JUEGO CUENTA CON %d CARTÓN\n\n",
                 bombo.getTotalBolas(), numCartones);
