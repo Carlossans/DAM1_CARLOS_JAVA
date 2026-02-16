@@ -48,7 +48,7 @@ public class Principal {
                 carton.anotaBola(bola);
 
                 if (!lineaYaCantadaEnPartida && carton.hayLinea()) {
-                    System.out.printf("\n%sLÍNEA EN EL CARTÓN %d%s\n", AMARILLO, carton.getId(), RESET);
+                    System.out.printf("\n%sLÍNEA EN EL CARTÓN %d%s\n\n", AMARILLO, carton.getId(), RESET);
                     lineaYaCantadaEnPartida = true;
                     sleep(2000);
                 }

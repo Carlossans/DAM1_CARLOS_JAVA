@@ -24,8 +24,8 @@ public class Carton {
         filasNumeros = new ArrayList<>();
 
         for (int i = 0; i < NUM_FILAS; i++) {
-            filasNumeros.add(new ArrayList<Integer>());
-            filasMarcas.add(new ArrayList<Boolean>());
+            filasNumeros.add(new ArrayList<>()); // no hace falta volver a especificar el tipo
+            filasMarcas.add(new ArrayList<>());
         }
 
         int totalNumeros = Math.max(NUM_FILAS, bombo.getTotalBolas() / 6);
@@ -54,7 +54,7 @@ public class Carton {
     }
 
     public boolean elCartonYaTieneNum(int num) {
-        for (ArrayList<Integer> fila : filasNumeros) {
+        for (ArrayList<Integer> fila : filasNumeros) { // comprueba todo el cartón
             if (fila.contains(num)) return true;
         }
         return false;
@@ -63,7 +63,7 @@ public class Carton {
     public void anotaBola(int bola) {
         for (int fila = 0; fila < NUM_FILAS; fila++) {
             for (int columna = 0; columna < filasNumeros.get(fila).size(); columna++) {
-                if (filasNumeros.get(fila).get(columna) == bola) {
+                if (filasNumeros.get(fila).get(columna) == bola) { // sería mejor usar .equals(bola)
                     filasMarcas.get(fila).set(columna, true);
                 }
             }

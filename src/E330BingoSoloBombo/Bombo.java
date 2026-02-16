@@ -28,7 +28,7 @@ public class Bombo {
 
     public int dameBola() {
 
-        int indiceASacar = bombo.size() - 1;
+        int indiceASacar = bombo.size() - 1; // saca siempre la última bola del bombo
 
         int bola = bombo.get(indiceASacar);
 
@@ -40,7 +40,7 @@ public class Bombo {
     }
 
     public void revuelveBombo() {
-        // Fisher-Yates shuffle: desde la última posición hasta la segundo
+        // Fisher-Yates shuffle: desde la última posición hasta la segunda
         for (int i = bombo.size() - 1; i >= 1; i--) {
             
             int j = aleatorio.nextInt(i + 1);
