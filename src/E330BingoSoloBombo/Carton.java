@@ -105,23 +105,23 @@ public class Carton {
     }
 
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("CARTÓN ").append(id).append(":\n");
+        StringBuilder mostrarCarton = new StringBuilder();
+        mostrarCarton.append("CARTÓN ").append(id).append(":\n");
         
         for (int fila = 0; fila < NUM_FILAS; fila++) {
-            sb.append("  ");
+            mostrarCarton.append("  ");
             for (int columna = 0; columna < filasNumeros.get(fila).size(); columna++) {
                 int num = filasNumeros.get(fila).get(columna);
                 boolean marcada = filasMarcas.get(fila).get(columna);
                 
                 if (marcada) {
-                    sb.append("[").append(VERDE).append(String.format("%02d", num)).append(RESET).append("] ");
+                    mostrarCarton.append("[").append(VERDE).append(String.format("%02d", num)).append(RESET).append("] ");
                 } else {
-                    sb.append(String.format("%02d", num)).append("   ");
+                    mostrarCarton.append(String.format("%02d", num)).append("   ");
                 }
             }
-            sb.append("\n");
+            mostrarCarton.append("\n");
         }
-        return sb.toString();
+        return mostrarCarton.toString();
     }
 }

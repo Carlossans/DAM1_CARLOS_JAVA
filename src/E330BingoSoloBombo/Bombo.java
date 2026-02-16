@@ -41,6 +41,7 @@ public class Bombo {
 
     public void revuelveBombo() {
         // Fisher-Yates shuffle: desde la última posición hasta la segunda
+        // cambiar variables de fisher yates para que no parezca "chat" supuestamente
         for (int i = bombo.size() - 1; i >= 1; i--) {
             
             int j = aleatorio.nextInt(i + 1);

@@ -40,7 +40,7 @@ public class Juego {
             limpiarPantalla();
             System.out.printf("BOLA: %s%02d%s\n", AZUL, bola, RESET);
 
-            procesarBolaEnCartones(bola);
+            comprobarBolaEnCartones(bola);
             mostrarCartones();
 
             if (!alguienTieneBingo) {
@@ -51,7 +51,20 @@ public class Juego {
         mostrarResultadosFinales();
     }
 
-    private void procesarBolaEnCartones(int bola) throws InterruptedException {
+    private void mostrarBienvenida() throws InterruptedException {
+        limpiarPantalla();
+        System.out.printf("%sBIENVENIDO AL GRAN BINGO DEL I.E.S LAGUNA DE JOATZEL%s\n", AZUL, RESET);
+        System.out.printf("\nEL BOMBO TIENE %d BOLAS Y EL JUEGO CUENTA CON %d CARTONES\n\n",
+                bombo.getTotalBolas(), numCartones);
+        mostrarCartones();
+        sleep(3000);
+    }
+
+    private void limpiarPantalla() {
+        System.out.println("\n".repeat(30));
+    }
+
+    private void comprobarBolaEnCartones(int bola) throws InterruptedException {
         for (Carton carton : cartones) {
             carton.anotaBola(bola);
 
@@ -68,24 +81,12 @@ public class Juego {
         }
     }
 
-    private void mostrarBienvenida() throws InterruptedException {
-        limpiarPantalla();
-        System.out.printf("%sBIENVENIDO AL GRAN BINGO DEL I.E.S LAGUNA DE JOATZEL%s\n", AZUL, RESET);
-        System.out.printf("\nEL BOMBO TIENE %d BOLAS Y EL JUEGO CUENTA CON %d CARTONES\n\n",
-                bombo.getTotalBolas(), numCartones);
-        mostrarCartones();
-        sleep(3000);
-    }
-
     private void mostrarCartones() {
         for (Carton carton : cartones) {
             System.out.println(carton);
         }
     }
 
-    private void limpiarPantalla() {
-        System.out.println("\n".repeat(30));
-    }
 
     private void mostrarResultadosFinales() {
         System.out.println("\n".repeat(5));
@@ -100,7 +101,7 @@ public class Juego {
                         AMARILLO, RESET, ganadores.getFirst());
             }
         } else {
-            System.out.println("Se han acabado las bolas. Nadie cantó bingo");
+            System.out.println("Se han acabado las bolas. Nadie cantó bingo"); // comprobar si esto tiene sentido
         }
         System.out.println(bombo);
     }
