@@ -63,7 +63,7 @@ public class Carton {
     public void anotaBola(int bola) {
         for (int fila = 0; fila < NUM_FILAS; fila++) {
             for (int columna = 0; columna < filasNumeros.get(fila).size(); columna++) {
-                if (filasNumeros.get(fila).get(columna) == bola) { // sería mejor usar .equals(bola)
+                if (filasNumeros.get(fila).get(columna).equals(bola)) {
                     filasMarcas.get(fila).set(columna, true);
                 }
             }

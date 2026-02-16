@@ -18,18 +18,15 @@ public class Juego {
     private Random aleatorio;
 
     public Juego() {
-        this.aleatorio = new Random();
-        // Inicializamos el bombo con entre 60 y 90 bolas
-        this.bombo = new Bombo(aleatorio.nextInt(60, 91));
-        this.cartones = new ArrayList<>();
-        this.ganadores = new ArrayList<>();
-        this.alguienTieneBingo = false;
-        this.lineaYaCantadaEnPartida = false;
+        aleatorio = new Random();
+        bombo = new Bombo(aleatorio.nextInt(60, 91));
+        cartones = new ArrayList<>();
+        ganadores = new ArrayList<>();
+        alguienTieneBingo = false;
+        lineaYaCantadaEnPartida = false;
 
-        // Decidimos cuántos cartones habrá
-        this.numCartones = aleatorio.nextInt(2, 6);
+        numCartones = aleatorio.nextInt(2, 6);
 
-        // Creamos los cartones
         for (int i = 0; i < numCartones; i++) {
             cartones.add(new Carton(bombo));
         }
@@ -38,7 +35,6 @@ public class Juego {
     public void jugar() throws InterruptedException {
         mostrarBienvenida();
 
-        // Bucle principal del juego
         while (bombo.hayBolas() && !alguienTieneBingo) {
             int bola = bombo.dameBola();
             limpiarPantalla();
@@ -48,7 +44,7 @@ public class Juego {
             mostrarCartones();
 
             if (!alguienTieneBingo) {
-                sleep(2500);
+                sleep(5000);
             }
         }
 
@@ -59,14 +55,12 @@ public class Juego {
         for (Carton carton : cartones) {
             carton.anotaBola(bola);
 
-            // Lógica de Línea
             if (!lineaYaCantadaEnPartida && carton.hayLinea()) {
                 System.out.printf("\n%sLÍNEA EN EL CARTÓN %d%s\n\n", AMARILLO, carton.getId(), RESET);
                 lineaYaCantadaEnPartida = true;
-                sleep(2000);
+                sleep(3500);
             }
 
-            // Lógica de Bingo
             if (carton.hayBingo()) {
                 alguienTieneBingo = true;
                 ganadores.add(carton);

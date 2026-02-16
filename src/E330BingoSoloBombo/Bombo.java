@@ -28,7 +28,7 @@ public class Bombo {
 
     public int dameBola() {
 
-        int indiceASacar = bombo.size() - 1; // saca siempre la última bola del bombo
+        int indiceASacar = bombo.size() - 1;
 
         int bola = bombo.get(indiceASacar);
 
