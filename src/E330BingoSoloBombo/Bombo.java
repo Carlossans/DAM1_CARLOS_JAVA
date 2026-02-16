@@ -56,10 +56,6 @@ public class Bombo {
         return !bombo.isEmpty();
     }
 
-    public boolean bolaEstaDentro(int bolaBuscada) {
-        return bombo.contains(bolaBuscada);
-    }
-
     public String toString() {
         StringBuilder comparacionBolas = new StringBuilder("Bolas que no han salido: [");
         

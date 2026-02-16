@@ -66,6 +66,7 @@ public class Carton {
             for (int columna = 0; columna < filasNumeros.get(fila).size(); columna++) {
                 if (filasNumeros.get(fila).get(columna).equals(bola)) {
                     filasMarcas.get(fila).set(columna, true);
+                    return;
                 }
             }
         }
