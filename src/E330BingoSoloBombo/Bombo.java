@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Bombo {
     private ArrayList<Integer> bombo;
-    private ArrayList<Integer> bolasSacadas = new ArrayList<>();
+    private ArrayList<Integer> bolasSacadas;
     private Random aleatorio;
     private int totalBolas;
 
@@ -14,6 +14,7 @@ public class Bombo {
         totalBolas = cantidadBolas;
         aleatorio = new Random();
         bombo = new ArrayList<>(cantidadBolas);
+        bolasSacadas = new ArrayList<>();
 
         for (int i = 1; i <= cantidadBolas; i++) {
             bombo.add(i);
@@ -44,7 +45,7 @@ public class Bombo {
         for (int posicionActual = bombo.size() - 1; posicionActual >= 1; posicionActual--) {
             
             int posicionAleatoria = aleatorio.nextInt(posicionActual + 1);
-            
+
             int temporal = bombo.get(posicionActual);
             
             bombo.set(posicionActual, bombo.get(posicionAleatoria));
