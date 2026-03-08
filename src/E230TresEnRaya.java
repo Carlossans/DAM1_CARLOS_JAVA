@@ -6,66 +6,68 @@ public class E230TresEnRaya {
 
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
-        System.out.print("¿Permitir sobreescribir casillas? (s/n): ");
-        boolean permitirSobreescribir = teclado.next().equalsIgnoreCase("s");
+        
+        System.out.print("¿Sobreescribir? (1 =S i, 0= No): ");
+        boolean permitir = teclado.nextInt() == 1;
 
-        int jugadorActual = 1;
-        boolean alguienGano = false;
-        int casillasMarcadas = 0;
+        int jugador = 1;
+        boolean fin = false;
+        int fichas = 0;
 
-        // Si permitimos sobreescribir, la condición de "casillasMarcadas < 9" no debe detener el juego
-        while (!alguienGano && (permitirSobreescribir || casillasMarcadas < 9)) {
-            dibujarTablero(TABLERO);
-            System.out.println("Turno Jugador " + jugadorActual + " (" + (jugadorActual == 1 ? 'X' : 'O') + ")");
-            System.out.print("Fila (0-2): "); int f = teclado.nextInt();
-            System.out.print("Col (0-2): "); int c = teclado.nextInt();
+        while (!fin && (permitir || fichas < 9)) {
+            dibujarTablero();
+            System.out.println("Turno Jugador " + jugador + " (" + (jugador == 1 ? 'X' : 'O') + ")");
+            System.out.print("Fila: "); int f = teclado.nextInt() - 1;
+            System.out.print("Col: "); int c = teclado.nextInt() - 1;
 
-            // Lógica de movimiento
-            if (TABLERO[f][c] == 0 || (permitirSobreescribir && TABLERO[f][c] != jugadorActual)) {
-                
-                if (TABLERO[f][c] == 0) casillasMarcadas++;
-                
-                TABLERO[f][c] = jugadorActual;
+            if (f >= 0 && f < 3 && c >= 0 && c < 3) {
+                if (TABLERO[f][c] == 0 || (permitir && TABLERO[f][c] != jugador)) {
+                    if (TABLERO[f][c] == 0) fichas++;
+                    TABLERO[f][c] = jugador;
 
-                if (comprobarVictoria(TABLERO)) {
-                    alguienGano = true;
+                    if (comprobarVictoria()) {
+                        fin = true;
+                    } else {
+                        jugador = (jugador == 1) ? 2 : 1;
+                    }
                 } else {
-                    jugadorActual = (jugadorActual == 1) ? 2 : 1;
+                    System.out.println("Movimiento no valido");
                 }
             } else {
-                System.out.println("¡Movimiento no válido! (Casilla ocupada o ya es tuya)");
+                System.out.println("Fuera de rango (1-3)");
             }
         }
 
-        dibujarTablero(TABLERO);
-        if (alguienGano) {
-            System.out.println("¡FINAL! El Jugador " + jugadorActual + " ha ganado.");
+        dibujarTablero();
+        if (fin) {
+            System.out.println("¡Gana el Jugador " + jugador + "!");
         } else {
-            // Esto solo ocurrirá si permitirSobreescribir es false y se llenó el tablero
-            System.out.println("Empate: Tablero lleno sin ganador.");
+            System.out.println("Empate.");
         }
     }
 
-    public static void dibujarTablero(int[][] t) {
-        System.out.println("\n  0   1   2");
+    public static void dibujarTablero() {
+        System.out.println("\n  1   2   3");
         for (int i = 0; i < 3; i++) {
-            System.out.print(i + " ");
+            System.out.print((i + 1) + " ");
             for (int j = 0; j < 3; j++) {
-                char v = (t[i][j] == 1) ? 'X' : (t[i][j] == 2) ? 'O' : ' ';
+                char v = ' ';
+                if (TABLERO[i][j] == 1) v = 'X';
+                else if (TABLERO[i][j] == 2) v = 'O';
                 System.out.print(v + (j < 2 ? " | " : ""));
             }
             if (i < 2) System.out.println("\n -----------");
         }
-        System.out.println();
+        System.out.println("\n");
     }
 
-    public static boolean comprobarVictoria(int[][] t) {
+    public static boolean comprobarVictoria() {
         for (int i = 0; i < 3; i++) {
-            if (t[i][0] != 0 && t[i][0] == t[i][1] && t[i][1] == t[i][2]) return true;
-            if (t[0][i] != 0 && t[0][i] == t[1][i] && t[1][i] == t[2][i]) return true;
+            if (TABLERO[i][0] != 0 && TABLERO[i][0] == TABLERO[i][1] && TABLERO[i][1] == TABLERO[i][2]) return true;
+            if (TABLERO[0][i] != 0 && TABLERO[0][i] == TABLERO[1][i] && TABLERO[1][i] == TABLERO[2][i]) return true;
         }
-        if (t[0][0] != 0 && t[0][0] == t[1][1] && t[1][1] == t[2][2]) return true;
-        if (t[0][2] != 0 && t[0][2] == t[1][1] && t[1][1] == t[2][0]) return true;
+        if (TABLERO[0][0] != 0 && TABLERO[0][0] == TABLERO[1][1] && TABLERO[1][1] == TABLERO[2][2]) return true;
+        if (TABLERO[0][2] != 0 && TABLERO[0][2] == TABLERO[1][1] && TABLERO[1][1] == TABLERO[2][0]) return true;
         return false;
     }
 }
