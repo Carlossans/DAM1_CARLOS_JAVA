@@ -1,9 +1,10 @@
 package b400OOAVANZADA.b40000avanzada;
 
-public class Circulo extends Figura{
+public class Circulo extends Figura {
     private double radio;
 
-    public Circulo(double radio) {
+    public Circulo(double radio, String color) {
+        super(color);
         this.radio = radio;
     }
 
@@ -17,5 +18,9 @@ public class Circulo extends Figura{
 
     public void setRadio(double radio) {
         this.radio = radio;
+    }
+
+    public String toString() {
+        return super.toString() + " radio=" + radio;
     }
 }

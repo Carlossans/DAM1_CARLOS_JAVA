@@ -1,9 +1,10 @@
 package b400OOAVANZADA.b40000avanzada;
 
-public class Rectangulo extends Figura{
+public class Rectangulo extends Figura {
     protected double base, altura;
 
-    public Rectangulo(double base, double altura) {
+    public Rectangulo(double base, double altura, String color) {
+        super(color);
         this.base = base;
         this.altura = altura;
     }
@@ -26,5 +27,9 @@ public class Rectangulo extends Figura{
 
     public void setAltura(double altura) {
         this.altura = altura;
+    }
+
+    public String toString() {
+        return super.toString() + " base=" + base + ", altura=" + altura;
     }
 }

@@ -3,11 +3,11 @@ package b400OOAVANZADA.b40000avanzada;
 public class Principal {
     public static void main(String[] args) {
 
-        Figura f2 = new Circulo(7.59);
-        Figura f3 = new Rectangulo(3.45, 8.91);
-        Circulo c1 = new Circulo(5.55);
-        Rectangulo r1 = new Rectangulo(3.01, 8.53);
-        Cuadrado q1 = new Cuadrado(4.15);
+        Figura f2 = new Circulo(7.59, Figura.AZUL);
+        Figura f3 = new Rectangulo(3.45, 8.91, Figura.VERDE);
+        Circulo c1 = new Circulo(5.55, Figura.ROJO);
+        Rectangulo r1 = new Rectangulo(3.01, 8.53, Figura.AMARILLO);
+        Cuadrado q1 = new Cuadrado(4.15, Figura.AZUL);
 
         Figura[] figuras = new Figura[5];
         figuras[0] = f2;
@@ -21,15 +21,18 @@ public class Principal {
 
         for (Figura f : figuras) {
             double area = f.calcularArea();
-            System.out.println(area);
+            System.out.println(f + " -> Área: " + area);
             areaTotal = areaTotal + area;
         }
 
         System.out.println("\nLa suma de las áreas de todas las figuras es: " + areaTotal);
 
-
         System.out.println("\nRadio del círculo c1: " + c1.getRadio());
         c1.setRadio(10.0);
-        System.out.println("\nNuevo área de c1: " + c1.calcularArea());
+        System.out.println("Nuevo área de c1: " + c1.calcularArea());
+
+        System.out.println("\nColor original de c1: " + c1.getColor() + "Color de muestra" + Figura.RESET);
+        c1.setColor(Figura.VERDE);
+        System.out.println("Color cambiado de c1: " + c1);
     }
 }
