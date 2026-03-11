@@ -23,7 +23,6 @@ public static class RelojEspaniol extends RelojTextual {
 
         public RelojEspaniol(int h, int m) { super(h, m); }
 
-        @Override
         public String toString() {
             // Convertimos formato 24h a 12h: (13 -> 1, 0 -> 0)
             int hora12 = getH() % 12;
