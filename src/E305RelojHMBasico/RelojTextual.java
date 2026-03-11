@@ -24,27 +24,21 @@ public static class RelojEspaniol extends RelojTextual {
         public RelojEspaniol(int h, int m) { super(h, m); }
 
         public String toString() {
-            // Convertimos formato 24h a 12h: (13 -> 1, 0 -> 0)
             int hora12 = getH() % 12;
 
-            // El artículo y el nombre de la hora
             String textoH;
             if (hora12 == 1) {
                 textoH = "la una";
             } else {
-                // Si hora12 es 0, NOMBRES[0] es "doce"
                 textoH = "las " + NOMBRES[hora12];
             }
 
-            // Si los minutos son 0, terminamos aquí
             if (getM() == 0) {
                 return "Son las" + textoH;
             }
 
-            // Para los minutos, usamos el nombre directo del array
             String textoM = NOMBRES[getM()];
 
-            // Ajuste gramatical para el minuto 1
             if (getM() == 1) textoM = "uno";
 
             return "Son " + textoH + " y " + textoM ;
@@ -60,7 +54,6 @@ public static class RelojEspaniol extends RelojTextual {
             super(h, m);
         }
 
-        @Override
         public String toString() {
 
             int hora12 = getH() % 12;
