@@ -20,7 +20,7 @@ public class Principal {
                 if (Math.random() < 0.30) {
                     int cantidadComida = aleatorio.nextInt(3) + 1;
                     int energiaAnterior = animal.getEnergia();
-                    animal.come(cantidadComida);
+                    animal.come(aleatorio.nextInt(3) + 1);
                     System.out.printf("El %s ha comido %d unidad(es). Energía %d --> %d", animal.getClass().getSimpleName(), cantidadComida, energiaAnterior, animal.getEnergia());
                 }
             }

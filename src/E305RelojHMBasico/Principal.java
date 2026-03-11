@@ -1,31 +1,22 @@
 package E305RelojHMBasico;
 
+import java.util.Arrays;
+
 public class Principal {
     public static void main(String[] args) {
-        Reloj reloj1 = new Reloj();
-        Reloj reloj2 = new Reloj(150);
-        Reloj reloj3 = new Reloj(3, 45);
+        int[] numeros = new int[] {7, 4, 2, 3, 1};
+        Reloj[] relojes = new Reloj[] {new Reloj(17, 40), new Reloj(9, 20), new Reloj(7, 00)};
 
-        System.out.println(reloj1);
-        System.out.println(reloj2);
-        System.out.println(reloj3);
+        Arrays.sort(numeros);
+        Arrays.sort(relojes);
 
-        reloj1.tick();
+        for (int numero : numeros) {
+            System.out.print(numero + " ");
+        }
+        System.out.println("\n");
 
-        reloj1.sumarMinutos(80);
-
-        System.out.println("Tras tick y sumar unos pocos minutos: " + reloj1);
-
-        reloj1.restarMinutos(20000);
-
-        System.out.println("Restado muchos minutos: " + reloj1);
-
-        int diferenciaMinutos = reloj2.calcularDiferenciaMinutos(reloj3);
-
-        System.out.println("Diferencia en minutos entre reloj2 y reloj3: " + diferenciaMinutos);
-
-        Reloj difReloj = reloj2.calcularDiferenciaReloj(reloj3);
-
-        System.out.println("Diferencia en Reloj entre reloj2 y reloj3: " + difReloj);
+        for (Reloj reloj : relojes) {
+            System.out.println(reloj);
+        }
     }
 }

@@ -1,7 +1,5 @@
 package b400OOAVANZADA.b40000avanzada.Animales;
 
-import java.sql.SQLOutput;
-
 public class Pajaro extends Ave{
 
     public Pajaro() {
