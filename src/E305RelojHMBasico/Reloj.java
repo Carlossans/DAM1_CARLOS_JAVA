@@ -66,17 +66,17 @@ public abstract class Reloj implements Comparable<Reloj>, Cloneable{
         // return ((this.h == ((Reloj) obj).h) && (this.m == ((Reloj) obj).m));
     }
 
-    public Reloj clone() {
-        Reloj clon = new Reloj();
-
-        clon.h = this.h;
-        clon.m = this.m;
-
-        return clon;
-
-        // Alternativa:
-        // return new Reloj(this.h, this.m);
-    }
+//    public Reloj clone() {
+//        Reloj clon = new Reloj();
+//
+//        clon.h = this.h;
+//        clon.m = this.m;
+//
+//        return clon;
+//
+//        // Alternativa:
+//        // return new Reloj(this.h, this.m);
+//    }
 
     private void normalizar() {
         // Alternativa 1, más sencilla pero menos eficiente:
@@ -136,13 +136,13 @@ public abstract class Reloj implements Comparable<Reloj>, Cloneable{
         return diferencia;
     }
 
-    public Reloj diferenciaReloj(Reloj otro) {
-        int diferenciaMinutos = this.diferenciaMinutos(otro);
-
-        Reloj diferenciaReloj = new Reloj(diferenciaMinutos);
-
-        return diferenciaReloj;
-    }
+//    public Reloj diferenciaReloj(Reloj otro) {
+//        int diferenciaMinutos = this.diferenciaMinutos(otro);
+//
+//        Reloj diferenciaReloj = new Reloj(diferenciaMinutos);
+//
+//        return diferenciaReloj;
+//    }
 
     @Override
     public int compareTo(Reloj otro) {
