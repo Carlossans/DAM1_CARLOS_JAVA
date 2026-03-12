@@ -1,6 +1,6 @@
 package E305RelojHMBasico;
 
-public abstract class Reloj implements Comparable<Reloj>, Cloneable{
+public abstract class Reloj implements Comparable<Reloj> {
     private int h;
     private int m;
 

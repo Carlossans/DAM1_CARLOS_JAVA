@@ -24,23 +24,23 @@ public static class RelojEspaniol extends RelojTextual {
         public RelojEspaniol(int h, int m) { super(h, m); }
 
         public String toString() {
-            int hora12 = getH() % 12;
+            int hora12 = getH() % 12; // Obtener hora ne formato 12h
 
-            String textoH;
+            String textoH; // Convierte la hora a palabras
             if (hora12 == 1) {
                 textoH = "la una";
             } else {
                 textoH = "las " + NOMBRES[hora12];
             }
 
-            if (getM() == 0) {
-                return "Son las" + textoH;
+            if (getM() == 0) { // 3 Caso especial: hora en punto
+                return "Son " + textoH;
             }
 
+            // 4 Convertir los minutos a palabras con la excepción del minuto 1
             String textoM = NOMBRES[getM()];
-
             if (getM() == 1) textoM = "uno";
-
+             // 5 Devuelve la frase
             return "Son " + textoH + " y " + textoM ;
         }
     }
@@ -50,24 +50,22 @@ public static class RelojEspaniol extends RelojTextual {
         private static RuleBasedNumberFormat formatter =
                 new RuleBasedNumberFormat(Locale.ENGLISH, RuleBasedNumberFormat.SPELLOUT);
 
-        public RelojIngles(int h, int m) {
-            super(h, m);
-        }
+        public RelojIngles(int h, int m) { super(h, m); }
 
         public String toString() {
 
-            int hora12 = getH() % 12;
-            if (hora12 == 0) hora12 = 12;
+            int hora12 = getH() % 12; // 1. Hora en formato 12h
+            if (hora12 == 0) hora12 = 12; // Ajuste: 0 se convierte en 12
 
-            String textoH = formatter.format(hora12);
+            String textoH = formatter.format(hora12); // 2. Convertir hora a texto
 
-            if (getM() == 0) {
+            if (getM() == 0) { // 3. Hora en punto
                 return "It is " + textoH + " o'clock";
             }
 
-            String textoM = formatter.format(getM());
+            String textoM = formatter.format(getM()); // 4. Convertir minutos a texto
 
-            return "It is " + textoH + " " + textoM;
+            return "It is " + textoH + " " + textoM; // 5. Frase completa
         }
     }
 }
