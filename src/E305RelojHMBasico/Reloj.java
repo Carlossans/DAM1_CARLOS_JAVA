@@ -144,7 +144,6 @@ public abstract class Reloj implements Comparable<Reloj> {
 //        return diferenciaReloj;
 //    }
 
-    @Override
     public int compareTo(Reloj otro) {
         return Integer.compare(this.totalMinutos(), otro.totalMinutos());
     }
