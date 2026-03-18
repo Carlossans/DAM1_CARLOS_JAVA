@@ -31,7 +31,7 @@ public abstract class Animal {
         if (energia > ENERGIA_MAX) energia = ENERGIA_MAX;
     }
 
-    public void habla() {
+    protected void gastarEnergiaPorHablar() {
         energia = energia - gastoPorHablar;
 
         if (energia < ENERGIA_MIN) energia = ENERGIA_MIN;

@@ -1,6 +1,6 @@
 package b400OOAVANZADA.b40000avanzada.Animales.E420InterfazParlante;
 
-public class Pajaro extends Ave {
+public class Pajaro extends Ave implements Parlante {
     public static final int APROVECHAMIENTO_COMIDA = 5;
 
     public Pajaro(String nombre) {
@@ -20,6 +20,6 @@ public class Pajaro extends Ave {
 
         System.out.println(habla);
 
-        super.habla();
+        gastarEnergiaPorHablar();
     }
 }

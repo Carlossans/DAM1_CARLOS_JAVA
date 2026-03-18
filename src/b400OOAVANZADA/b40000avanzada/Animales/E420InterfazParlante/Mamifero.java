@@ -4,10 +4,10 @@ public abstract class Mamifero extends Animal {
     public static final int GASTO_POR_HABLAR = 3;
 
     public Mamifero(int aprovechamientoComida, String nombre) {
-        super(GASTO_POR_HABLAR, aprovechamientoComida, nombre);
+        super(aprovechamientoComida, GASTO_POR_HABLAR, nombre);
     }
 
     public Mamifero(int aprovechamientoComida, String nombre, int energia) {
-        super(GASTO_POR_HABLAR, aprovechamientoComida, nombre, energia);
+        super(aprovechamientoComida, GASTO_POR_HABLAR, nombre, energia);
     }
 }

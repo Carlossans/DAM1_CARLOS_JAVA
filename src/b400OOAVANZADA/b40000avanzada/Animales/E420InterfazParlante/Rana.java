@@ -1,6 +1,6 @@
 package b400OOAVANZADA.b40000avanzada.Animales.E420InterfazParlante;
 
-public class Rana extends Anfibio {
+public class Rana extends Anfibio implements Parlante {
     public static final int APROVECHAMIENTO_COMIDA = 6;
 
     public Rana(String nombre) {
@@ -20,6 +20,6 @@ public class Rana extends Anfibio {
 
         System.out.println(habla);
 
-        super.habla();
+        gastarEnergiaPorHablar();
     }
 }

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(javac:*)",
+      "Bash(timeout 3 java b400OOAVANZADA.b40000avanzada.Animales.E420InterfazParlante.Principal)"
+    ]
+  }
+}

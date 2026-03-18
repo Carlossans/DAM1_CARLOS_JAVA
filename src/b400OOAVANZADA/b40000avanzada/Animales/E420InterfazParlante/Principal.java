@@ -11,10 +11,15 @@ public class Principal {
         animales.add(new Pajaro("Piolín", 80));
         animales.add(new Perezoso("Lily"));
         animales.add(new Rana("Gustavo", 50));
+        animales.add(new Conejo("Bugs"));
+        animales.add(new Hormiga("Atomica"));
 
         while (true) {
             for (Animal animal : animales) {
-                animal.habla();
+                if (animal instanceof Parlante) {
+                    Parlante parlante = (Parlante) animal;
+                    parlante.habla();
+                }
 
                 if (Math.random() < 0.30) {
                     int cantidad = (int) (Math.random() * 3) + 1;

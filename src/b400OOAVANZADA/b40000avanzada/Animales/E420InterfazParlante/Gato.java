@@ -1,6 +1,6 @@
 package b400OOAVANZADA.b40000avanzada.Animales.E420InterfazParlante;
 
-public class Gato extends Mamifero {
+public class Gato extends Mamifero implements Parlante {
     public static final int APROVECHAMIENTO_COMIDA = 12;
 
     public Gato(String nombre) {
@@ -25,6 +25,6 @@ public class Gato extends Mamifero {
 
         System.out.println(habla);
 
-        super.habla();
+        gastarEnergiaPorHablar();
     }
 }
