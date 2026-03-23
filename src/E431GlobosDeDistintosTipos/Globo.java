@@ -1,14 +1,15 @@
-package b400ooavanzada.E430GlobosConJugadoresMixtos;
+package E431GlobosDeDistintosTipos;
 
 import java.util.Random;
 
-public class Globo {
+public abstract class Globo {
     public static final int RANDOM_MIN = 10;
     public static final int RANDOM_MAX = 50;
 
-    private Random random = new Random();
-    private int capacidad;
-    private int aire = 0;
+    protected Random random = new Random();
+    protected int capacidad;
+    protected int aire = 0;
+    protected boolean explotado = false;
 
     public Globo() {
         this.capacidad = random.nextInt(RANDOM_MIN, RANDOM_MAX+1);
@@ -16,6 +17,22 @@ public class Globo {
 
     public Globo(int valor) {
         capacidad = valor;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public int getAire() {
+        return aire;
+    }
+
+    protected void setAire(int aire) {
+        this.aire = aire;
+    }
+
+    protected void marcarExplotado() {
+        this.explotado = true;
     }
 
     public String toString() {
@@ -34,11 +51,7 @@ public class Globo {
         return cadena.toString();
     }
 
-    public void inflar(int cantidad) {
-        aire = aire + cantidad;
-    }
+    public abstract void inflar(int cantidad);
 
-    public boolean explotado() {
-        return this.aire > this.capacidad;
-    }
+    public abstract boolean explotado();
 }

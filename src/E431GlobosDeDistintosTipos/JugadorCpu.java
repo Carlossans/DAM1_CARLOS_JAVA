@@ -1,4 +1,4 @@
-package b400ooavanzada.E430GlobosConJugadoresMixtos;
+package E431GlobosDeDistintosTipos;
 
 import java.util.Random;
 

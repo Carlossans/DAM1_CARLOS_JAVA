@@ -1,4 +1,4 @@
-package b400ooavanzada.E430GlobosConJugadoresMixtos;
+package E431GlobosDeDistintosTipos;
 
 public class JugadorHumano extends Jugador {
     public JugadorHumano(String nombre, int vidas) {

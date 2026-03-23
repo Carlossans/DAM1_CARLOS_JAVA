@@ -1,4 +1,4 @@
-package b400ooavanzada.E430GlobosConJugadoresMixtos;
+package E431GlobosDeDistintosTipos;
 
 public abstract class Jugador implements Comparable<Jugador> {
     protected static final int SOPLO_MINIMO = 1;

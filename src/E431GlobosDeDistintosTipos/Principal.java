@@ -1,4 +1,4 @@
-package b400ooavanzada.E430GlobosConJugadoresMixtos;
+package E431GlobosDeDistintosTipos;
 
 import java.util.*;
 
@@ -26,7 +26,7 @@ public class Principal {
             System.out.printf("\n\n\n---------- RONDA %d ----------\n", ronda);
             for (Jugador jugador : jugadores) System.out.printf("  - %s\n", jugador);
 
-            Globo globo = new Globo();
+            Globo globo = new GloboNormal();
             System.out.println(globo);
 
             do {
