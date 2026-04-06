@@ -1,4 +1,4 @@
-package E431GlobosDeDistintosTipos;
+package E432GlobosConStrategy;
 
 import java.util.Random;
 

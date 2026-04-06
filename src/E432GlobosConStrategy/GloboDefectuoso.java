@@ -1,4 +1,4 @@
-package E431GlobosDeDistintosTipos;
+package E432GlobosConStrategy;
 
 public class GloboDefectuoso extends Globo {
     private static final double UMBRAL_SEGURO = 0.6;

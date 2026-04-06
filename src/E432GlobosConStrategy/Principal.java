@@ -1,7 +1,4 @@
-package E431GlobosDeDistintosTipos;
-
-import E432GlobosConStrategy.Globo;
-import E432GlobosConStrategy.GloboNormal;
+package E432GlobosConStrategy;
 
 import java.util.*;
 
@@ -9,22 +6,20 @@ public class Principal {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
 
-        // TODO En este punto, se le puede preguntar al usuario cuántas rondas quiere (debe ser impar).
-
         int vidasPorJugador = 3;
 
         List<Jugador> jugadores = new ArrayList<>();
-        jugadores.add(new JugadorCpu("Fulanito", vidasPorJugador));
-        jugadores.add(new JugadorCpu("Menganita", vidasPorJugador));
-        jugadores.add(new JugadorCpu("Zutanito", vidasPorJugador));
-        jugadores.add(new JugadorCpu("Fulanítez", vidasPorJugador));
-        jugadores.add(new JugadorCpu("Menganítez", vidasPorJugador));
+        jugadores.add(new Jugador("Fulanito (CPU Aleatoria)", vidasPorJugador, new SoploAleatorio()));
+        jugadores.add(new Jugador("Menganita (Humano)", vidasPorJugador, new SoploHumano()));
+        jugadores.add(new Jugador("Zutanito (Prudente)", vidasPorJugador, new SoploPrudente()));
+        jugadores.add(new Jugador("Fulanítez (Temerario)", vidasPorJugador, new SoploTemerario()));
+
         int jugadoresVivos = jugadores.size();
-        int jugadorActual = -1; // Ponemos -1 porque lo primero que se hace es cambiar de jugador. Así, pasará a empezar el 0.
+        int jugadorActual = -1;
 
         int ronda = 0;
         do {
-            ronda++;
+            ronda = ronda + 1;
 
             System.out.printf("\n\n\n---------- RONDA %d ----------\n", ronda);
             for (Jugador jugador : jugadores) System.out.printf("  - %s\n", jugador);
@@ -33,14 +28,9 @@ public class Principal {
             System.out.println(globo);
 
             do {
-                do { // Saltar a los jugadores que ya no estén vivos.
+                do {
                     jugadorActual = (jugadorActual + 1) % jugadores.size();
                 } while (!jugadores.get(jugadorActual).estaVivo());
-                // También podría hacerse así:
-                //   if (jugadorActual == jugadores.size()-1) jugadorActual = 0;
-                //   else jugadorActual++;
-                // O así:
-                //   jugadorActual = (jugadorActual == jugadores.size()-1) ? 0 : jugadorActual+1;
 
                 jugadores.get(jugadorActual).soplar(globo);
 
@@ -48,7 +38,9 @@ public class Principal {
             } while (!globo.explotado());
 
             jugadores.get(jugadorActual).quitarUnaVida();
-            if (!jugadores.get(jugadorActual).estaVivo()) jugadoresVivos--;
+            if (!jugadores.get(jugadorActual).estaVivo()) {
+                jugadoresVivos = jugadoresVivos - 1;
+            }
         } while (jugadoresVivos > 1);
 
         jugadores.sort(Comparator.reverseOrder());

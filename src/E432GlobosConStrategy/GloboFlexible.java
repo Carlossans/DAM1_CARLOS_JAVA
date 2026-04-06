@@ -1,4 +1,4 @@
-package E431GlobosDeDistintosTipos;
+package E432GlobosConStrategy;
 
 public class GloboFlexible extends Globo {
     private static final double SOBRECAPACIDAD_PERMITIDA = 1.10;

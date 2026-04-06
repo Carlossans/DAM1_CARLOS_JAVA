@@ -1,18 +1,18 @@
-package E431GlobosDeDistintosTipos;
+package E432GlobosConStrategy;
 
-import E432GlobosConStrategy.Globo;
-
-public abstract class Jugador implements Comparable<Jugador> {
+public class Jugador implements Comparable<Jugador> {
     protected static final int SOPLO_MINIMO = 1;
     protected static final int SOPLO_MAXIMO = 10;
 
     protected String nombre;
     protected int vidas;
     protected int soplidos = 0;
+    private EstrategiaSoplo estrategia;
 
-    public Jugador(String nombre, int vidas) {
+    public Jugador(String nombre, int vidas, EstrategiaSoplo estrategia) {
         setNombre(nombre);
         setVidas(vidas);
+        this.estrategia = estrategia;
     }
 
     public String toString() {
@@ -25,7 +25,7 @@ public abstract class Jugador implements Comparable<Jugador> {
     }
 
     public int compareTo(Jugador otro) {
-        return (1000000*this.getVidas() + this.getSoplidos()) - (1000000*otro.getVidas() + otro.getSoplidos());
+        return (1000000 * this.getVidas() + this.getSoplidos()) - (1000000 * otro.getVidas() + otro.getSoplidos());
     }
 
     public String getNombre() {
@@ -52,12 +52,18 @@ public abstract class Jugador implements Comparable<Jugador> {
         this.soplidos = soplidos;
     }
 
-    public abstract int determinarSoplo();
+    public void setEstrategia(EstrategiaSoplo estrategia) {
+        this.estrategia = estrategia;
+    }
+
+    public int determinarSoplo() {
+        return estrategia.determinarSoplo(SOPLO_MINIMO, SOPLO_MAXIMO);
+    }
 
     public void soplar(Globo globo) {
         int soplo = determinarSoplo();
         globo.inflar(soplo);
-        soplidos++;
+        soplidos = soplidos + 1;
         System.out.printf("\n%s sopla %d\n", this, soplo);
     }
 
