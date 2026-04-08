@@ -1,9 +1,4 @@
-
-//Para la simulación final, en tu programa principal, simula 15 segundos con un deltaTiempo de 0.1 segundos. Enciende el coche, pisa el acelerador al 80% y muestra iteración a iteración la evolución de Velocidad y RPM. A los 10 segundos, suelta el acelerador a 0.0 y observa cómo el freno motor y la resistencia detienen gradualmente el vehículo.
-
 package OPCIONALES;
-
-import java.lang.classfile.attribute.SourceFileAttribute;
 
 interface EstrategiaCurvarPar {
     double calcularPar(double rpm);
