@@ -82,10 +82,10 @@ public class E916Telegramas637 {
             int total = 0;
 
             for (int i = 0; i < palabras.length; i++) {
-                if (i > 0) total = total +  5;
+                if (i > 0) total = total + 5;
                 for (int j = 0; j < palabras[i].length(); j++) {
-                    if (j > 0) total = total +  3;
-                    total = total +  valorMorse[palabras[i].charAt(j)];
+                    if (j > 0) total = total + 3;
+                    total = total + valorMorse[palabras[i].charAt(j)];
                 }
             }
             System.out.println(total);
