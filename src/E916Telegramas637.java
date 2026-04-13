@@ -32,13 +32,13 @@
 import java.util.Scanner;
 
 public class E916Telegramas637 {
-    private static int getValor(String str) {
+    private static int getValor(String secuencia) {
         int puntos = 0, rayas = 0;
-        for (char c : str.toCharArray()) {
-            if (c == '-') rayas++;
+        for (char c : secuencia.toCharArray()) {
+            if (c == '-') rayas = rayas + 3;
             else puntos++;
         }
-        return (rayas * 3) + puntos + str.length() - 1;
+        return rayas + puntos + secuencia.length() - 1;
     }
 
     public static void main(String[] args) {

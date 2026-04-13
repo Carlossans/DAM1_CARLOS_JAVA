@@ -1,50 +1,45 @@
 import java.util.Scanner;
 
 public class E970JardinesAlhambra769 {
-    static void dfs(char[][] m, int i, int j) {
-        if (i < 0 || i == m.length || j < 0 || j == m[i].length || m[i][j] != '#') {
+    static void inundar(char[][] mapa, int fila, int columna) {
+        if (fila < 0 || fila == mapa.length || columna < 0 || columna == mapa[fila].length || mapa[fila][columna] != '#') {
             return;
         }
 
-        m[i][j] = '.';
+        mapa[fila][columna] = '.';
 
-        dfs(m, i + 1, j);
-        dfs(m, i - 1, j);
-        dfs(m, i, j + 1);
-        dfs(m, i, j - 1);
+        inundar(mapa, fila + 1, columna);
+        inundar(mapa, fila - 1, columna);
+        inundar(mapa, fila, columna + 1);
+        inundar(mapa, fila, columna - 1);
     }
 
     public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
 
-        Scanner s = new Scanner(System.in);
+        while (teclado.hasNext()) {
+            int filas = teclado.nextInt();
+            int columnas = teclado.nextInt();
+            char[][] mapa = new char[filas][columnas];
 
-        while (s.hasNext()) {
-            int F = s.nextInt();
-            int C = s.nextInt();
-            char[][] m = new char[F][C];
-
-            s.nextLine();
-            for (int i = 0; i < F; i++) {
-                char[] str = s.nextLine().toCharArray();
-                for (int j = 0; j < C; j++) {
-                    m[i][j] = str[j];
+            teclado.nextLine();
+            for (int i = 0; i < filas; i++) {
+                char[] linea = teclado.nextLine().toCharArray();
+                for (int j = 0; j < columnas; j++) {
+                    mapa[i][j] = linea[j];
                 }
             }
 
-            int ans = 0;
-            for (int i = 0; i < F; i++) {
-                for (int j = 0; j < C; j++) {
-                    if (m[i][j] == '#') {
-                        ans++;
-                        dfs(m, i, j);
+            int contadorCesped = 0;
+            for (int i = 0; i < filas; i++) {
+                for (int j = 0; j < columnas; j++) {
+                    if (mapa[i][j] == '#') {
+                        contadorCesped++;
+                        inundar(mapa, i, j);
                     }
                 }
             }
-
-            System.out.println(ans);
+            System.out.println(contadorCesped);
         }
-
-        s.close();
-
     }
 }
