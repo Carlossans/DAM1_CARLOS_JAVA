@@ -37,7 +37,7 @@ public class E935TecladoEstropeado144 {
                 }
             }
 
-            for (Character c : letras) System.out.print(c + "");
+            for (Character caracter : letras) System.out.print(caracter + "");
             System.out.println();
         }
 
