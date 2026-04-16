@@ -9,37 +9,25 @@ public class E935TecladoEstropeado144 {
 
         Scanner teclado = new Scanner(System.in);
 
-        ArrayList<Character> letras;
-        String presionadas;
-        int posicion;
-
         while (teclado.hasNext()) {
-
-            presionadas = teclado.nextLine();
-
-            posicion = 0; letras = new ArrayList<>();
-            for (int i = 0; i < presionadas.length(); i++) {
-                switch (presionadas.charAt(i)) {
+            String presionadas = teclado.nextLine();
+            int posicion = 0;
+            ArrayList<Character> letras = new ArrayList<>();
+            for (char caracter : presionadas.toCharArray()) {
+                switch (caracter) {
                     case '-': posicion = 0; break;
                     case '*': posicion++; break;
                     case '3':
                         if (!letras.isEmpty() && posicion <= letras.size() - 1)
                             letras.remove(posicion); break;
-                    case '+':
-                        if (letras.isEmpty()) posicion = 0;
-                        else posicion = letras.size();
-                        break;
+                    case '+': posicion = letras.isEmpty() ? 0 : letras.size(); break;
                     default:
                         if (posicion > letras.size())
-                            if (!letras.isEmpty()) posicion = letras.size();
-                            else posicion = 0;
-                        letras.add(posicion++, presionadas.charAt(i));
+                            posicion = letras.isEmpty() ? 0 : letras.size();
+                        letras.add(posicion++, caracter);
                 }
             }
-
-            for (Character caracter : letras) System.out.print(caracter + "");
-            System.out.println();
+            letras.forEach(System.out::println);
         }
-
     }
 }
