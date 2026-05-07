@@ -25,9 +25,7 @@ public class E970JardinesAlhambra769 {
             teclado.nextLine();
             for (int i = 0; i < filas; i++) {
                 char[] linea = teclado.nextLine().toCharArray();
-                for (int j = 0; j < columnas; j++) {
-                    mapa[i][j] = linea[j];
-                }
+                System.arraycopy(linea, 0, mapa[i], 0, columnas);
             }
 
             int contadorCesped = 0;
